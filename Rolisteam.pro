@@ -4,7 +4,7 @@
 
 TEMPLATE = app
 TARGET = bin/Rolisteam
-DEPENDPATH += . debug qtc-gdbmacros release src
+DEPENDPATH += . debug release src
 INCLUDEPATH += . src
 LANGUAGE = C++
 # Input
@@ -33,8 +33,7 @@ HEADERS += src/AfficheurDisque.h \
            src/wincompat.h \
            src/WorkspaceAmeliore.h
 FORMS += src/LecteurAudio.ui
-SOURCES += qtc-gdbmacros/gdbmacros.cpp \
-           src/AfficheurDisque.cpp \
+SOURCES += src/AfficheurDisque.cpp \
            src/BarreOutils.cpp \
            src/Carte.cpp \
            src/CarteFenetre.cpp \
@@ -52,7 +51,7 @@ SOURCES += qtc-gdbmacros/gdbmacros.cpp \
            src/Tchat.cpp \
            src/TextEditAmeliore.cpp \
            src/WorkspaceAmeliore.cpp
-RESOURCES += Rolistik.qrc
+RESOURCES += Rolisteam.qrc
 
 win32 {
  SOURCES +=  src/LecteurAudiowin.cpp
