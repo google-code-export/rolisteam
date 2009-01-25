@@ -99,9 +99,9 @@
 		// Selecteur de format
 		groupeFormat = new QGroupBox(tr("Format"));
 		// Creation des boutons
-		QRadioButton *boutonPaysage = new QRadioButton("Paysage");
-		QRadioButton *boutonPortrait = new QRadioButton("Portrait");
-		QRadioButton *boutonCarre = new QRadioButton("Carré");
+                QRadioButton *boutonPaysage = new QRadioButton(tr("Paysage"));
+                QRadioButton *boutonPortrait = new QRadioButton(tr("Portrait"));
+                QRadioButton *boutonCarre = new QRadioButton(tr("Carré"));
 		// Creation du groupe de boutons
 		QButtonGroup *groupeBoutonsFormat = new QButtonGroup();
 		groupeBoutonsFormat->addButton(boutonPaysage);

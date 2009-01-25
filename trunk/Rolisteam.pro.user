@@ -83,7 +83,7 @@
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >release</value>
    <value key="QtVersionId" type="int" >0</value>
    <value key="addQDumper" type="" ></value>
-   <value key="buildDirectory" type="QString" >/home/obiwan/applications/Rolistik</value>
+   <value key="buildDirectory" type="QString" >/home/obiwan/applications/rolisteam</value>
   </valuemap>
  </data>
  <data>
