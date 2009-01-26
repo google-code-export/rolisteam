@@ -218,12 +218,12 @@
 		// Initialisation des pointeurs de souris
                 QBitmap bitmapDessin(":/resources/icones/pointeur dessin.png");
 		QBitmap masqueDessin(32,32);
-		masqueDessin.fill(Qt::color0);
+                masqueDessin.fill(Qt::color1);
 		G_pointeurDessin = new QCursor(bitmapDessin, masqueDessin, 8, 8);
 
                 QBitmap bitmapTexte(":/resources/icones/pointeur texte.png");
 		QBitmap masqueTexte(32,32);
-		masqueTexte.fill(Qt::color0);
+                masqueTexte.fill(Qt::color1);
 		G_pointeurTexte = new QCursor(bitmapTexte, masqueTexte, 4, 13);
 
                 QPixmap pixmapDeplacer(":/resources/icones/pointeur deplacer.png");
@@ -296,6 +296,21 @@
 				G_dossierNotes = QDir::homePath();
 				// Initialisation du chemin vers les tchats
 				G_dossierTchats = QDir::homePath() + "/." + QString(NOM_APPLICATION);
+                        #elif defined Q_WS_X11
+                                // Initialisation du chemin vers les musiques
+                                G_dossierMusiquesMj = QDir::homePath();
+                                // Initialisation du chemin vers les musiques des joueurs
+                                G_dossierMusiquesJoueur = QDir::homePath();
+                                // Initialisation du chemin vers les images
+                                G_dossierImages = QDir::homePath();
+                                // Initialisation du chemin vers les plans
+                                G_dossierPlans = QDir::homePath();
+                                // Initialisation du chemin vers les scenarii
+                                G_dossierScenarii = QDir::homePath();
+                                // Initialisation du chemin vers les notes
+                                G_dossierNotes = QDir::homePath();
+                                // Initialisation du chemin vers les tchats
+                                G_dossierTchats = QDir::homePath() + "/." + QString(NOM_APPLICATION);
 			#endif
 		}
 	}

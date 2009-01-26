@@ -48,6 +48,8 @@
 			resize(carteAssociee->width()+2, carteAssociee->height()+2);
 		#elif defined (MACOS)
 			resize(carteAssociee->width()+4, carteAssociee->height()+4);
+                #elif defined Q_WS_X11
+                        resize(carteAssociee->width()+2, carteAssociee->height()+2);
 		#endif
 		// Connexion des signaux de deplacement de la Carte
 		QObject::connect(carteAssociee, SIGNAL(commencerDeplacementCarteFenetre(QPoint)), this, SLOT(commencerDeplacement(QPoint)));
