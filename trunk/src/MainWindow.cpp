@@ -217,14 +217,14 @@
 
 		// Initialisation des pointeurs de souris
                 QBitmap bitmapDessin(":/resources/icones/pointeur dessin.png");
-		QBitmap masqueDessin(32,32);
-                masqueDessin.fill(Qt::color1);
-		G_pointeurDessin = new QCursor(bitmapDessin, masqueDessin, 8, 8);
+                //QBitmap masqueDessin(32,32);
+                //masqueDessin.fill(Qt::color1);
+                G_pointeurDessin = new QCursor(bitmapDessin,/*masqueDessin,*/ 8, 8);
 
                 QBitmap bitmapTexte(":/resources/icones/pointeur texte.png");
-		QBitmap masqueTexte(32,32);
-                masqueTexte.fill(Qt::color1);
-		G_pointeurTexte = new QCursor(bitmapTexte, masqueTexte, 4, 13);
+                /*QBitmap masqueTexte(32,32);
+                masqueTexte.fill(Qt::color1);*/
+                G_pointeurTexte = new QCursor(bitmapTexte/*, masqueTexte*/, 4, 13);
 
                 QPixmap pixmapDeplacer(":/resources/icones/pointeur deplacer.png");
 		G_pointeurDeplacer = new QCursor(pixmapDeplacer, 0, 0);
