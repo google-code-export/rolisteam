@@ -50,19 +50,39 @@
  </data>
  <data>
   <variable>RunConfiguration2-RunConfiguration.name</variable>
-  <value type="QString" >Rolistik</value>
+  <value type="QString" >Rolisteam</value>
  </data>
  <data>
   <variable>RunConfiguration2-UserSetName</variable>
-  <value type="bool" >false</value>
+  <value type="bool" >true</value>
  </data>
  <data>
   <variable>RunConfiguration2-type</variable>
   <value type="QString" >Qt4ProjectManager.Qt4RunConfiguration</value>
  </data>
  <data>
+  <variable>RunConfiguration3-CommandLineArguments</variable>
+  <valuelist type="QVariantList" />
+ </data>
+ <data>
+  <variable>RunConfiguration3-ProFile</variable>
+  <value type="QString" >/home/obiwan/applications/rolisteam/Rolisteam.pro</value>
+ </data>
+ <data>
+  <variable>RunConfiguration3-RunConfiguration.name</variable>
+  <value type="QString" >Rolisteam</value>
+ </data>
+ <data>
+  <variable>RunConfiguration3-UserSetName</variable>
+  <value type="bool" >false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration3-type</variable>
+  <value type="QString" >Qt4ProjectManager.Qt4RunConfiguration</value>
+ </data>
+ <data>
   <variable>activeRunConfiguration</variable>
-  <value type="int" >2</value>
+  <value type="int" >3</value>
  </data>
  <data>
   <variable>activebuildconfiguration</variable>
@@ -203,7 +223,7 @@
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >release</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList" >
-    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-zqPOilBLBF,guid=f3ff4559f22381297994c0dd497b9983</value>
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-iNSDIO27np,guid=e3ef2e25e88cfe0ccd5c999f497c6526</value>
     <value type="QString" >DESKTOP_SESSION=default</value>
     <value type="QString" >DESKTOP_STARTUP_ID=</value>
     <value type="QString" >DISPLAY=:0.0</value>
@@ -211,9 +231,9 @@
     <value type="QString" >GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString" >GDM_XSERVER_LOCATION=local</value>
     <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString" >GNOME_KEYRING_PID=6519</value>
-    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-Y2pmB3/socket</value>
-    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-1DffMk/S.gpg-agent:6635:1</value>
+    <value type="QString" >GNOME_KEYRING_PID=6602</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-UsNOEV/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-lLHiDA/S.gpg-agent:6714:1</value>
     <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/obiwan/.gtkrc-1.2-gnome2</value>
     <value type="QString" >HOME=/home/obiwan</value>
     <value type="QString" >LANG=fr_FR.UTF-8</value>
@@ -223,26 +243,26 @@
     <value type="QString" >PKG_CONFIG_PATH=/usr/local/Trolltech/Qt-4.4.3/lib/pkgconfig</value>
     <value type="QString" >PWD=/home/obiwan</value>
     <value type="QString" >QTDIR=/usr/local/Trolltech/Qt-4.4.3</value>
-    <value type="QString" >SESSION_MANAGER=local/MARKIV:/tmp/.ICE-unix/6530</value>
+    <value type="QString" >SESSION_MANAGER=local/MARKIV:/tmp/.ICE-unix/6613</value>
     <value type="QString" >SHELL=/bin/bash</value>
-    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-Y2pmB3/ssh</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-UsNOEV/ssh</value>
     <value type="QString" >USER=obiwan</value>
     <value type="QString" >USERNAME=obiwan</value>
     <value type="QString" >WINDOWPATH=7</value>
     <value type="QString" >XAUTHORITY=/home/obiwan/.Xauthority</value>
     <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString" >XDG_SESSION_COOKIE=cb3b01fa2de21bf65d6f9a0047717e56-1232836992.952345-1582620678</value>
+    <value type="QString" >XDG_SESSION_COOKIE=cb3b01fa2de21bf65d6f9a0047717e56-1232889123.886896-105722864</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList" >
-    <value type="QString" >/home/obiwan/applications/Rolistik/Rolistik.pro</value>
+    <value type="QString" >/home/obiwan/applications/rolisteam/Rolisteam.pro</value>
     <value type="QString" >-spec</value>
     <value type="QString" >linux-g++</value>
     <value type="QString" >-r</value>
     <value type="QString" >CONFIG+=debug_and_release</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString" >/usr/local/Trolltech/Qt-4.4.3/bin/qmake</value>
-   <value key="abstractProcess.enabled" type="bool" >true</value>
-   <value key="abstractProcess.workingDirectory" type="QString" >/home/obiwan/applications/Rolistik</value>
+   <value key="abstractProcess.enabled" type="bool" >false</value>
+   <value key="abstractProcess.workingDirectory" type="QString" >/home/obiwan/applications/rolisteam</value>
   </valuemap>
  </data>
  <data>
@@ -250,7 +270,7 @@
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >release</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList" >
-    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-zqPOilBLBF,guid=f3ff4559f22381297994c0dd497b9983</value>
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-iNSDIO27np,guid=e3ef2e25e88cfe0ccd5c999f497c6526</value>
     <value type="QString" >DESKTOP_SESSION=default</value>
     <value type="QString" >DESKTOP_STARTUP_ID=</value>
     <value type="QString" >DISPLAY=:0.0</value>
@@ -258,9 +278,9 @@
     <value type="QString" >GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString" >GDM_XSERVER_LOCATION=local</value>
     <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString" >GNOME_KEYRING_PID=6519</value>
-    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-Y2pmB3/socket</value>
-    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-1DffMk/S.gpg-agent:6635:1</value>
+    <value type="QString" >GNOME_KEYRING_PID=6602</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-UsNOEV/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-lLHiDA/S.gpg-agent:6714:1</value>
     <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/obiwan/.gtkrc-1.2-gnome2</value>
     <value type="QString" >HOME=/home/obiwan</value>
     <value type="QString" >LANG=fr_FR.UTF-8</value>
@@ -270,15 +290,15 @@
     <value type="QString" >PKG_CONFIG_PATH=/usr/local/Trolltech/Qt-4.4.3/lib/pkgconfig</value>
     <value type="QString" >PWD=/home/obiwan</value>
     <value type="QString" >QTDIR=/usr/local/Trolltech/Qt-4.4.3</value>
-    <value type="QString" >SESSION_MANAGER=local/MARKIV:/tmp/.ICE-unix/6530</value>
+    <value type="QString" >SESSION_MANAGER=local/MARKIV:/tmp/.ICE-unix/6613</value>
     <value type="QString" >SHELL=/bin/bash</value>
-    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-Y2pmB3/ssh</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-UsNOEV/ssh</value>
     <value type="QString" >USER=obiwan</value>
     <value type="QString" >USERNAME=obiwan</value>
     <value type="QString" >WINDOWPATH=7</value>
     <value type="QString" >XAUTHORITY=/home/obiwan/.Xauthority</value>
     <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString" >XDG_SESSION_COOKIE=cb3b01fa2de21bf65d6f9a0047717e56-1232836992.952345-1582620678</value>
+    <value type="QString" >XDG_SESSION_COOKIE=cb3b01fa2de21bf65d6f9a0047717e56-1232889123.886896-105722864</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList" >
     <value type="QString" >debug</value>
@@ -286,7 +306,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString" >/usr/bin/make</value>
    <value key="abstractProcess.enabled" type="bool" >true</value>
-   <value key="abstractProcess.workingDirectory" type="QString" >/home/obiwan/applications/Rolistik</value>
+   <value key="abstractProcess.workingDirectory" type="QString" >/home/obiwan/applications/rolisteam</value>
    <valuelist key="makeargs" type="QVariantList" >
     <value type="QString" >debug</value>
    </valuelist>
