@@ -35,7 +35,7 @@
 #define CLIENT_SERVEUR_H
 
 	#include <QtNetwork> 
-    #include <QWidget>
+        #include <QWidget>
 	#include <QLineEdit>
 	#include <QLabel>
 	#include <QPushButton>
