@@ -106,8 +106,8 @@
 	void ClientServeur::demandeConnexion()
 	{
 		// Si les parametres ne sont pas corrects on retourne a la fenetre de connexion
-		if (!verifierParametres())
-			return;
+                if (!verifierParametres())
+                        return;
 
 		// On peut lancer la procedure de connexion
 
@@ -173,7 +173,7 @@
 			creerFenetreAttenteConnexion();
 			// Connexion au serveur
 			bool ok;
-			socketTcp->connectToHost(QHostAddress(adresseServeur->text()), portServeur->text().toInt(&ok));
+                        socketTcp->connectToHost(adresseServeur->text()/*QHostAddress(adresseServeur->text())*/, portServeur->text().toInt(&ok));
 		}
 	}
 
@@ -229,7 +229,18 @@
 	{
 		// Message d'erreur
 		qDebug("Une erreur réseau est survenue");
+
+                 QMessageBox::warning(NULL, tr("Rolisteam"),
+                                tr("Une erreur réseau est survenue.\n"
+                                   "Voici le message d'erreur: %1").arg(socketTcp->errorString()),
+                                QMessageBox::Ok,QMessageBox::Ok
+                                );
+
+
+                QTextStream cout(stderr,QIODevice::WriteOnly);
+
 		// Fermeture de la connexion et du socket
+                cout << "not good " << endl;
 		connexionAnnulee();
 	}
 
@@ -429,7 +440,7 @@
 	}
 
 	/********************************************************************/
-	/* Detruit la denetre d'attente de connexion                        */
+        /* Detruit la fenetre d'attente de connexion                        */
 	/********************************************************************/
 	void ClientServeur::detruireFenetreAttenteConnexion()
 	{
@@ -451,43 +462,57 @@
 		// On supprime l'icone de la barre de titre
 		Qt::WindowFlags flags = msgBox.windowFlags();
 		msgBox.setWindowFlags(flags ^ Qt::WindowSystemMenuHint);
-		
+                int iporhostname= 0;// 0 = error, 1 = Ip and -1 = hostname
 		// Si l'ordinateur local est un client on verifie le format d'adresse et de port du serveur
 		if (boutonClient->isChecked())
 		{
 			QString ipDuServeur = adresseServeur->text();
 			QString portDuServeur = portServeur->text();
 			
-			if (ipDuServeur.count(".") != 3)
+                        if (ipDuServeur.count(".") == 3)
 			{
-				msgBox.setText(tr("Adresse IP du serveur incorrecte\nElle doit être au format xxx.xxx.xxx.xxx\noù xxx est compris entre 0 et 255"));
-				msgBox.exec();
-		   		return false;
+                                /*msgBox.setText(tr("Adresse IP du serveur incorrecte\nElle doit être au format xxx.xxx.xxx.xxx\noù xxx est compris entre 0 et 255"));
+                                msgBox.exec();*/
+                                iporhostname = 1;
+                                //return false;
+                                bool ok1, ok2, ok3, ok4;
+                                int num1 = ipDuServeur.section('.', 0, 0).toInt(&ok1);
+                                int num2 = ipDuServeur.section('.', 1, 1).toInt(&ok2);
+                                int num3 = ipDuServeur.section('.', 2, 2).toInt(&ok3);
+                                int num4 = ipDuServeur.section('.', 3, 3).toInt(&ok4);
+                                if (!ok1 || !ok2 || !ok3 || !ok4 || num1<0 || num1>255 || num2<0 || num2>255 ||
+                                        num3<0 || num3>255 || num4<0 || num4>255)
+                                {
+                                        msgBox.setText(tr("Adresse IP du serveur incorrecte\nElle doit être au format xxx.xxx.xxx.xxx\noù xxx est compris entre 0 et 255"));
+                                        msgBox.exec();
+                                        return false;
+                                }
+
+                                // On verifie la validite du port
+                                bool ok5;
+                                int num5 = portDuServeur.toInt(&ok5);
+                                if (!ok5 || num5<0 || num5>65535)
+                                {
+                                        msgBox.setText(tr("Le numéro de port du serveur est incorrecte\nIl doit être compris entre 0 et 65535"));
+                                        msgBox.exec();
+                                        return false;
+                                }
 			}
+                        else
+                        {
+                            iporhostname = -1;
+                            if((ipDuServeur.contains(' '))&&(ipDuServeur.contains('@')))
+                            {
+                                        msgBox.setText(tr("Le nom d'hôte semble contenir des caractères interdits\nLes espaces et les @ sont interdit."));
+                                        msgBox.exec();
+                                        return false;
+
+                            }
+
+                        }
 
 			// On recupere les 4 champs de l'adresse
-			bool ok1, ok2, ok3, ok4;
-			int num1 = ipDuServeur.section('.', 0, 0).toInt(&ok1);
-			int num2 = ipDuServeur.section('.', 1, 1).toInt(&ok2);
-			int num3 = ipDuServeur.section('.', 2, 2).toInt(&ok3);
-			int num4 = ipDuServeur.section('.', 3, 3).toInt(&ok4);
-			if (!ok1 || !ok2 || !ok3 || !ok4 || num1<0 || num1>255 || num2<0 || num2>255 ||
-				num3<0 || num3>255 || num4<0 || num4>255)
-			{
-				msgBox.setText(tr("Adresse IP du serveur incorrecte\nElle doit être au format xxx.xxx.xxx.xxx\noù xxx est compris entre 0 et 255"));
-				msgBox.exec();
-		   		return false;
-			}
-			
-			// On verifie la validite du port
-			bool ok5;
-			int num5 = portDuServeur.toInt(&ok5);
-			if (!ok5 || num5<0 || num5>65535)
-			{
-				msgBox.setText(tr("Le numéro de port du serveur est incorrecte\nIl doit être compris entre 0 et 65535"));
-				msgBox.exec();
-				return false;
-			}
+
 		}
 		
 		// Si l'ordinateur local est le serveur, on verifie le format du port entre par l'utilisateur
@@ -637,7 +662,7 @@
 		QFontMetrics fm1(labelIpServeur->font());
 		int largeurLabelIpServeur = fm1.width(labelIpServeur->text());
 		adresseServeur = new QLineEdit();
-		adresseServeur->setMaxLength(15);
+                //adresseServeur->setMaxLength(15);
 		#ifdef WIN32
 			adresseServeur->setFixedWidth(94);
 		#elif defined (MACOS)

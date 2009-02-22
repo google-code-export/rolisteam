@@ -22,7 +22,7 @@ HEADERS += src/AfficheurDisque.h \
            src/ListeUtilisateurs.h \
            src/MainWindow.h \
            src/NouveauPlanVide.h \
-           src/Rolistik_private.h \
+           src/Rolistem_private.h \
            src/SelecteurCouleur.h \
            src/SelecteurDiametre.h \
            src/Tchat.h \
@@ -51,7 +51,7 @@ SOURCES += src/AfficheurDisque.cpp \
            src/Tchat.cpp \
            src/TextEditAmeliore.cpp \
            src/WorkspaceAmeliore.cpp
-RESOURCES += Rolisteam.qrc
+
 
 win32 {
  SOURCES +=  src/LecteurAudiowin.cpp

@@ -50,7 +50,13 @@
 #endif
 
 #ifdef Q_WS_X11
-    #include <phonon>
+    //#include <phonon>
+    #include <mediasource.h>
+    #include <seekslider.h>
+    #include <mediaobject.h>
+    #include <volumeslider.h>
+    #include <audiooutput.h>
+    #include <path.h>
 #endif
 	
     class LecteurAudio : public QDockWidget
@@ -78,26 +84,36 @@
 		
 		void nouveauTitre(QString titre, QString fichier);
                 void arreter();
+                 #ifdef Q_WS_X11
                 void setupUi();
+                #endif
 		void ajouterTags();
 		void emettreCommande(actionMusique action, QString nomFichier = "", quint32 position = 0, int numeroLiaison = -1);
 		
-
+                #ifdef Q_WS_X11
                 Phonon::MediaSource *currentsource;
                 Phonon::SeekSlider *seekSlider;
                 Phonon::MediaObject *mediaObject;
                 Phonon::AudioOutput *audioOutput;
                 Phonon::VolumeSlider *volumeSlider;
                 Phonon::Path* path;
-
-
+                Phonon::VolumeSlider *niveauVolume;			// Permet d'ajuster le niveau du volume
+                Phonon::SeekSlider *positionTemps;			// Permet de voir et de modifier la position de la lecture du titre
+                #endif
+                 #ifdef Q_WS_WIN32
+                FSOUND_STREAM *fluxAudio;
+                #endif
                 QWidget *widgetPrincipal;		// Widget contenant tout le lecteur audio (affichage + commande)
                 QWidget *widgetAffichage;		// Contient l'afficheur de titre et le reglage du volume (pour joueurs et MJ)
                 QWidget *widgetCommande;		// Contient le panneau de commande du lecteur (MJ seulement)
                 QVBoxLayout *layoutPrincipal;	// Layout du widget principal
                 QLineEdit *afficheurTitre;		// Affiche le titre en cours de lecture
-                Phonon::VolumeSlider *niveauVolume;			// Permet d'ajuster le niveau du volume
-                Phonon::SeekSlider *positionTemps;			// Permet de voir et de modifier la position de la lecture du titre
+                #ifdef Q_WS_WIN32
+                QSlider *niveauVolume;			// Permet d'ajuster le niveau du volume
+                QSlider *positionTemps;
+                #endif
+
+
                 QLCDNumber *afficheurTemps;		// Affiche la position courante du curseur de temps
                 QListWidget *listeTitres;		// Contient la liste des titres qui vont etre lus
                 QList<QString> listeChemins;	// Liste des chemins des fichiers dont les titres sont affiches dans listeTitres
@@ -118,9 +134,20 @@
 
 
         private slots :
+                #ifdef Q_WS_X11
                 void tick(qint64 time);
                 void stateChanged(Phonon::State newState, Phonon::State oldState);
                 void sourceChanged(const Phonon::MediaSource &source);
+                #endif
+                #ifdef Q_WS_WIN32
+                void appuiPause(bool etatBouton);
+                void appuiStop(bool etatBouton);
+                void appuiLecture(bool etatBouton);
+                void changementVolume(int valeur);
+                void changementTempsLecture();
+                void changementTempsAffichage(int valeur);
+                #endif
+
 		void appuiBoucle(bool etatBouton);
 		void appuiUnique(bool etatBouton);
 		void ajouterTitre();
@@ -128,6 +155,8 @@
                 void changementTitre(QListWidgetItem * p);
 		void finDeTitreSlot();
 		void joueurChangerDossier();
+
+
 
 	};
 

@@ -31,9 +31,9 @@
 	// Inclusion de la librairie FMOD (librairie audio)
 	#ifdef WIN32
 		#define DLL_EXPORTS
-	#endif
-	#include "fmod.h"
 
+                #include "fmod.h"
+        #endif
 
 	// Importation du plugin JPEG
 //	Q_IMPORT_PLUGIN(qjpeg)
