@@ -74,7 +74,7 @@
 		void joueurPauseMorceau();
 		void joueurArretMorceau();
 		void joueurChangerPosition(int position);
-		int volume();
+                qreal volume();
 
 	signals :
 		void finDeTitreSignal();
@@ -88,9 +88,10 @@
                 void setupUi();
                 #endif
 		void ajouterTags();
-		void emettreCommande(actionMusique action, QString nomFichier = "", quint32 position = 0, int numeroLiaison = -1);
+                void emettreCommande(actionMusique action, QString nomFichier = "", quint64 position = 0, int numeroLiaison = -1);
 		
                 #ifdef Q_WS_X11
+                qint64 m_time;
                 Phonon::MediaSource *currentsource;
                 Phonon::SeekSlider *seekSlider;
                 Phonon::MediaObject *mediaObject;

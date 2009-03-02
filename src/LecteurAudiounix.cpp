@@ -45,7 +45,7 @@ G_lecteurAudio = this;
 audioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
 mediaObject = new Phonon::MediaObject(this);
 path = new Phonon::Path();
-
+m_time = 0;
 
      connect(mediaObject, SIGNAL(tick(qint64)), this, SLOT(tick(qint64)));
 connect(mediaObject, SIGNAL(stateChanged(Phonon::State, Phonon::State)),
@@ -280,6 +280,7 @@ void LecteurAudio::changementTitre(QListWidgetItem * p)
 /***************************************************************************/
 void LecteurAudio::tick(qint64 time)
 {
+    m_time = time;
      QTime displayTime(0, (time / 60000) % 60, (time / 1000) % 60);
 
 
@@ -682,7 +683,7 @@ void LecteurAudio::passageSurUnTag(QString tag)
 /* Emet une commande pour le lecteur audio vers le serveur ou       */
 /* les clients                                                      */
 /********************************************************************/
-void LecteurAudio::emettreCommande(actionMusique action, QString nomFichier, quint32 position, int numeroLiaison)
+void LecteurAudio::emettreCommande(actionMusique action, QString nomFichier, quint64 position, int numeroLiaison)
 {
         int p;
         quint16 tailleNomFichier;
@@ -780,18 +781,18 @@ void LecteurAudio::emettreEtat(QString idJoueur)
         {
                 // Dans le cas de la pause on releve le point de lecture actuel et on l'envoie
                 case pause :
-//				emettreCommande(nouvellePositionMorceau, "", FSOUND_Stream_GetTime(fluxAudio), numeroLiaison);
+                                emettreCommande(nouvellePositionMorceau, "", m_time, numeroLiaison);
                         break;
 
                 // A l'arret on emet le position du curseur de temps
                 case arret :
-//				emettreCommande(nouvellePositionMorceau, "", G_joueur?joueurPositionTemps:positionTemps->value(), numeroLiaison);
+                                emettreCommande(nouvellePositionMorceau, "", G_joueur?joueurPositionTemps:m_time, numeroLiaison);
                         break;
 
                 // Pour la lecture on emet la position actuelle et l'ordre de lecture
                 case lecture :
-//				emettreCommande(nouvellePositionMorceau, "", FSOUND_Stream_GetTime(fluxAudio), numeroLiaison);
-//				emettreCommande(lectureMorceau, "", 0, numeroLiaison);
+                                emettreCommande(nouvellePositionMorceau, "", m_time, numeroLiaison);
+                                emettreCommande(lectureMorceau, "", 0, numeroLiaison);
                         break;
 
                 default :
@@ -803,9 +804,10 @@ void LecteurAudio::emettreEtat(QString idJoueur)
 /********************************************************************/
 /* Retourne le volume courant                                       */
 /********************************************************************/
-int LecteurAudio::volume()
+qreal LecteurAudio::volume()
 {
 //		return niveauVolume->value();
+    audioOutput->volume();
 }
 
 /********************************************************************/
