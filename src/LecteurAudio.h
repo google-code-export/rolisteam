@@ -43,7 +43,7 @@
     #include <QList>
     #include <QString>
     #include <QVBoxLayout>
-
+    #include <QDebug>
     #include "types.h"
 #ifdef Q_WS_WIN32
     #include "fmod.h"
@@ -64,7 +64,7 @@
 	Q_OBJECT
 
     public :
-        LecteurAudio(QWidget *parent = 0);
+
 		void arriveeEnFinDeTitre();
 		void passageSurUnTag(QString tag);
 		void emettreEtat(QString idJoueur);
@@ -75,13 +75,14 @@
 		void joueurArretMorceau();
 		void joueurChangerPosition(int position);
                 qreal volume();
-
+                static LecteurAudio*  getInstance(QWidget *parent = 0);
 	signals :
 		void finDeTitreSignal();
 
     private :
+                LecteurAudio(QWidget *parent = 0);
 		enum etatLecteur {pause, arret, lecture};
-		
+
 		void nouveauTitre(QString titre, QString fichier);
                 void arreter();
                  #ifdef Q_WS_X11
@@ -90,10 +91,12 @@
 		void ajouterTags();
                 void emettreCommande(actionMusique action, QString nomFichier = "", quint64 position = 0, int numeroLiaison = -1);
 		
+                static LecteurAudio* singleton;
                 #ifdef Q_WS_X11
                 qint64 m_time;
                 Phonon::MediaSource *currentsource;
                 Phonon::SeekSlider *seekSlider;
+                 bool eventFilter(QObject *object, QEvent *event);
                 Phonon::MediaObject *mediaObject;
                 Phonon::AudioOutput *audioOutput;
                 Phonon::VolumeSlider *volumeSlider;

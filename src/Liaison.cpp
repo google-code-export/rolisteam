@@ -41,6 +41,7 @@
 		: QThread(parent)
     {
 		// Initialisation des variables
+            G_lecteurAudio = LecteurAudio::getInstance();
 		socketTcp = socket;
 		receptionEnCours = false;
 
@@ -1692,6 +1693,7 @@
 			QString nomFichier(tableauNomFichier, tailleNomFichier);
 			
 			// On charge le nouveau fichier dans le lecteur
+                        qDebug() << nomFichier <<endl;
 			G_lecteurAudio->joueurNouveauFichier(nomFichier);
 			
 			// Liberation de la memoire allouee

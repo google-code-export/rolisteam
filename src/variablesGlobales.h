@@ -107,8 +107,7 @@
 	// Declarees dans ListeUtilisateur.cpp
 	extern ListeUtilisateurs *G_listeUtilisateurs;
 	
-	// Declarees dans LecteurAudio.cpp
-	extern LecteurAudio *G_lecteurAudio;
+
 
 
 #endif

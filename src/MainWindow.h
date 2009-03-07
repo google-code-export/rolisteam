@@ -46,7 +46,7 @@
 	#include "Image.h"
 	#include "EditeurNotes.h"
 	#include "WorkspaceAmeliore.h"
-
+        #include "LecteurAudio.h"
 
 	class MainWindow : public QMainWindow
 	{
@@ -107,7 +107,7 @@
 		QList <CarteFenetre *> listeCarteFenetre;
 		QList <Image *> listeImage;
 		QList <Tchat *> listeTchat;
-
+                LecteurAudio* G_lecteurAudio;
 		QAction *actionNouveauPlan;
 		QAction *actionOuvrirImage;
 		QAction *actionOuvrirPlan;

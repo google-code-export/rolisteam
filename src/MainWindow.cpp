@@ -169,7 +169,7 @@
 		addDockWidget(Qt::RightDockWidgetArea, G_listeUtilisateurs);		
 
 		// Creation du lecteur audio
-		new LecteurAudio(this);
+                G_lecteurAudio = LecteurAudio::getInstance(this);
 		// Ajout du lecteur audio a la fenetre principale
 		addDockWidget(Qt::RightDockWidgetArea, G_lecteurAudio);
 
