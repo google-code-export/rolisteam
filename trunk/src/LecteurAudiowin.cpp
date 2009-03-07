@@ -35,7 +35,7 @@
 	/* l'application                                                    */
 	/********************************************************************/	
 	// Pointeur vers l'unique instance du lecteur audio
-	LecteurAudio *G_lecteurAudio;
+
 
 	/********************************************************************/
 	/* Fonction de callback hors classe appelee par FMOD a chaque fois  */
@@ -66,7 +66,7 @@
         : QDockWidget(parent)
     {
 		// Initialisation de la variable globale
-		G_lecteurAudio = this;
+
 
 		// Initialisation de l'etat du lecteur
 		etatActuel = arret;
@@ -265,7 +265,17 @@
 		// Insertion du widget principal dans le dockWidget
 		setWidget(widgetPrincipal);
 	}
+        LecteurAudio*  LecteurAudio::getInstance(QWidget *parent)
+        {
+            if(singleton==NULL)
+                singleton = new LecteurAudio(parent);
 
+
+            return singleton;
+
+
+
+        }
 	/********************************************************************/
 	/* Masque le widget de commande si l'utilisateur local n'est pas MJ */
 	/********************************************************************/

@@ -68,6 +68,7 @@ OBJECTS_DIR = bin
 QT += xml \
  phonon \
  core \
+ debug \
  gui \
  network
 VERSION = 1.1
