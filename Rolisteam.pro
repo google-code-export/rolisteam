@@ -22,7 +22,7 @@ HEADERS += src/AfficheurDisque.h \
            src/ListeUtilisateurs.h \
            src/MainWindow.h \
            src/NouveauPlanVide.h \
-           src/Rolistem_private.h \
+           src/Rolisteam_private.h \
            src/SelecteurCouleur.h \
            src/SelecteurDiametre.h \
            src/Tchat.h \
