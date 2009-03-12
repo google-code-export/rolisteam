@@ -68,9 +68,9 @@ OBJECTS_DIR = bin
 QT += xml \
  phonon \
  core \
- debug \
  gui \
  network
+CONFIG += debug
 VERSION = 1.1
 MOC_DIR = src
 UI_DIR = src
