@@ -7,7 +7,7 @@ TARGET = bin/Rolisteam
 DEPENDPATH += . debug release src
 INCLUDEPATH += . src
 LANGUAGE = C++
-# Input
+
 HEADERS += src/AfficheurDisque.h \
            src/BarreOutils.h \
            src/Carte.h \

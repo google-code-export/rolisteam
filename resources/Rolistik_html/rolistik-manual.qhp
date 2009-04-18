@@ -4,7 +4,7 @@
      <virtualFolder>doc</virtualFolder>
      <filterSection>
          <toc>
-             <section title="Rolistik" ref="./presentation.html">
+             <section title="Rolistik">
                  <section title="Introduction" ref="./presentation.html">
                      <section title="Présentation" ref="/presentation.html"></section>
                      <section title="Abréviations" ref="./abreviations.html"></section>
