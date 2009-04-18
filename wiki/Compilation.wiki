@@ -1,20 +1,23 @@
 #labels Compilation,Phase-Implementation,Phase-Deploy
-#This pages gives you all informations for compiling Rolisteam.
+=Compilation= 
 
-= Dependencies =
+This pages gives you all informations for compiling Rolisteam.
 
-==GNU/Linux==
-*Qt4 (>= 4.4)
-*Phonon
+== Dependencies ==
 
-==Windows==
-*Qt4
-*fmod
+===GNU/Linux===
+  * Qt4 (>= 4.4)
+  * Phonon
 
-= Compilation command =
+===Windows===
+  * Qt4
+  * fmod
 
-==All platforms==
-$ qmake
-$ make
+== Compilation command ==
 
-the software will be created in the bin directory.
+===All platforms===
+ $ qmake
+
+ $ make
+
+Rolisteam will be created in the bin directory.
