@@ -1,5 +1,5 @@
 #labels Compilation,Phase-Implementation,Phase-Deploy
-=Compilation= 
+=How to compile Rolisteam= 
 
 This pages gives you all informations for compiling Rolisteam.
 
@@ -9,6 +9,11 @@ This pages gives you all informations for compiling Rolisteam.
   * Qt4 (>= 4.4)
   * Phonon
 
+To install them use this command: 
+(Ubuntu 8.10)
+{{{
+sudo apt-get install libqt4-core libqt4-gui libqt4-dev phonon phonon-backend-gstreamer libphonon4 libphonon-dev
+}}}
 ===Windows===
   * Qt4
   * fmod
@@ -16,8 +21,8 @@ This pages gives you all informations for compiling Rolisteam.
 == Compilation command ==
 
 ===All platforms===
+{{{
  $ qmake
-
  $ make
-
+}}}
 Rolisteam will be created in the bin directory.
