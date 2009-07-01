@@ -28,7 +28,7 @@
    ["Aide","aide.html","0"]],
  ["Remarques","","0",
    ["Personnaliser le fond","personnaliserlefond.html","0"],
-   ["Rolistik sous Linux","rolistiksouslinux.html","0"],
+   ["Rolisteam sous Linux","rolisteamsouslinux.html","0"],
    ["Résolution de problèmes","resolutiondeproblemes.html","0"]]
 ];
 
@@ -38,7 +38,7 @@
  </assistantconfig>
 <?xml version="1.0" encoding="UTF-8"?>
  <QtHelpProject version="1.0">
-     <namespace>rolistik</namespace>
+     <namespace>rolisteam</namespace>
      <virtualFolder>doc</virtualFolder>
      <filterSection>
          <toc>

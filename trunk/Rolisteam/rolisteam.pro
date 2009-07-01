@@ -3,8 +3,8 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = bin/Rolisteam
-DEPENDPATH += . debug release src
+TARGET = bin/rolisteam
+DEPENDPATH += . src
 INCLUDEPATH += . src
 LANGUAGE = C++
 
@@ -63,9 +63,9 @@ unix {
 macx {
  SOURCES +=  src/LecteurAudiounix.cpp
 }
-RESOURCES += Rolisteam.qrc
+RESOURCES += rolisteam.qrc
 OBJECTS_DIR = bin
-QT += xml \
+QT += assistant \
  phonon \
  core \
  gui \

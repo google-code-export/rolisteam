@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/" >
-        <file>resources/Rolistik_html/Rolistik.qhc</file>
+        <file>resources/doc/rolisteam.qhc</file>
         <file>resources/a propos.htm</file>
         <file>resources/icones/Rolistik.png</file>
         <file>resources/icones/ajouter PNJ.png</file>
