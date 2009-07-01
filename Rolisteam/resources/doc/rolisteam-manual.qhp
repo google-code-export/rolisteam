@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <QtHelpProject version="1.0">
-     <namespace>rolistik</namespace>
+     <namespace>rolisteam</namespace>
      <virtualFolder>doc</virtualFolder>
      <filterSection>
          <toc>
-             <section title="Rolistik">
+             <section title="Rolisteam">
                  <section title="Introduction" ref="./presentation.html">
                      <section title="Présentation" ref="/presentation.html"></section>
                      <section title="Abréviations" ref="./abreviations.html"></section>
@@ -40,7 +40,7 @@
 		 </section>
                  <section title="Remarques" ref="./personnaliserlefond.html">
 	                <section title="Personnaliser le fond" ref="/personnaliserlefond.html"></section>
-	                <section title="Rolistik sous Linux" ref="./rolistiksouslinux.html"></section>
+	                <section title="Rolisteam sous Linux" ref="./rolisteamsouslinux.html"></section>
 	                <section title="Résolution de problèmes" ref="./resolutiondeproblemes.html"></section>
 		 </section>
               </section>
@@ -48,7 +48,7 @@
          <keywords>
              <keyword name="presentation" ref="./presentation.html"/>
              <keyword name="licences" ref="./licences.html"/>
-             <keyword name="rolistiksouslinux" ref="./wildcardmatching.html"/>
+             <keyword name="rolisteamsouslinux" ref="./wildcardmatching.html"/>
              <keyword name="Wildcard matching" ref="./wildcardmatching.html"/>
              <keyword name="Wildcard syntax" ref="./wildcardmatching.html"/>
              <keyword name="personnaliserlefond" ref="./personnaliserlefond.html"/>
@@ -81,7 +81,7 @@
 		<file>fenetre.html</file>
 		<file>aide.html</file>
 		<file>personnaliserlefond.html</file>
-		<file>rolistiksouslinux.html</file>
+		<file>rolisteamsouslinux.html</file>
 		<file>resolutiondeproblemes.html</file>
 		<file>icons/90.gif</file>
 		<file>icons/11.gif</file>
