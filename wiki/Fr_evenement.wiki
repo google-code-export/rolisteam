@@ -1,0 +1,9 @@
+         
+|| Evènements ||  [Previous] [Top] [Next]  ||
+ La fenêtre d'événements constitue le journal de toutes les actions importantes qui ont lieu en 
+
+cours de partie. Vous êtes ainsi informé de la connexion d'un nouveau joueur, de l'ouverture 
+
+d'un plan, du changement de couleur d'un PJ, etc.Chaque événement est horodaté et écrit en alternance en rouge ou bleu foncé pour une 
+
+meilleure lisibilité.  

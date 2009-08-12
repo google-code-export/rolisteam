@@ -1,0 +1,35 @@
+         
+|| *Fenêtre de connexion* ||  [Previous] [Top] [Next]  ||
+ La fenêtre de connexion s'ouvre au lancement de l'application. Vous devez y indiquer votre 
+
+nom (et non celui de votre personnage), la couleur que vous utiliserez dans les tchats 
+
+(cliquez sur la couleur pour en changer), votre nature (joueur ou MJ), et si votre ordinateur va 
+
+être client ou serveur.A noter qu'il ne peut y avoir qu'un seul MJ par partie. Si vous essayez de vous connecter en 
+
+tant que MJ alors qu'il en existe déjà un, vous serez automatiquement déclassé en tant que 
+
+simple joueur.Voici la fenêtre de connexion pour le serveur :Le serveur peut choisir le numéro de port sur lequel les clients pourront se connecter. 
+
+N'oubliez pas de le leur communiquer, ainsi que votre adresse IP. Si vous ne la connaissez 
+
+pas, le plus simple est de se rendre sur le site  qui vous donne 
+
+votre numéro d'adresse IP. Aussitôt le serveur en place vous arrivez sur la fenêtre principale 
+
+de *Rolisteam*.Voici la fenêtre de connexion pour un client :Vous devez spécifier l'adresse IP du serveur, ainsi que le numéro de port sur lequel vous 
+
+allez vous connecter. Avant de lancer la connexion il faut bien évidemment s'assurer que le 
+
+serveur est en place. Une fois la connexion avec le serveur établie vous arrivez sur la fenêtre 
+
+principale de *Rolisteam*. Si une partie est déjà en cours, votre espace de travail est 
+
+automatiquement mis à jour : vous recevez l'ensemble des plans et des images déjà ouverts, 
+
+ainsi que la musique en cours de lecture.Notes : si vous voulez tester les fonctionnalités réseau de *Rolisteam*, vous avez toujours la 
+
+possibilité de le lancer plusieurs fois en donnant comme adresse du serveur celle de 
+
+l'ordinateur local : 127.0.0.1    

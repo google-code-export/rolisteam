@@ -1,0 +1,4 @@
+|| *Abréviations* ||  [Previous] [Top] [Next]  ||
+ Les abréviations suivantes sont employées dans toute cette documentation. Bien connues 
+
+des rôlistes, je les rappelle pour mémoire :*MJ *: meneur de jeu, maître de jeu, gardien des arcanes, conteur, etc...*PJ *: personnage joueur, un personnage interprété par un joueur.*PNJ *: personnage non joueur, un personnage interprété par le MJ    

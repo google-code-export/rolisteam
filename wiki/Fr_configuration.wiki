@@ -1,0 +1,7 @@
+         
+|| *Configuration requise* ||  [Previous] [Top] [Next]  ||
+ *Rolisteam* fonctionne sous Windows XP et Vista, ainsi que sous MacOS (sur machine MacIntel 
+
+uniquement).Il est également possible de le faire fonctionner sous Linux en utilisant l'émulateur Wine 
+
+().   

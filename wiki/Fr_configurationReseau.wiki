@@ -1,0 +1,30 @@
+|| *Configuration réseau* ||  [Previous] [Top] [Next]  ||
+ Voilà un élément qui pourrait bien entrer en ligne de compte pour le choix du serveur : la 
+
+configuration de vos réseaux respectifs. En ce qui concerne les clients, aucune configuration 
+
+particulière n'est requise, par contre en ce qui concerne le serveur il est probable que certains 
+
+réglages soient nécessaires.Il y a globalement deux cas de figure pour une connexion à internet :-&#160;&#160; &#160;&#160;&#160;l'ordinateur a directement accès à internet via un modem 
+
+qui lui permet d'obtenir une 
+
+adresse IP. Dans ce cas il suffit de vérifier que votre pare-feu laisse bien passer les 
+
+messages entrant et sortant de *Rolisteam*;-&#160;&#160; &#160;&#160;&#160;l'ordinateur fait partie d'un sous-réseau, lui-même relié à internet par un routeur (ce 
+
+cas est possible même lorsqu'il n'y a qu'un seul ordinateur sur le sous-réseau en 
+
+question). Dans ce cas, en plus du pare-feu installé sur votre ordinateur, il est 
+
+généralement nécessaire de configurer le routeur pour qu'il autorise le passage des 
+
+messages de *Rolisteam* vers votre ordinateur. Pour ce faire vous devez rajouter une 
+
+ligne dans la section NAT/PAT de votre routeur, en lui indiquant l'adresse IP (sur le 
+
+réseau local) de votre ordinateur et le numéro de port que vous comptez utiliser pour 
+
+permettre aux clients de se connecter (généralement le port 6660, toujours en TCP).Si vous n'avez rien compris au paragraphe précédent, demandez à quelqu'un d'autre de faire 
+
+le serveur à votre place; ou bien faites-vous aider par un ami informaticien (vous faites du jeu 

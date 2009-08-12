@@ -1,0 +1,9 @@
+      
+|| *Auteur* ||  [Previous] [Top] [Next]  ||
+ *Rolisteam* a été développé par *Renaud Guezennec*, informaticien et rôliste, dans le but de 
+
+permettre aux joueurs isolés de pratiquer leur activité favorite.Vous pouvez vérifier les éventuelles mises à jour sur le site de *Rolisteam* 
+
+Rolisteam est fondé sur la version 1.1 de rolistik dévelopé par Romain Campioni. 
+
+Merci à *Ultyme* qui a implémenté la gestion des jets de dés pour Shadowrun V4.   

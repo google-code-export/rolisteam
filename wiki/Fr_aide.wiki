@@ -1,0 +1,5 @@
+         
+|| *Aide* ||  [Previous] [Top] [Next]  ||
+ -&#160;&#160; &#160;&#160;&#160;*Aide sur Rolisteam* : affiche l'aide que vous êtes en train de lire.-&#160;&#160; &#160;&#160;&#160;*A propos de Rolisteam* : affiche une fenêtre de renseignement sur le logiciel (version, 
+
+auteur, licences, etc.). 
