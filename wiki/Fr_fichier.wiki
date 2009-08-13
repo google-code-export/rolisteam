@@ -1,43 +1,43 @@
          
 || *Fichier* ||  [Previous] [Top] [Next]  ||
- -&#160;&#160; &#160;&#160;&#160;*Nouveau plan vide* : ouvre une fenêtre permettant de paramétrer la taille et la 
+ - *Nouveau plan vide* : ouvre une fenêtre permettant de paramétrer la taille et la 
 
 couleur de fond du plan. Après validation le plan est créé chez l'ensemble des 
 
-utilisateurs. N'est accessible que par le MJ.-&#160;&#160; &#160;&#160;&#160;*Ouvrir plan* : ouvre un sélecteur de fichier. L'utilisateur peut soit sélectionner une 
+utilisateurs. N'est accessible que par le MJ.- *Ouvrir plan* : ouvre un sélecteur de fichier. L'utilisateur peut soit sélectionner une 
 
 image (format JPEG, PNG ou BMP), auquel cas celle-ci sera utilisée comme plan, 
 
 soit sélectionner un fichier plan (extension PLA), qui sera ouvert tel quel et envoyé 
 
-aux autres utilisateurs. N'est accessible que par le MJ.-&#160;&#160; &#160;&#160;&#160;*Ouvrir et masquer plan* : comme &quot;Ouvrir plan&quot; mais le plan est entièrement masqué 
+aux autres utilisateurs. N'est accessible que par le MJ.- *Ouvrir et masquer plan* : comme &quot;Ouvrir plan&quot; mais le plan est entièrement masqué 
 
-aux yeux des joueurs. N'est accessible que par le MJ.-&#160;&#160; &#160;&#160;&#160;*Ouvrir scénario* : l'utilisateur doit sélectionner le scénario qu'il souhaite ouvrir. Un 
+aux yeux des joueurs. N'est accessible que par le MJ.- *Ouvrir scénario* : l'utilisateur doit sélectionner le scénario qu'il souhaite ouvrir. Un 
 
 scénario contient des plans, des images (qui sont envoyées à tous les utilisateurs), 
 
-ainsi que les notes du MJ. N'est accessible que par le MJ.-&#160;&#160; &#160;&#160;&#160;*Ouvrir image* : demande à l'utilisateur de sélectionner l'image (format JPEG, PNG ou 
+ainsi que les notes du MJ. N'est accessible que par le MJ.- *Ouvrir image* : demande à l'utilisateur de sélectionner l'image (format JPEG, PNG ou 
 
 BMP) qu'il souhaite voir afficher chez les autres joueurs. La personne qui a ouvert 
 
-l'image est la seule à pouvoir la fermer, avec le MJ.-&#160;&#160; &#160;&#160;&#160;*Ouvrir notes* : l'utilisateur doit sélectionner un fichier de notes préalablement 
+l'image est la seule à pouvoir la fermer, avec le MJ.- *Ouvrir notes* : l'utilisateur doit sélectionner un fichier de notes préalablement 
 
 sauvegardé. Celui-ci est automatiquement chargé dans l'éditeur de notes. Le 
 
 chargement d'un fichier de notes qui n'a pas été généré par *Rolisteam* donne un 
 
-résultat indéterminé.-&#160;&#160; &#160;&#160;&#160;*Fermer plan/image* : ferme le plan ou l'image au premier plan de l'espace de travail. 
+résultat indéterminé.- *Fermer plan/image* : ferme le plan ou l'image au premier plan de l'espace de travail. 
 
 N'est accessible que par le MJ en ce qui concerne les plans, et uniquement au 
 
 propriétaire de l'image et au MJ en ce qui concerne les images. Le plan ou l'image 
 
-est définitivement fermé chez l'ensemble des utilisateurs.-&#160;&#160; &#160;&#160;&#160;*Sauvegarder plan* : sauvegarde de plan en cours dans le fichier indiqué par 
+est définitivement fermé chez l'ensemble des utilisateurs.- *Sauvegarder plan* : sauvegarde de plan en cours dans le fichier indiqué par 
 
-l'utilisateur. N'est accessible que par le MJ.-&#160;&#160; &#160;&#160;&#160;*Sauvegarder scénario* : sauvegarde l'ensemble des plans et des images de la 
+l'utilisateur. N'est accessible que par le MJ.- *Sauvegarder scénario* : sauvegarde l'ensemble des plans et des images de la 
 
 partie, ainsi que les notes de l'utilisateur dans le fichier indiqué. N'est accessible que 
 
-par le MJ.-&#160;&#160; &#160;&#160;&#160;*Sauvegarder notes* : permet de sauvegarder le contenu de l'éditeur de notes dans 
+par le MJ.- *Sauvegarder notes* : permet de sauvegarder le contenu de l'éditeur de notes dans 
 
 un fichier HTML. Celui-ci peut ainsi être consulté à l'aide d'un navigateur internet.    

@@ -1,10 +1,10 @@
 || *Affichage* ||  [Previous] [Top] [Next]  ||
- -&#160;&#160; &#160;&#160;&#160;*Afficher noms PJ* : si la ligne est cochée alors les noms des PJ s'affichent sous le 
+ - *Afficher noms PJ* : si la ligne est cochée alors les noms des PJ s'affichent sous le 
 
 disque qui les représente sur les plans. Dans le cas contraire le nom du PJ n'est pas 
 
-indiqué.-&#160;&#160; &#160;&#160;&#160;*Afficher noms PNJ *: si cochée, les noms des PNJ sont affichés sous le disque qui 
+indiqué.- *Afficher noms PNJ *: si cochée, les noms des PNJ sont affichés sous le disque qui 
 
-les représente.-&#160;&#160; &#160;&#160;&#160;*Afficher numéro de PNJ* : affiche ou masque les numéros des PNJ, et ce pour 
+les représente.- *Afficher numéro de PNJ* : affiche ou masque les numéros des PNJ, et ce pour 
 
 l'ensemble des PNJ et sur tous les plans.    

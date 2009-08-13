@@ -1,0 +1,27 @@
+         
+|| *Présentation* || 
+
+         [Top] [Next]  ||
+ *Rolisteam *est un logiciel totalement gratuit destiné aux joueurs de jeux 
+
+de rôles qui souhaitent pouvoir faire des parties malgré la distance qui les sépare : il offre en 
+
+effet tous les éléments nécessaires au déroulement d'une partie de jeu de rôle autour d'une 
+
+table.Grâce à *Rolisteam *vous pourrez partager un nombre illimité de plans, dessiner ces derniers à 
+
+main levée ou bien les importer à partir d'une image, vous pourrez ajouter des annotations, 
+
+masquer certaines parties du plan qui ne doivent être vues que par le meneur de jeu, 
+
+positionner des personnages, discuter via des tchats publics ou privés, lancer les dés, 
+
+prendre des notes, mettre une musique d'ambiance, etc.Bref que vos joueurs soient éparpillés aux quatres coins du monde, ou que vous souhaitiez 
+
+poursuivre une partie sans avoir a attendre le week-end prochain, *Rolisteam *est là pour vous 
+
+aider à recréer l'ambiance d'une table de jeu, par réseau interposé.Note : même s'il est possible de jouer par tchat, il est vivement recommandé d'utiliser un 
+
+logiciel d'audio conférence (comme Skype, Windows Live Messenger ou Ventrilo) en 
+
+complément de *Rolisteam *afin de retrouver pleinement les sensations du jeu de rôle sur table.    

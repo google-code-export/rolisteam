@@ -1,27 +1,27 @@
          
 || *Fenêtre* ||  [Previous] [Top] [Next]  ||
- -&#160;&#160; &#160;&#160;&#160;*Réorganiser* : sous-menu dont les commandes permettent de réorganiser le contenu 
+ - *Réorganiser* : sous-menu dont les commandes permettent de réorganiser le contenu 
 
-de l'espace de travail. Il contient les éléments suivants :·&#160;&#160; &#160;&#160;&#160;*Cascade* 
+de l'espace de travail. Il contient les éléments suivants :· *Cascade* 
 
 : les fenêtres sont disposées les unes sur les autres avec un léger 
 
-décalage entre chacune d'entre elles.·&#160;&#160; &#160;&#160;&#160;*Tuiles* : les fenêtres sont disposées les unes à côté des 
+décalage entre chacune d'entre elles.· *Tuiles* : les fenêtres sont disposées les unes à côté des 
 
-autres.-&#160;&#160; &#160;&#160;&#160;*Evènements* : affiche ou masque la fenêtre de compte rendu des évènements 
+autres.- *Evènements* : affiche ou masque la fenêtre de compte rendu des évènements 
 
-intégrée à l'espace de travail.-&#160;&#160; &#160;&#160;&#160;*Joueurs connectés* : affiche ou masque la liste des joueurs connectés. A noter que 
+intégrée à l'espace de travail.- *Joueurs connectés* : affiche ou masque la liste des joueurs connectés. A noter que 
 
 si vous masquez cette fenêtre vous ne serez plus averti de l'arrivée de nouveaux 
 
-messages sur les tchats.-&#160;&#160; &#160;&#160;&#160;*Musiques d'ambiance* : affiche ou masque le lecteur audio.-&#160;&#160; &#160;&#160;&#160;*Editeur de notes* : affiche ou masque l'éditeur de note. On peut également cocher ou 
+messages sur les tchats.- *Musiques d'ambiance* : affiche ou masque le lecteur audio.- *Editeur de notes* : affiche ou masque l'éditeur de note. On peut également cocher ou 
 
 décocher la case se trouvant devant son propre nom dans la liste des joueurs 
 
-connectés.-&#160;&#160; &#160;&#160;&#160;*Tchats* 
+connectés.- *Tchats* 
 
 : sous-menu contenant la liste des tchats disponibles, que vous pouvez 
 
-afficher ou masquer.-&#160;&#160; &#160;&#160;&#160;*_Liste de plans et d'images_* : tous les plans et images ouverts figurent dans la suite 
+afficher ou masquer.- *_Liste de plans et d'images_* : tous les plans et images ouverts figurent dans la suite 
 
 du menu, vous pouvez les afficher ou les masquer en les cochant/décochant.    

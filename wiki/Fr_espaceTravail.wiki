@@ -2,19 +2,19 @@
 || *Eléments de l'espace de travail* ||  [Previous] [Top] [Next]  ||
  Voici la fenêtre principale de *Rolisteam *:Elle contient quatre éléments répartis de part et d'autre de l'espace de travail, dans lequel 
 
-s'ouvrent les cartes, images et autres fenêtres :-&#160;&#160; &#160;&#160;&#160;la *barre d'outils* (à gauche) contient tous les accessoires 
+s'ouvrent les cartes, images et autres fenêtres :- la *barre d'outils* (à gauche) contient tous les accessoires 
 
 nécessaires au dessin et à 
 
-la manipulation des PJ/PNJ;-&#160;&#160; &#160;&#160;&#160;le *journal des évènements* (en haut à droite) affiche 
+la manipulation des PJ/PNJ;- le *journal des évènements* (en haut à droite) affiche 
 
 toutes les actions réseau 
 
-importantes;-&#160;&#160; &#160;&#160;&#160;la *liste des joueurs connectés* (au centre à droite) 
+importantes;- la *liste des joueurs connectés* (au centre à droite) 
 
 indique quels sont les joueurs 
 
-actuellement connectés, et quels sont leurs personnages;-&#160;&#160; &#160;&#160;&#160;le *lecteur de musiques* d'ambiance (en bas à droite) 
+actuellement connectés, et quels sont leurs personnages;- le *lecteur de musiques* d'ambiance (en bas à droite) 
 
 permet au MJ de choisir les 
 

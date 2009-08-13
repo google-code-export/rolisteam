@@ -1,0 +1,21 @@
+         
+|| *Les différents types de fenêtres* ||  [Previous] [Top] [Next]  ||
+ Quatre types de fenêtres peuvent être affichées dans l'espace de travail :- les *plans*, qui permettent de représenter l'environnement 
+
+des personnages;- les *images*, permettant aux utilisateurs d'afficher 
+
+des portraits de personnages, des 
+
+paysages, ou n'importe quel autre fichier image;- les *tchats*, qui offrent aux utilisateurs la possibilité 
+
+de dialoguer entre eux par écrit;- l'*éditeur de notes*, où l'utilisateur peut noter 
+
+les éléments clés du scénario.Toutes les fenêtres de l'espace de travail peuvent être fermées, cela n'a pas pour 
+
+conséquence de faire disparaître définitivement le plan ou l'image associée. Les fenêtres 
+
+fermées sont simplement cachées pour ne pas encombrer l'espace de travail, elles peuvent 
+
+toutes être réouvertes via le menu Fenêtre, ou grâce à la liste des utilisateurs en ce qui 
+
+concerne les tchats et l'éditeur de notes.    

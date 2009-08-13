@@ -4,7 +4,7 @@
 
 conserver tous les éléments de l'aventure qui lui semblent pertinents, la trame du scénario, 
 
-l'état de santé des PNJ, ou toute autre chose qu'il juge utile de noter.Dans l'espace de travail l'éditeur de notes est identifiable par son icône&#160; Vous avez trois styles à votre disposition pour faire ressortir les éléments importants du texte 
+l'état de santé des PNJ, ou toute autre chose qu'il juge utile de noter.Dans l'espace de travail l'éditeur de notes est identifiable par son icône Vous avez trois styles à votre disposition pour faire ressortir les éléments importants du texte 
 
 : gras (*G*), souligné (S) et italique (_I_). Pour les appliquer il suffit de cliquer sur l'un des trois 
 

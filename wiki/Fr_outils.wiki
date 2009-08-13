@@ -1,0 +1,157 @@
+         
+|| *Barre d'outils* ||  [Previous] [Top] [Next]  ||
+ Cette barre regroupe tous les outils permettant d'agir sur les plans (l'outil main peut 
+
+également être utilisée sur les images). Elle est divisée en deux parties : la partie haute 
+
+contient les outils de dessin, alors que la partie basse contient les outils de manipulation des 
+
+PJ/PNJ.Les outils de dessin permettent de dessiner un plan (s'il est vide) ou bien d'en annoter un (s'il 
+
+a été importé). Description des outils de dessin :- *Couleur actuelle* : indique la couleur actuellement employée pour dessiner. En 
+
+cliquant sur la couleur vous ouvrez un sélecteur de couleur permettant de choisir 
+
+précisément une teinte, et de définir les couleurs personnelles (si vous êtes sous 
+
+Windows). A tout moment, et avec n'importe quel outil de dessin il est possible de 
+
+sélectionner sur le plan la couleur se trouvant sous le pointeur de la souris, en 
+
+effectuant un clic droit (le pointeur se transforme alors en pipette);- *Couleurs prédéfinies* : un ensemble de couleurs sélectionnables;- *Couleurs personnelles* : il s'agit des couleurs définies 
+
+par l'utilisateur. Si vous êtes 
+
+sous Windows vous pouvez les choisir à l'aide du sélecteur de couleur qui s'ouvre 
+
+lorsque l'on clique sur la couleur actuelle : les couleurs personnelles peuvent être 
+
+modifiées à l'intérieur de ce dernier. Si vous êtes sous MacOS vous pouvez modifier 
+
+une couleur en double-cliquant dessus;- *Couleurs spéciales* : il existe trois couleurs spéciales 
+
+qui sont, de gauche à droite, la 
+
+couleur pour effacer, la couleur de masquage, et celle de démasquage. La couleur 
+
+pour effacer permet de gommer le dessin avec n'importe quel outil (sans toucher à 
+
+l'image de fond du plan), elle permet de créer une gomme de n'importe quelle forme. 
+
+Les couleurs pour masquer et démasquer permettent au MJ de cacher ou montrer 
+
+aux joueurs certaines parties du plan et les PNJ qui y sont disposés. Ces trois 
+
+couleurs peuvent être utilisées avec n'importe quel outil de dessin;- *Crayon* : permet de dessiner à main levée;- *Ligne* : trace une ligne entre le point où le bouton 
+
+gauche de la souris a été enfoncé 
+
+et celui où il a été relâché;- *Rectangle vide* : dessine un rectangle vide entre 
+
+le point où le bouton gauche de la 
+
+souris a été enfoncé et celui où il a été relâché;- *Rectangle plein* : idem, avec un rectangle plein;- *Ellipse vide* : dessine une ellipse vide centrée 
+
+sur le point où le bouton gauche de la 
+
+souris a été enfoncé;- *Ellipse pleine* : idem, avec une ellipse pleine;- *Texte* : le bouton permet de sélectionner l'outil, 
+
+alors que la zone de saisie contient le 
+
+texte à inscrire sur le plan. Un clic gauche sur le plan fait apparaître le texte contenu 
+
+dans la zone de saisie, vous pouvez alors déplacer la souris pour le positionner à 
+
+l'endroit approprié, la relâche du bouton dessine le texte à l'emplacement du pointeur.- *Main* : la main permet de se déplacer sur le plan 
+
+lorsque celui-ci est plus grand que 
+
+la fenêtre qui le contient. Pour déplacer la vue du plan, cliquez sur une zone du plan, 
+
+maintenez le bouton enfoncé et déplacez la souris, puis relâchez le bouton. L'outils 
+
+main fonctionne également sur les images;- *Grosseur du trait *: le curseur permet de choisir 
+
+la taille du trait qui sera utilisée pour 
+
+le crayon, les lignes, les rectangles et les ellipses vides. La zone d'affichage présente 
+
+la grosseur du trait sélectionnée.Un PJ ou PNJ est représenté par un disque de couleur sous lequel est affiché son nom et son 
+
+numéro (pour les PNJ). Les PJ se différencient par la présence d'un point au centre du 
+
+disque. Il est parfois nécessaire de savoir dans quelle direction regarde un personnage, pour 
+
+cela il est possible de faire un apparaître un indicateur de direction ou de le masquer. De 
+
+même il est possible d'indiquer l'état de santé d'un personnage. Description des outils de 
+
+manipulation des PJ/PNJ :- *Déplacer PJ/PNJ *: à l'aide de cet outil vous pouvez 
+
+déplacer les PJ et PNJ présents 
+
+sur la carte : effectuez un clic gauche sur le personnage, maintenez le bouton 
+
+enfoncé et déplacez-le avant de relâcher le bouton. A cet instant un déplacement 
+
+identique a lieu chez les autres utilisateurs. En effectuant un clic droit sur un 
+
+personnage vous faites apparaître l'orientation de celui-ci, un nouveau clic droit la 
+
+masque. Pour modifier l'orientation cliquez avec le bouton droit sur le point vers 
+
+lequel le personnage doit regarder;- *Changer état PJ/PNJ *: à chaque clic sur un personnage, 
+
+son état de santé évolue : 
+
+sa couleur change, et la bulle d'aide qui apparaît lorsque l'on place la souris au 
+
+dessus de lui est mise à jour avec son nouvel état. Les états de santé sont les 
+
+suivants : sain, blessé léger, blessé grave, mort, endormi, ensorcelé. En effectuant 
+
+un clic droit sur un personnage vous faites apparaître l'orientation de celui-ci, un 
+
+nouveau clic droit la masque. Pour modifiez l'orientation cliquez avec le bouton droit 
+
+sur le point vers lequel le personnage doit regarder;- *Ajouter PNJ *: à chaque clic gauche sur le plan un 
+
+nouveau PNJ apparaît. Vous 
+
+pouvez le positionner en maintenant le bouton gauche enfoncé et en déplaçant la 
+
+souris. Une fois le bouton relâché le PNJ apparaît chez les autres utilisateurs. Le 
+
+nouveau PNJ a la couleur actuelle, la taille actuellement sélectionnée, le nom entré 
+
+dans la zone de saisie, et le numéro indiqué. Le numéro de PNJ est 
+
+automatiquement incrémenté, ainsi un ensemble de PNJ ajoutés à la suite portent 
+
+tous un numéro différent. Notez qu'il est impossible d'ajouter un PNJ lorsque l'une 
+
+des trois couleurs spéciales est sélectionnée. Un clic droit sur un PJ ou un PNJ 
+
+permet de récupérer sa couleur, son nom et sa taille, vous pouvez ainsi dupliquer un 
+
+type de personnage déjà présent sur le plan;- *Supprimer PNJ *: les PNJ sélectionné est supprimé 
+
+du plan. N'a aucun effet sur les 
+
+PJ. Un clic droit sur un PJ ou un PNJ permet de récupérer sa couleur, son nom et sa 
+
+taille, vous pouvez ainsi dupliquer un type de personnage déjà présent sur le plan;- *Remise à 0 du numéro de PNJ *: en cliquant sur ce 
+
+bouton le numéro du prochain 
+
+PNJ repasse à 1;- *Numéro du PNJ* : il s'agit du numéro que portera 
+
+le prochain PNJ qui sera ajouté sur 
+
+le plan. Après 99 le numéro repasse à 1;- *Nom du PNJ* : zone de texte où doit être saisie le 
+
+nom du PNJ à ajouter sur le plan;- *Taille du PNJ* : permet de choisir la taille du PNJ 
+
+que l'on souhaite ajouter sur le 
+
+plan.    

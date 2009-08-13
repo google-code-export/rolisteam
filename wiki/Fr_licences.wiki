@@ -1,0 +1,30 @@
+         
+|| *Licences* ||  [Previous] [Top] [Next]  ||
+ 
+*Rolisteam *est un logiciel libre : vous pouvez le redistribuer ou le modifier suivant les termes de 
+
+la &quot;GNU General Public License&quot;version 2.0 telle que publiée par la Free Software 
+
+Foundation, soit la version 2 de cette licence, soit (à votre gré) toute version ultérieure.
+
+
+Par ailleurs ce logiciel est gratuit et ne peut en aucun cas être commercialisé, conformément 
+
+à la &quot;FMOD Non-Commercial License&quot;.
+
+
+GNU General Public License - v2.0 : 
+
+
+*Rolisteam *utilise la librairie Qt pour l'IHM : 
+
+
+ainsi que la librairie FMOD pour la partie audio : 
+
+
+Copyright © 2007-2008 - Romain Campioni - Tous droits réservés.
+
+
+FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2007
+
+    

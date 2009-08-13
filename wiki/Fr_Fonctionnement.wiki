@@ -1,0 +1,39 @@
+         
+|| *Principe de fonctionnement* ||  [Previous] [Top] [Next]  ||
+ Comme toutes les applications réseau, *Rolisteam* repose sur une architecture client/serveur. 
+
+En clair cela signifie que l'un des utilisateurs doit jouer le rôle de serveur et que tous les 
+
+autres sont des clients. L'ordinateur serveur sert de relais aux ordinateurs clients : lorsqu'un 
+
+client veut envoyer un message aux autres, il l'envoie au serveur qui le renvoie a l'ensemble 
+
+des autres clients. Le serveur est donc le point de passage de l'ensemble des informations, il 
+
+est le seul a être en contact direct avec l'ensemble des utilisateurs clients.Dans la pratique au lancement de l'application vous devrez vous mettre d'accord avec les 
+
+autres utilisateurs pour savoir qui jouera le rôle du serveur. Une fois le serveur lancé les 
+
+autres utilisateurs (les clients donc) pourront se connecter au serveur, et la partie pourra 
+
+commencer.Une fois la partie lancée il n'y a pas de distinction entre clients et serveur, à ceci prêt que si 
+
+l'utilisateur serveur quitte la partie, celle-ci s'achève automatiquement. Le choix du serveur 
+
+peut donc être déterminé par des considérations d'ordre&hellip;- technique : est-ce que l'ordinateur est stable, ou a t-il 
+
+la fâcheuse habitude de 
+
+redémarrer toutes les 5mn? La connexion est-elle bonne? D'une manière générale il 
+
+est préférable que le serveur ait un débit montant appréciable;- personnel : l'utilisateur qui fait le serveur n'a t-il 
+
+droit qu'à la permission de minuit ou 
+
+bien sa copine l'autorise t-elle a jouer plus tardivement? Le joueur est-il caractériel et 
+
+ne risque t-il pas de fermer rageusement le programme si son personnage vient à 
+
+périr?Après quelques essais, nul doute que vous finirez par trouver le serveur idéal parmi les 
+
+ordinateurs de vos amis et joueurs.    

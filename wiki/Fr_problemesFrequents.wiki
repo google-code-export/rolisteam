@@ -1,0 +1,15 @@
+         
+|| *Résolution de problèmes* ||  [Previous] [Top] 
+
+       ||
+ *Les fenêtres de l'espace de travail ne s'affichent pas correctement*Vous utilisez très certainement un thème Windows, cela provoque des problèmes d'affichage 
+
+dans Rolisteam. Enlevez le thème pour revenir au bureau par défaut, le problème disparaît.*Vous ne parvenez pas à vous connecter au serveur, ou bien personne ne 
+
+peut se connecter chez vous*L'utilisateur qui fait le serveur doit ouvrir le port utilisé par *Rolisteam *(le 6660 par défaut), sur son 
+
+pare-feu ainsi que sur son routeur (sa &quot;box&quot;). Sur tous les routeurs il existe un tableau NAT/PAT 
+
+où il est possible d'indiquer les ports que l'on souhaite ouvrir, en direction d'une machine du 
+
+réseau local. De plus les utilisateurs clients doivent configurer leur pare-feu pour qu'il autorise *Rolisteam *à communiquer.    

@@ -5,13 +5,13 @@ configuration de vos réseaux respectifs. En ce qui concerne les clients, aucune
 
 particulière n'est requise, par contre en ce qui concerne le serveur il est probable que certains 
 
-réglages soient nécessaires.Il y a globalement deux cas de figure pour une connexion à internet :-&#160;&#160; &#160;&#160;&#160;l'ordinateur a directement accès à internet via un modem 
+réglages soient nécessaires.Il y a globalement deux cas de figure pour une connexion à internet :- l'ordinateur a directement accès à internet via un modem 
 
 qui lui permet d'obtenir une 
 
 adresse IP. Dans ce cas il suffit de vérifier que votre pare-feu laisse bien passer les 
 
-messages entrant et sortant de *Rolisteam*;-&#160;&#160; &#160;&#160;&#160;l'ordinateur fait partie d'un sous-réseau, lui-même relié à internet par un routeur (ce 
+messages entrant et sortant de *Rolisteam*;- l'ordinateur fait partie d'un sous-réseau, lui-même relié à internet par un routeur (ce 
 
 cas est possible même lorsqu'il n'y a qu'un seul ordinateur sur le sous-réseau en 
 
