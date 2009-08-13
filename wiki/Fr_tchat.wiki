@@ -1,48 +1,37 @@
 #labels documentation,french
          
-|| *Tchat* ||  [Previous] [Top] [Next]  ||
- Les tchats permettent aux utilisateurs de communiquer entre eux par écrit. Il existe un tchat 
+=Tchat=
 
-privé pour chaque utilisateur distant, ainsi qu'un tchat commun qui permet de communiquer 
+ Les tchats permettent aux utilisateurs de communiquer entre eux par écrit. Il existe un tchat privé pour chaque utilisateur distant, ainsi qu'un tchat commun qui permet de communiquer simultanément avec l'ensemble des utilisateurs.<br/>
+Dans l'espace de travail les tchats sont identifiables par leur icône: <add-icon><br/><br/>
+Un tchat est divisé en deux parties : la partie haute affiche les messages déjà échangés, et la partie basse permet à l'utilisateur d'écrire son message. Pour expédier le message il suffit d'appuyer sur la touche "Entrée", celui-ci apparaît alors dans la partie haute du tchat, précédé du nom de l'utilisateur émetteur. Le ou les utilisateurs destinataires sont alors avertis par un clignotement, soit du bouton "Tchat commun", soit du nom de l'utilisateur émetteur s'il s'agit d'un tchat privé. Le clignotement ne disparaît qu'à la mise au premier plan du tchat concerné.<br/><br/>
 
-simultanément avec l'ensemble des utilisateurs.Dans l'espace de travail les tchats sont identifiables par leur icône Un tchat est divisé en deux parties : la partie haute affiche les messages déjà échangés, et la 
+Pour faire apparaître le tchat commun il suffit de cliquer sur le bouton "Tchat commun", ou de cliquer sur "Tchat commun" dans le sous-menu "Tchats" du menu "Fenêtre". Pour les tchats privés il faut cocher la case en face du nom du joueur concerné, ou bien cliquer sur le nom du tchat dans le sous-menu "Tchats" du menu "Fenêtre".
+<br/><br/>
+Les tchats permettent également d'effectuer des jets de dés en écrivant un point 
+d'exclamation "!" suivi d'une série de dés ou de nombres entiers séparés par un opérateur "+" ou "-". Voici quelques exemples de syntaxe correcte :<br/>
+!2d6<br/>
+!3D4 + 2 + 5D6<br/>
+!6 + 2d8 - 6 + 15D3 - 5 + 8 - 2d10<br/>
+!3<br/>
+!50d3 - 10d6<br/>
+!4526 + 25684<br/>
+<br/>
+Le nombre de dés et d'entiers n'est pas limité, par ailleurs la lettre &quot;d&quot; peut indifféremment être écrite en majuscule ou en minuscule. Le résultat du jet de dés s'affiche dans la partie haute du tchat, chez tous les utilisateurs concernés.Si vous désirez effectuer un jet secret (qui ne s'affiche pas chez les autres utilisateurs) il suffit de remplacer le point d'exclamation "!" par un é commercial "&", ce qui donne la syntaxe suivante:<br/>
+&2d4 + 6<br/>
+&8d10<br/>
+&1d12 - 2<br/>
+&6542 + 7598 - 20D10<br/>
+<br/>
+Enfin *Rolisteam* gère les jets de dés pour Shadowrun V4, à l'aide du symbole étoile "`*`". Il s'agit d'un jet public dont le format exact est expliqué en tapant "`*`" puis entrée. Voici quelques exemples de syntaxe correcte :<br/>
+`*`2d<br/>
+`*`5DG2<br/>
+`*`3dg3+<br/>
+`*`4dG2R<br/>
 
-partie basse permet à l'utilisateur d'écrire son message. Pour expédier le message il suffit 
-
-d'appuyer sur la touche "Entrée", celui-ci apparaît alors dans la partie haute du tchat, précédé 
-
-du nom de l'utilisateur émetteur. Le ou les utilisateurs destinataires sont alors avertis par un 
-
-clignotement, soit du bouton "Tchat commun", soit du nom de l'utilisateur émetteur s'il s'agit 
-
-d'un tchat privé. Le clignotement ne disparaît qu'à la mise au premier plan du tchat concerné.Pour faire apparaître le tchat commun il suffit de cliquer sur le bouton "Tchat commun", ou de 
-
-cliquer sur "Tchat commun" dans le sous-menu "Tchats" du menu "Fenêtre". Pour les tchats 
-
-privés il faut cocher la case en face du nom du joueur concerné, ou bien cliquer sur le nom du 
-
-tchat dans le sous-menu "Tchats" du menu "Fenêtre".Les tchats permettent également d'effectuer des jets de dés en écrivant un point 
-
-d'exclamation "!" suivi d'une série de dés ou de nombres entiers séparés par un opérateur "+" 
-
-ou "-". Voici quelques exemples de syntaxe correcte :!2d6!3D4 + 2 + 5D6!6 + 2d8 - 6 + 15D3 - 5 + 8 - 2d10!3!50d3 - 10d6!4526 + 25684Le nombre de dés et d'entiers n'est pas limité, par ailleurs la lettre &quot;d&quot; peut indifféremment 
-
-être écrite en majuscule ou en minuscule. Le résultat du jet de dés s'affiche dans la partie 
-
-haute du tchat, chez tous les utilisateurs concernés.Si vous désirez effectuer un jet secret (qui ne s'affiche pas chez les autres utilisateurs) il suffit 
-
-de remplacer le point d'exclamation "!" par un é commercial "&", ce qui donne la syntaxe 
-
-suivante &2d4 + 6&8d10&1d12 - 2&6542 + 7598 - 20D10Enfin *Rolisteam *gère les jets de dés pour Shadowrun V4, à l'aide du symbole étoile "*". Il s'agit 
-
-d'un jet public dont le format exact est expliqué en tapant "*" puis entrée. Voici quelques 
-
-exemples de syntaxe correcte :*2d*5DG2*3dg3+*4dG2RNotez qu'il existe un historique des messages que vous avez précédemment écrit, vous 
-
-pouvez naviguer dans cet historique à l'aide des touches "Flèche haut" et "Flèche bas" du 
-
-clavier.A la fermeture de l'application, tous les tchats sont sauvegardés au format HTML. Vous 
-
-pouvez alors les consulter avec un navigateur internet.Si vous êtes sous Windows ces fichiers se trouvent dans le dossier "tchats" du répertoire de *Rolisteam*. Si vous êtes sous MacOS vous trouverez ces fichiers dans le dossier. Rolisteam du 
-
-répertoire utilisateur (placez-vous dans le répertoire utilisateur et cliquez sur "Aller au dossier..." dans le menu "Aller" du Finder, puis entrez ".Rolisteam").   
+<br/>
+Notez qu'il existe un historique des messages que vous avez précédemment écrit, vous pouvez naviguer dans cet historique à l'aide des touches "Flèche haut" et "Flèche bas" du 
+clavier.<br/>
+A la fermeture de l'application, tous les tchats sont sauvegardés au format HTML. Vous 
+pouvez alors les consulter avec un navigateur internet.<br/>
+Si vous êtes sous Windows ces fichiers se trouvent dans le dossier "tchats" du répertoire de *Rolisteam*. Si vous êtes sous MacOS vous trouverez ces fichiers dans le dossier. Rolisteam du répertoire utilisateur (placez-vous dans le répertoire utilisateur et cliquez sur "Aller au dossier..." dans le menu "Aller" du Finder, puis entrez ".Rolisteam").   
