@@ -1,4 +1,4 @@
-#labels Vocabulaire
+#labels Vocabulaire,documentation,french
 =Abréviations=
 Les abréviations suivantes sont employées dans toute cette documentation. 
 Bien connues des rôlistes, je les rappelle pour mémoire :<br/>
