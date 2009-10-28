@@ -26,7 +26,8 @@ You must use Visual Studio's compiler to build Qt, otherwise it will not compile
 and comment out this one:{{{CONFIG += HAVE_PHONON}}}
 
 so you should see that:
-{{{#CONFIG += HAVE_PHONON
+{{{
+#CONFIG += HAVE_PHONON
 CONFIG += HAVE_FMOD
 #CONFIG += HAVE_NULL
 }}}
@@ -37,7 +38,8 @@ Fmod works with both C++ compilers:(mingw++ and Visual studio)
 -If you don't care about the sound features, you can compile rolisteam without sound support. 
 
 Change you .pro file:
-{{{#CONFIG += HAVE_PHONON
+{{{
+#CONFIG += HAVE_PHONON
 #CONFIG += HAVE_FMOD
 CONFIG += HAVE_NULL
 }}}
