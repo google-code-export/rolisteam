@@ -15,14 +15,48 @@ To install them use this command:
 sudo apt-get install libqt4-core libqt4-gui libqt4-dev phonon phonon-backend-gstreamer libphonon4 libphonon-dev
 }}}
 ===Windows===
-  * Qt4
-  * fmod
+Due to external libraries, the compilation is a little bit complex. 
+You can compile rolisteam with the phonon support, or the Fmod support and without the sound feature. (By default, it's phonon)
+
+-Phonon is included in Qt since the 4.4 version. To get advantage of phonon On Windows, you must install few API from microsoft and then, compile Qt by your own. (more details :   [http://doc.trolltech.com/4.5/phonon-overview.html#windows]) 
+You must use Visual Studio's compiler to build Qt, otherwise it will not compile at all. 
+(All binary version will be built with the phonon support)
+
+-Fmod is proprietary library which provides sound features. To enable the Fmod support in rolisteam, you should uncomment in rolisteam.pro file, the line {{{CONFIG += HAVE_FMOD}}}
+and comment out this one:{{{CONFIG += HAVE_PHONON}}}
+
+so you should see that:
+{{{#CONFIG += HAVE_PHONON
+CONFIG += HAVE_FMOD
+#CONFIG += HAVE_NULL
+}}}
+
+Fmod works with both C++ compilers:(mingw++ and Visual studio)
+
+
+-If you don't care about the sound features, you can compile rolisteam without sound support. 
+
+Change you .pro file:
+{{{#CONFIG += HAVE_PHONON
+#CONFIG += HAVE_FMOD
+CONFIG += HAVE_NULL
+}}}
+
+Of course, to compile rolisteam you have to install(or compile) Qt SDK at first. 
+
 
 == Compilation command ==
 
-===All platforms===
+===linux, Mac Os and Windows mingw===
 {{{
  $ qmake
  $ make
 }}}
+===Windows Visual studio compiler===
+Use a Qt prompt windows, set the appropriate environment variables. 
+{{{
+ $ qmake
+ $ nmake
+}}}
+
 Rolisteam will be created in the bin directory.
