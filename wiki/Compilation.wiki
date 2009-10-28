@@ -55,7 +55,7 @@ Of course, to compile rolisteam you have to install(or compile) Qt SDK at first.
  $ make
 }}}
 ===Windows Visual studio compiler===
-Use a Qt prompt windows, set the appropriate environment variables. 
+Use a Qt prompt, set the appropriate environment variables. 
 {{{
  $ qmake
  $ nmake
