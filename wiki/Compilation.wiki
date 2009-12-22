@@ -54,6 +54,11 @@ Of course, to compile rolisteam you have to install(or compile) Qt SDK at first.
  $ qmake
  $ make
 }}}
+
+It seems that you have to amend a little the rolisteam.pro file to compile rolisteam on Ubuntu Karmic 9.10 - you need to add the path to the phonon directory:
+{{{INCLUDE_PATH += /usr/include/qt4/Qt/}}}
+
+
 ===Windows Visual studio compiler===
 Use a Qt prompt, set the appropriate environment variables. 
 {{{
