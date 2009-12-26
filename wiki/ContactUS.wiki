@@ -1,0 +1,12 @@
+#labels Phase-Support
+==Mailling list==
+this is the official rolisteam mailling list. You must be registrer to send/recieve emails.
+[https://lists.fdn.fr/wws/info/rolisteam]
+
+
+==Submit feedback==
+http://code.google.com/p/rolisteam/issues/entry
+
+
+
+
