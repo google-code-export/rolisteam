@@ -1,7 +1,4 @@
 #labels Phase-QA
-#Describe all rules which must be respected in Rolisteam Source code files.
-
-
 = Introduction =
 
 This page is made for help rolisteam developers to improve the quality of their work. 
@@ -77,7 +74,7 @@ else
 }}}
 
 ==Rule 1.12 : Qt==
-    Use Qt's classes as much as you can.
+    Use Qt's classes as much as you can. Qt provides container classes, so use them.    Do not use C-style code. Rolisteam is a Qt/C++ application: no C-array, use QList or QVector instead.
 
 =2/ Code Size and Complexity==
 
@@ -106,7 +103,7 @@ void DrawWindows::DrawScene
 =3/ Header Files=
 
 ==Rule 3.1==
-    Header files contain the declarations only. 
+    Header files contain the declarations only. Do not implements any template classes. Implementing template must be approved by the whole team.
 
 ==Rule 3.2==
     Header files must prevent multiple inclusions of themselves.
@@ -163,7 +160,6 @@ Example:
 {{{
 /**
  * @brief Manage the workspace
- * @version 1.0
  * @date 01/01/2010
  */
 }}}
@@ -178,6 +174,7 @@ Example :
  * @todo Refactoring in two functions.
 }}}
 =Example=
+   Keep in mind: comments in header file explain "what the class does"
 {{{
 /***************************************************************************
  *	Copyright (C) 2007 by Romain Campioni   			   *
@@ -262,6 +259,16 @@ class DisplayDisk : public QWidget
 
 }}}
 
+==Rule 5.3 : Cpp files==
+    Feel free to add comments where you want, to explain complex instructions. Do not repeat header comment. Use Cpp comment fashion: // cool. Do not use Doxygen tags in cpp file, except if you notice a bug or any troubles.
+Keep in mind, comments in cpp files explain "how it works".
+
+
+
+
+
+
+PS: please, use the mailing list to  discuss about these rules.
 
 
 
@@ -279,4 +286,3 @@ class DisplayDisk : public QWidget
 
 
 `
-
