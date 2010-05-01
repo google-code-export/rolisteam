@@ -1,9 +1,9 @@
 /***************************************************************************
- *	Copyright (C) 2007 by Romain Campioni   			   *
- *	Copyright (C) 2009 by Renaud Guezennec                             *
+ *	Copyright (C) 2007 by Romain Campioni                                  *
+ *	Copyright (C) 2009 by Renaud Guezennec                                 *
  *   http://renaudguezennec.homelinux.org/accueil,3.html                   *
  *                                                                         *
- *   rolisteam is free software; you can redistribute it and/or modify  *
+ *   rolisteam is free software; you can redistribute it and/or modify     *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
@@ -20,9 +20,9 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QButtonGroup>
 
-
-#include "SelecteurCouleur.h"
+#include "colorselector.h"
 
 
 #include "preferencesmanager.h"
@@ -42,7 +42,7 @@ void ColorLabel::mouseDoubleClickEvent (QMouseEvent *event)
 }
 
 ColorButton::ColorButton(QPixmap* p,QWidget * parent )
-    : QAbstractButton(parent),m_background(p)
+    : QPushButton(parent),m_background(p)
 {
 
     setCheckable(true);
@@ -57,8 +57,9 @@ void ColorButton::paintEvent( QPaintEvent * event )
     r.setLeft(r.left()+2);
     r.setRight(r.right()-2);
     painter.drawPixmap(r,*m_background);
-    if(isChecked())
-        painter.drawRect(rect());
+   /* if(isChecked())
+        painter.drawRect(rect());*/
+    QPushButton::paintEvent(event);
 }
 
 
@@ -174,21 +175,21 @@ ColorSelector::ColorSelector(QWidget *parent)
 
 	// Ajout de la couleur speciale qui efface
 
-    //eraseColor->setFrameStyle(QFrame::Box | QFrame::Raised);
-    //eraseColor->setLineWidth(0);
-    //eraseColor->setMidLineWidth(1);
+    //m_eraseColor->setFrameStyle(QFrame::Box | QFrame::Raised);
+    //m_eraseColor->setLineWidth(0);
+    //m_eraseColor->setMidLineWidth(1);
 
 
 
     efface_pix = new QPixmap(":/resources/icones/efface.png");
-    eraseColor = new ColorButton(efface_pix,this);
-      eraseColor->setFixedHeight(15);
-    //eraseColor->setPixmap(*efface_pix);
-    //eraseColor->setScaledContents(true);
-    eraseColor->setToolTip(tr("Effacer"));
-    eraseColor->setPalette(QPalette(Qt::white));
-    eraseColor->setAutoFillBackground(true);
-    couleursSpeciales->addWidget(eraseColor);
+    m_eraseColor = new ColorButton(efface_pix,this);
+    m_eraseColor->setFixedHeight(15);
+    //m_eraseColor->setPixmap(*efface_pix);
+    //m_eraseColor->setScaledContents(true);
+    m_eraseColor->setToolTip(tr("Effacer"));
+    m_eraseColor->setPalette(QPalette(Qt::white));
+    m_eraseColor->setAutoFillBackground(true);
+    couleursSpeciales->addWidget(m_eraseColor);
 	
 	// Ajout de la couleur speciale qui masque
 
@@ -197,13 +198,13 @@ ColorSelector::ColorSelector(QWidget *parent)
    // HideColor->setMidLineWidth(1);
 
     masque_pix = new QPixmap(":/resources/icones/masque.png");
-    HideColor = new ColorButton(    masque_pix,this);
-        HideColor->setFixedHeight(15);
+    m_hideColor = new ColorButton(masque_pix,this);
+        m_hideColor->setFixedHeight(15);
    // HideColor->setPixmap(*masque_pix);
    // HideColor->setScaledContents(true);
-    HideColor->setPalette(QPalette(Qt::white));
-    HideColor->setAutoFillBackground(true);
-    couleursSpeciales->addWidget(HideColor);
+    m_hideColor->setPalette(QPalette(Qt::white));
+    m_hideColor->setAutoFillBackground(true);
+    couleursSpeciales->addWidget(m_hideColor);
 
 	// Ajout de la couleur speciale qui demasque
 
@@ -212,13 +213,19 @@ ColorSelector::ColorSelector(QWidget *parent)
    // unveilColor->setMidLineWidth(1);
 
         demasque_pix = new QPixmap(":/resources/icones/demasque.png");
-        unveilColor = new ColorButton(demasque_pix,this);
-        unveilColor->setFixedHeight(15);
+        m_unveilColor = new ColorButton(demasque_pix,this);
+        m_unveilColor->setFixedHeight(15);
    // unveilColor->setPixmap(*demasque_pix);
    // unveilColor->setScaledContents(true);
-    unveilColor->setPalette(QPalette(Qt::white));
-    unveilColor->setAutoFillBackground(true);
-    couleursSpeciales->addWidget(unveilColor);
+    m_unveilColor->setPalette(QPalette(Qt::white));
+    m_unveilColor->setAutoFillBackground(true);
+    couleursSpeciales->addWidget(m_unveilColor);
+
+
+     QButtonGroup group;
+     group.addButton(m_eraseColor);
+     group.addButton(m_hideColor);
+     group.addButton(m_unveilColor);
 
 	// Taille de la palette
 	setFixedHeight(126);

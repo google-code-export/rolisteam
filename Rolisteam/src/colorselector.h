@@ -52,7 +52,7 @@ protected:
     virtual void mouseDoubleClickEvent (QMouseEvent *event);
 };
 
-class ColorButton : public QAbstractButton
+class ColorButton : public QPushButton
 {
     Q_OBJECT
 public:
@@ -83,16 +83,18 @@ public:
 
 signals:
     void currentColorChanged(QColor&);
-    void currentModeChanged(PAINTINGMODE);
+    void currentModeChanged(int);
 
 private slots:
     void selectColor(const QColor& color);
     void colorSelectorDialog();
 private:
     ColorLabel *m_currentColorLabel;
-    ColorButton *eraseColor;
-    ColorButton *HideColor;
-    ColorButton *unveilColor;
+    ColorButton *m_eraseColor;
+    ColorButton *m_hideColor;
+    ColorButton *m_unveilColor;
+
+
     ColorLabel *couleurPredefinie[48];
     ColorLabel *couleurPersonnelle[16];
     QWidget *separateur1;
