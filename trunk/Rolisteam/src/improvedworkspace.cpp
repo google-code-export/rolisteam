@@ -22,7 +22,7 @@
 
 #include <QtGui>
 
-#include "WorkspaceAmeliore.h"
+#include "improvedworkspace.h"
 #include "constantesGlobales.h"
 #include "preferencesmanager.h"
 #include <QPixmap>
@@ -157,9 +157,18 @@ void ImprovedWorkspace::addWidget(SubMdiWindows* subWindow)
 {
     addSubWindow(subWindow);
     connect(this,SIGNAL(currentCursorChanged(QCursor*)),subWindow,SLOT(currentCursorChanged(QCursor*)));
-    connect(this,SIGNAL(currentToolHasChanged(ToolsBar::SelectableTool)),subWindow,SLOT(currentToolChanged(ToolsBar::SelectableTool)));
-    connect(this,SIGNAL(penSizeChanged(int)),subWindow,SLOT(currentPenSizeChanged(int)));
-    connect(this,SIGNAL(npcSizeChanged(int)),subWindow,SLOT(currentNPCSizeChanged(int)));
+
+
+
+
+    if(subWindow->getType() == SubMdiWindows::MAP )
+    {
+        connect(this,SIGNAL(currentModeChanged(int)),subWindow,SLOT(setEditingMode(int)));
+        connect(this,SIGNAL(penSizeChanged(int)),subWindow,SLOT(currentPenSizeChanged(int)));
+        connect(this,SIGNAL(npcSizeChanged(int)),subWindow,SLOT(currentNPCSizeChanged(int)));
+        connect(this,SIGNAL(currentToolHasChanged(ToolsBar::SelectableTool)),subWindow,SLOT(currentToolChanged(ToolsBar::SelectableTool)));
+
+    }
     subWindow->currentPenSizeChanged(m_penSize);
     subWindow->currentNPCSizeChanged(m_npcSize);
     subWindow->currentColorChanged(m_currentPenColor);
@@ -171,7 +180,7 @@ void ImprovedWorkspace::addWidget(SubMdiWindows* subWindow)
 void ImprovedWorkspace::currentPenSizeChanged(int p)
 {
     m_penSize = p;
-    qDebug() << m_penSize;
+
     emit penSizeChanged(p);
 }
 
