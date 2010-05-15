@@ -29,7 +29,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "F:\Mes documents\rolisteam-1.0.0\debug\bin\rolisteam.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\Mes documents\rolisteam-1.0.0\release\bin\rolisteam.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Qt\4.5.2\lib\QtXml4.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Qt\4.5.2\lib\phonon4.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Qt\4.5.2\lib\QtCore4.dll"; DestDir: "{app}"; Flags: ignoreversion
