@@ -28,8 +28,8 @@
 /********************************************************************/	
 
 
-#ifndef EDITEUR_NOTES_H
-#define EDITEUR_NOTES_H
+#ifndef MINUTES_EDITOR_H
+#define MINUTES_EDITOR_H
 
 #include <QWidget>
 #include <QMainWindow>
@@ -40,12 +40,12 @@
 #include <QFile>
 #include "submdiwindows.h"
 
-class EditeurNotes : public SubMdiWindows
+class MinutesEditor : public SubMdiWindows
 {
 Q_OBJECT
 
 public :
-    EditeurNotes();
+    MinutesEditor();
     void sauvegarderNotes(QFile &file);
     void ouvrirNotes(QFile &file);
     QSize sizeHint() const;

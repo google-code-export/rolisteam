@@ -22,10 +22,10 @@
 
 #include <QtGui>
 
-#include "EditeurNotes.h"
+#include "MinutesEditor.h"
 
 
-EditeurNotes::EditeurNotes()
+MinutesEditor::MinutesEditor()
     : SubMdiWindows()
 {
 
@@ -104,11 +104,11 @@ EditeurNotes::EditeurNotes()
 }
 
 
-void EditeurNotes::closeEvent(QCloseEvent *event)
+void MinutesEditor::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
     // On masque l'editeur de notes et on decoche l'action associee
-    //m_mainWindow->afficherEditeurNotes(false, true);
+    //m_mainWindow->afficherMinutesEditor(false, true);
     // On decoche la case de l'editeur de notes
     //G_listeUtilisateurs->decocherCaseTchat(G_idJoueurLocal);
     // Arret de la procedure de fermeture
@@ -116,7 +116,7 @@ void EditeurNotes::closeEvent(QCloseEvent *event)
 }
 
 
-void EditeurNotes::styleNormal()
+void MinutesEditor::styleNormal()
 {
     // On recupere la zone du curseur
     QTextCursor zone = notes->textCursor();
@@ -132,7 +132,7 @@ void EditeurNotes::styleNormal()
 }
 
 
-void EditeurNotes::styleGras()
+void MinutesEditor::styleGras()
 {
     // On recupere la zone du curseur
     QTextCursor zone = notes->textCursor();
@@ -146,7 +146,7 @@ void EditeurNotes::styleGras()
 }
 
 
-void EditeurNotes::styleItalique()
+void MinutesEditor::styleItalique()
 {
     // On recupere la zone du curseur
     QTextCursor zone = notes->textCursor();
@@ -159,7 +159,7 @@ void EditeurNotes::styleItalique()
     notes->setTextCursor(zone);
 }
 
-void EditeurNotes::styleSouligne()
+void MinutesEditor::styleSouligne()
 {
     // On recupere la zone du curseur
     QTextCursor zone = notes->textCursor();
@@ -173,7 +173,7 @@ void EditeurNotes::styleSouligne()
 }
 
 
-void EditeurNotes::mettreTailleAJour()
+void MinutesEditor::mettreTailleAJour()
 {
     // On recupere la zone du curseur
     QTextCursor zone = notes->textCursor();
@@ -209,7 +209,7 @@ void EditeurNotes::mettreTailleAJour()
 }
 
 
-void EditeurNotes::changementTaille(int index)
+void MinutesEditor::changementTaille(int index)
 {
     // On recupere la taille selectionnee
     int tailleFonte = selecteurTaille->itemText(index).toInt();
@@ -236,7 +236,7 @@ void EditeurNotes::changementTaille(int index)
 }
 
 
-void EditeurNotes::ouvrirNotes(QFile &file)
+void MinutesEditor::ouvrirNotes(QFile &file)
 {
     // On cree un flux de donnees rattache au fichier
     QTextStream fichier(&file);
@@ -247,7 +247,7 @@ void EditeurNotes::ouvrirNotes(QFile &file)
 }
 
 
-void EditeurNotes::sauvegarderNotes(QFile &file)
+void MinutesEditor::sauvegarderNotes(QFile &file)
 {
     // On recupere le document contenant les notes
     QTextDocument *document = notes->document();
@@ -260,12 +260,12 @@ void EditeurNotes::sauvegarderNotes(QFile &file)
 }
 
 
-QSize EditeurNotes::sizeHint() const
+QSize MinutesEditor::sizeHint() const
 {
     return QSize(600, 600);
 }
 
-bool EditeurNotes::defineMenu(QMenu* /*menu*/)
+bool MinutesEditor::defineMenu(QMenu* /*menu*/)
 {
     return false;
 }
