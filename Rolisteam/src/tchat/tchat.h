@@ -3,7 +3,7 @@
  *	Copyright (C) 2009 by Renaud Guezennec                             *
  *   http://renaudguezennec.homelinux.org/accueil,3.html                   *
  *                                                                         *
- *   rolisteam is free software; you can redistribute it and/or modify  *
+ *   rolisteam is free software; you can redistribute it and/or modify     *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
@@ -36,7 +36,7 @@
 #include <QSplitter>
 #include <QFile>
 
-#include "TextEditAmeliore.h"
+#include "textEditor.h"
 #include "submdiwindows.h"
 
 
@@ -70,7 +70,7 @@ private :
 	QList<QString> historiqueMessages;	// Contient l'historique des anciens messages
 	int numHistorique;					// Numero de la ligne de l'historique actuellement affichee
 	QAction *actionAssociee;			// Action permettant d'afficher/masquer le tchat
-    QSplitter* m_splitter;
+        QSplitter* m_splitter;
 
 private slots :
 	void emettreTexte();

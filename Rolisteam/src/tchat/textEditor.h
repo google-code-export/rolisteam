@@ -19,42 +19,28 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef TEXTEDIT_AMELIORE_H
+#define TEXTEDIT_AMELIORE_H
 
-	#include <QtGui>
+#include <QTextEdit>
+#include <QKeyEvent>
 
-	#include "TextEditAmeliore.h"
 
+class TchatEditor : public QTextEdit
+{
+Q_OBJECT
 
-	/********************************************************************/
-	/* Constructeur                                                     */
-	/********************************************************************/	
-    TextEditAmeliore::TextEditAmeliore(QWidget *parent)
-        : QTextEdit(parent)
-    {
-	}
-	
-	/********************************************************************/	
-	/* Verifie si l'utilisateur a appuye sur la touche Entree. Si oui   */
-	/* le signal entreePressee est emis                                 */
-	/********************************************************************/	
-	void TextEditAmeliore::keyPressEvent(QKeyEvent *e)
-	{
-		// On recupere la touche qui vient d'etre enfoncee
-		int touche = e->key();
-		
-		// S'il s'agit de la touche Entree ou Return, on emet le signal entreePressee
-		if (touche == Qt::Key_Return || touche == Qt::Key_Enter)
-			emit entreePressee();
+public :
+    TchatEditor(QWidget *parent = 0);
 
-		// S'il s'agit de la touche fleche haut, on emet le signal hautPressee
-		else if (touche == Qt::Key_Up)
-			emit hautPressee();
+signals :
+        void onEntrey();
+        void onArrowUp();
+        void onArrowDown();
 
-		// S'il s'agit de la touche fleche bas, on emet le signal basPressee
-		else if (touche == Qt::Key_Down)
-			emit basPressee();
+protected :
+        void keyPressEvent(QKeyEvent *e);
 
-		// Sinon on passe l'evenement au QTextEdit
-		else
-			QTextEdit::keyPressEvent(e);
-	}
+};
+
+#endif

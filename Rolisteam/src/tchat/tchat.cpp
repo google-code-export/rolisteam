@@ -22,8 +22,8 @@
 
 #include <QtGui>
 
-#include "Tchat.h"
-#include "TextEditAmeliore.h"
+#include "tchat.h"
+#include "textEditor.h"
 //#include "types.h"
 
 
