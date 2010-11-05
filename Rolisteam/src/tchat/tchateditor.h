@@ -29,18 +29,14 @@
 class TchatEditor : public QTextEdit
 {
 Q_OBJECT
-
 public :
     TchatEditor(QWidget *parent = 0);
-
 signals :
-        void onEntrey();
+        void onEntry();
         void onArrowUp();
         void onArrowDown();
-
 protected :
         void keyPressEvent(QKeyEvent *e);
-
 };
 
 #endif

@@ -21,7 +21,7 @@
 
 
 #include <QtGui>
-#include "textEditor.h"
+#include "tchateditor.h"
 
 
 TchatEditor::TchatEditor(QWidget *parent)
@@ -30,7 +30,7 @@ TchatEditor::TchatEditor(QWidget *parent)
 }
 
 
-void TchatEditor::TchatEditor(QKeyEvent *e)
+void TchatEditor::keyPressEvent(QKeyEvent *e)
 {
         switch(e->key())
         {
