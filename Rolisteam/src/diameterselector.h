@@ -35,20 +35,37 @@
 
 #include "displaydisk.h"
 
-
+/**
+* @brief widget to select diameter used into the toolbar
+*/
 class DiameterSelector : public QWidget
 {
     Q_OBJECT
 public :
+    /**
+    * @brief constuctor with arguments
+    * @param parent widget
+    * @param full or not
+    * @param minimum value
+    * @param maximum value
+    * @todo Make real default constructor of DiameterSelector
+    */
     DiameterSelector(QWidget *parent = 0, bool plein = true, int minimum = 1, int maximum = 50);
-	void changerDiametre(int nouvelleValeur);
+    /**
+    * @brief sets the new diameter
+    * @param new diameter value
+    */
+    void changerDiametre(int nouvelleValeur);
 
 signals:
+    /**
+    * @brief is emited when the value has been changed
+    */
     void diameterChanged(int);
 
 private :
-	int minimum;
-	int maximum;
+    int minimum;
+    int maximum;
     DisplayDisk *disk;
     QSlider *m_diameterSlider;
 };

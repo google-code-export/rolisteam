@@ -25,7 +25,9 @@
 #include <QTextEdit>
 #include <QKeyEvent>
 
-
+/**
+  * @brief clever QTextEdit which deals with user inputs and trigger some action in response of some sort of input
+  */
 class TchatEditor : public QTextEdit
 {
 Q_OBJECT
