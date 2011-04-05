@@ -18,62 +18,53 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.           *
  *************************************************************************/
 
-#include "datawriter.h"
+#include "networkmessagewriter.h"
 
-#include "ClientServeur.h"
-#include "Liaison.h"
 
-#include "types.h"
-
-// We don't include the whole variablesGlobales.h for just one extern.
-extern ClientServeur * G_clientServeur;
-
-DataWriter::DataWriter(quint8 categorie, quint8 action, int size)
+NetworkMessageWriter::NetworkMessageWriter(NetMsg::Category category, NetMsg::Action action, int size)
 {
-    int headerSize = sizeof(enteteMessage);
+    int headerSize = sizeof(NetworkMessageHeader);
     if (size < headerSize)
         size = 128;
 
     m_buffer = new char[size];
-    m_header = (enteteMessage *) m_buffer;
+    m_header = (NetworkMessageHeader *) m_buffer;
 
     m_begin = m_buffer + headerSize;
     m_pos = m_begin;
     m_end = m_buffer + size;
 
-    m_header->categorie = categorie;
+    m_header->category = category;
     m_header->action = action;
 }
 
-DataWriter::~DataWriter()
+NetworkMessageWriter::~NetworkMessageWriter()
 {
     delete[] m_buffer;
 }
 
-void DataWriter::reset()
+NetMsg::Category NetworkMessageWriter::category() const
+{
+    return NetMsg::Category(m_header->category);
+}
+
+NetMsg::Action NetworkMessageWriter::action() const
+{
+    return NetMsg::Action(m_header->action);
+}
+
+void NetworkMessageWriter::reset()
 {
     m_pos = m_begin;
 }
 
-void DataWriter::sendTo(Liaison * link)
+NetworkMessageHeader * NetworkMessageWriter::buffer()
 {
-    if (link == NULL)
-    {
-        sendAll();
-        return;
-    }
-
-    m_header->tailleDonnees = m_pos - m_begin;
-    link->emissionDonnees(m_buffer, m_header->tailleDonnees + sizeof(enteteMessage));
+    m_header->dataSize = m_pos - m_begin;
+    return m_header;
 }
 
-void DataWriter::sendAll(Liaison * butLink)
-{
-    m_header->tailleDonnees = m_pos - m_begin;
-    G_clientServeur->emettreDonnees(m_buffer, m_header->tailleDonnees + sizeof(enteteMessage), butLink);
-}
-
-void DataWriter::uint8(quint8 data)
+void NetworkMessageWriter::uint8(quint8 data)
 {
     int size = sizeof(quint8);
     makeRoom(size);
@@ -82,7 +73,7 @@ void DataWriter::uint8(quint8 data)
     m_pos += size;
 }
 
-void DataWriter::uint16(quint16 data)
+void NetworkMessageWriter::uint16(quint16 data)
 {
     int size = sizeof(quint16);
     makeRoom(size);
@@ -91,7 +82,7 @@ void DataWriter::uint16(quint16 data)
     m_pos += size;
 }
 
-void DataWriter::uint32(quint32 data)
+void NetworkMessageWriter::uint32(quint32 data)
 {
     int size = sizeof(quint32);
     makeRoom(size);
@@ -100,28 +91,28 @@ void DataWriter::uint32(quint32 data)
     m_pos += size;
 }
 
-void DataWriter::string8(const QString & data)
+void NetworkMessageWriter::string8(const QString & data)
 {
     int sizeQChar = data.size();
     uint8(sizeQChar);
     string(data, sizeQChar);
 }
 
-void DataWriter::string16(const QString & data)
+void NetworkMessageWriter::string16(const QString & data)
 {
     int sizeQChar = data.size();
     uint16(sizeQChar);
     string(data, sizeQChar);
 }
 
-void DataWriter::string32(const QString & data)
+void NetworkMessageWriter::string32(const QString & data)
 {
     int sizeQChar = data.size();
     uint32(sizeQChar);
     string(data, sizeQChar);
 }
 
-void DataWriter::string(const QString & data, int sizeQChar)
+void NetworkMessageWriter::string(const QString & data, int sizeQChar)
 {
     int sizeBytes = sizeQChar * sizeof(QChar);
 
@@ -130,7 +121,7 @@ void DataWriter::string(const QString & data, int sizeQChar)
     m_pos += sizeBytes;
 }
 
-void DataWriter::rgb(const QColor & color)
+void NetworkMessageWriter::rgb(const QColor & color)
 {
     int size = sizeof(QRgb);
     makeRoom(size);
@@ -139,7 +130,7 @@ void DataWriter::rgb(const QColor & color)
     m_pos += size;
 }
 
-void DataWriter::makeRoom(int size)
+void NetworkMessageWriter::makeRoom(int size)
 {
     while (m_pos + size > m_end)
     {
@@ -155,6 +146,6 @@ void DataWriter::makeRoom(int size)
         delete[] m_buffer;
 
         m_buffer = newBuffer;
-        m_header = (enteteMessage *) m_buffer;
+        m_header = (NetworkMessageHeader *) m_buffer;
     }
 }

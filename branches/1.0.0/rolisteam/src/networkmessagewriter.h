@@ -19,25 +19,25 @@
  *************************************************************************/
 
 
-#ifndef DATA_WRITER_H
-#define DATA_WRITER_H
+#ifndef NETWORK_MESSAGE_WRITER_H
+#define NETWORK_MESSAGE_WRITER_H
 
+#include <QColor>
 #include <QString>
 
-#include "types.h"
+#include "networkmessage.h"
 
-class Liaison;
 
-class DataWriter
+class NetworkMessageWriter : public NetworkMessage
 {
     public:
-        DataWriter(quint8 categorie, quint8 action, int size = 128);
-        ~DataWriter();
+        NetworkMessageWriter(NetMsg::Category categorie, NetMsg::Action action, int size = 128);
+        ~NetworkMessageWriter();
+
+        NetMsg::Category category() const;
+        NetMsg::Action action() const;
 
         void reset();
-
-        void sendTo(Liaison * link);
-        void sendAll(Liaison * butLink = NULL);
 
         void uint8(quint8 data);
         void uint16(quint16 data);
@@ -49,8 +49,11 @@ class DataWriter
 
         void rgb(const QColor & color);
 
+    protected:
+        NetworkMessageHeader * buffer();
+
     private:
-        enteteMessage * m_header;
+        NetworkMessageHeader * m_header;
         char * m_buffer;
         char * m_begin;
         char * m_pos;
