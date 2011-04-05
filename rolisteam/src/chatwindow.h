@@ -22,16 +22,16 @@
  *************************************************************************/
 
 
-#ifndef TCHAT_H
-#define TCHAT_H
+#ifndef CHATWINDOW_H
+#define CHATWINDOW_H
 
 #include <QSplitter>
 #include <QFile>
 #include <QTextEdit>
 
-#include "types.h"
+#include "networkmessage.h"
 
-class Liaison;
+class AbstractChat;
 class MainWindow;
 class Player;
 class TextEditAmeliore;
@@ -41,21 +41,19 @@ class TextEditAmeliore;
  * @brief Fenêtre permettant aux utilisateurs de communiquer entre eux par
  * écrit.
  */    
-class Tchat : public QSplitter
+class ChatWindow : public QSplitter
 {
 Q_OBJECT
 
 public :
-    Tchat(const QString & id, const QString & name, MainWindow * parent = NULL);
-    Tchat(Player * player, MainWindow * parent = NULL);
-    ~Tchat();
+    ChatWindow(AbstractChat * chat, MainWindow * parent = NULL);
+    ~ChatWindow();
 
-    QString identifiant() const;
-    QString name() const;
-
+    AbstractChat * chat() const;
     QAction * toggleViewAction() const;
 
-    void afficherMessage(const QString &utilisateur, const QColor &couleur, const QString &message, actionDiscussion msgtype = TCHAT_MESSAGE);
+    void afficherMessage(const QString &utilisateur, const QColor &couleur,
+            const QString &message, NetMsg::Action msgtype = NetMsg::ChatMessageAction);
 
     bool hasUnseenMessage() const;
 
@@ -63,7 +61,7 @@ public :
     bool eventFilter(QObject *obj, QEvent *event);
 
 signals:
-    void changed(Tchat * what);
+    void changed(ChatWindow * what);
 
 public slots:
     virtual void setVisible(bool visible);
@@ -86,10 +84,8 @@ protected :
 private :
     static QStringList m_keyWordList;
 
-    QString m_uuid;
-    QString m_name;
+    AbstractChat * m_chat;
     QString m_filename;
-    Liaison * m_link;
     bool m_warnedEmoteUnavailable;
     bool m_hasUnseenMessage;
 

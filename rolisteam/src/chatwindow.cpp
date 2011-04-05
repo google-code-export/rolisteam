@@ -22,13 +22,14 @@
  *************************************************************************/
 
 
-#include "Tchat.h"
+#include "chatwindow.h"
 
 #include <QDateTime>
 #include <QScrollBar>
 #include <QTextStream>
 
-#include "datawriter.h"
+#include "chat.h"
+#include "networkmessagewriter.h"
 #include "initialisation.h"
 #include "MainWindow.h"
 #include "persons.h"
@@ -42,33 +43,17 @@
  * Static members *
  ******************/
 
-QStringList Tchat::m_keyWordList;
+QStringList ChatWindow::m_keyWordList;
 
 /********************************************************************/
 /* Constructeur                                                     */
 /********************************************************************/    
-Tchat::Tchat(const QString & id, const QString & name, MainWindow * parent)
- : QSplitter(parent), m_uuid(id), m_name(name), m_filename("%1/%2.html"), m_link(NULL)
+ChatWindow::ChatWindow(AbstractChat * chat, MainWindow * parent)
+ : QSplitter(parent), m_chat(chat), m_filename("%1/%2.html")
 {
-    init(parent);
-}
+    if (m_chat == NULL)
+        qFatal("ChatWindow with NULL chat");
 
-Tchat::Tchat(Player * player, MainWindow * parent)
- : QSplitter(parent), m_filename("%1/%2.html")
-{
-    if (player == NULL)
-        qFatal("Can't create a new Tchat from a NULL Player *.");
-
-    m_uuid = player->uuid();
-    m_name = tr("Tchat avec %1").arg(player->name());
-    m_link = player->link();
-
-    init(parent);
-}
-
-
-void Tchat::init(MainWindow * parent)
-{
     if (parent == NULL)
         parent = G_mainWindow;
 
@@ -81,7 +66,7 @@ void Tchat::init(MainWindow * parent)
         m_keyWordList << "e " << "em " << "me " << "emote ";
 
     // create and connect toggleViewAction
-    m_toggleViewAction = new QAction(m_name, this);
+    m_toggleViewAction = new QAction(m_chat->name(), this);
     m_toggleViewAction->setCheckable(true);
     connect(m_toggleViewAction, SIGNAL(toggled(bool)), this, SLOT(setVisible(bool)));
 
@@ -126,8 +111,8 @@ void Tchat::init(MainWindow * parent)
     connect(parent, SIGNAL(closing()), this, SLOT(save()));
 
     // Window initialisation
-    setObjectName("Tchat");
-    setWindowTitle(m_name);
+    setObjectName("ChatWindow");
+    setWindowTitle(m_chat->name());
     setWindowIcon(QIcon(":/icones/vignette tchat.png"));
     setAttribute(Qt::WA_DeleteOnClose, false);
     parent->registerSubWindow(this);
@@ -137,20 +122,27 @@ void Tchat::init(MainWindow * parent)
 /********************************************************************/    
 /* Destructeur                                                      */
 /********************************************************************/    
-Tchat::~Tchat()
+ChatWindow::~ChatWindow()
 {
-    // Destruction de l'action associee au Tchat
     delete m_toggleViewAction;
+
+    if (G_client || !m_chat->inherits("PrivateChat"))
+        delete m_chat;
+}
+
+AbstractChat * ChatWindow::chat() const
+{
+    return m_chat;
 }
 
 /********************************************************************/    
 /* La zone d'edition est recopiee dans la zone d'affichage, puis    */
 /* envoyee aux autres utilisateurs, avant d'etre effacee            */
 /********************************************************************/    
-void Tchat::emettreTexte()
+void ChatWindow::emettreTexte()
 {
-    //TCHAT_MESSAGE, DICE_MESSAGE, EMOTE_MESSAGE
-    quint8 action=DICE_MESSAGE;
+    //NetMsg::ChatMessageAction, NetMsg::DiceMessageAction, NetMsg::EmoteMessageAction
+    NetMsg::Action action = NetMsg::DiceMessageAction;
 
     // On recupere le texte de la zone d'edition
     QString message = zoneEdition->toPlainText();
@@ -186,7 +178,7 @@ void Tchat::emettreTexte()
                            messageCorps = tr("avez obtenu %1 à votre jet de dés [%2]").arg(result).arg(tirage);
                         messageTitle = tr("Vous");
                         color = localPlayer->color();
-                        afficherMessage(messageTitle, color, messageCorps,DICE_MESSAGE);
+                        afficherMessage(messageTitle, color, messageCorps,NetMsg::DiceMessageAction);
                             message = QString(tr("a obtenu %1 à  son jet de dés [%2]").arg(result).arg(tirage));
             }
             else
@@ -204,7 +196,7 @@ void Tchat::emettreTexte()
                 messageCorps = tr("vous avez obtenu %1 à votre jet de dés secret [%2]").arg(result).arg(tirage);
                 messageTitle = tr("Jet secret :");
                 color = Qt::magenta;
-                afficherMessage(messageTitle, color,messageCorps ,DICE_MESSAGE);
+                afficherMessage(messageTitle, color,messageCorps ,NetMsg::DiceMessageAction);
             }
             else
             {
@@ -227,7 +219,7 @@ void Tchat::emettreTexte()
                         messageCorps = tr("avez obtenu %1 succès %2%3").arg(result).arg(glitch).arg(tirage);
                         messageTitle = tr("Vous");
                         // On affiche le resultat du tirage dans la zone d'affichage
-                        afficherMessage(messageTitle, localPlayer->color(),messageCorps ,DICE_MESSAGE);
+                        afficherMessage(messageTitle, localPlayer->color(),messageCorps ,NetMsg::DiceMessageAction);
                         // On cree un nouveau message a envoyer aux autres utilisateurs
                         message = QString(tr("a obtenu %1 succès %2%3").arg(result).arg(glitch).arg(tirage));
                     }
@@ -244,8 +236,8 @@ void Tchat::emettreTexte()
                 {
                         messageTitle = tr("Vous");
                         afficherMessage(messageTitle, localPlayer->color(), message);
-                        // action is messageTchat only if there are no dices
-                        action = TCHAT_MESSAGE;
+                        // action is messageChatWindow only if there are no dices
+                        action = NetMsg::ChatMessageAction;
                         break;
                 }
             }
@@ -263,47 +255,24 @@ void Tchat::emettreTexte()
                         emote = true;
 
                         message.remove(0,s.length()+1);
-
-                       // tmpmessage.prepend(m_uuid);
                     }
 
                 }
                 if(emote)
                 {
                     // Warn if some users don't have Emote(0) feature
-                    if (!m_warnedEmoteUnavailable)
+                    if (!m_warnedEmoteUnavailable && !m_chat->everyPlayerHasFeature(QString("Emote")))
                     {
-                        if (m_uuid.isEmpty())
-                        {   // Public chat
-                            if (!g_playersList.everyPlayerHasFeature(QString("Emote")))
-                            {
-                                messageTitle = tr("Attention");
-                                messageCorps = tr("Certains utilisateurs risquent de ne pas voir vos emotes.");
-                                color = Qt::red;
-                                afficherMessage(messageTitle, color, messageCorps);
-                                m_warnedEmoteUnavailable = true;
-                            }
-                        }
-                        else
-                        {   // Private chat
-                            Player * distPlayer = g_playersList.getPlayer(m_uuid);
-                            if (distPlayer == NULL)
-                                qFatal("Tchat of an unknown player %s", qPrintable(m_uuid));
-                            if (!distPlayer->hasFeature(QString("Emote")))
-                            {
-                                messageTitle = tr("Attention");
-                                messageCorps = tr("Votre interlocuteur risque de ne pas voir vos emotes.");
-                                color = Qt::red;
-                                afficherMessage(messageTitle, color, messageCorps);
-                            }
-                            m_warnedEmoteUnavailable = true;
-                        }
+                        messageTitle = tr("Attention");
+                        messageCorps = tr("Certains utilisateurs risquent de ne pas voir vos emotes.");
+                        color = Qt::red;
+                        afficherMessage(messageTitle, color, messageCorps);
+                        m_warnedEmoteUnavailable = true;
                     }
                         
                     
-                    // TODO : call directly PlayersList method to get the name of the local player, then delete m_owner from this class.
-                    afficherMessage(localPlayer->name(), localPlayer->color(), message,EMOTE_MESSAGE);
-                    action = EMOTE_MESSAGE;
+                    afficherMessage(localPlayer->name(), localPlayer->color(), message,NetMsg::EmoteMessageAction);
+                    action = NetMsg::EmoteMessageAction;
                     break;
                 }
             }
@@ -311,43 +280,24 @@ void Tchat::emettreTexte()
         default:
             messageTitle = localPlayer->name();
             afficherMessage(messageTitle, localPlayer->color(), message);
-            // action is messageTchat only if there are no dices
-            action = TCHAT_MESSAGE;
+            // action is messageChatWindow only if there are no dices
+            action = NetMsg::ChatMessageAction;
             break;
     }
 
     if(!ok)
         return;
 
-    // Emission du message au serveur, a un ou a l'ensemble des clients
-    DataWriter * data = new DataWriter(discussion, action);
-    data->string8(localPlayer->uuid());
-    data->string8(m_uuid);
-    data->string32(message);
-
-    if (m_link == NULL)
-        data->sendAll();
-    else
-        data->sendTo(m_link);
-
-    delete data;
+    // Emission du message
+    NetworkMessageWriter data(NetMsg::ChatCategory, action);
+    data.string8(localPlayer->uuid());
+    data.string8(m_chat->identifier());
+    data.string32(message);
+    m_chat->sendThem(data);
 }
 
 
-/********************************************************************/    
-/* Renvoie l'identifiant du tchat                                   */
-/********************************************************************/    
-QString Tchat::identifiant() const
-{
-    return m_uuid;
-}
-
-QString Tchat::name() const
-{
-    return m_name;
-}
-
-QAction * Tchat::toggleViewAction() const
+QAction * ChatWindow::toggleViewAction() const
 {
     return m_toggleViewAction;
 }
@@ -356,7 +306,7 @@ QAction * Tchat::toggleViewAction() const
 /* Ecrit le message dans la zone d'affichage, precede par le nom de */
 /* l'emetteur (avec la couleur passee en parametre)                 */
 /********************************************************************/    
-void Tchat::afficherMessage(const QString& utilisateur, const QColor& couleur, const QString& message, actionDiscussion msgtype)
+void ChatWindow::afficherMessage(const QString& utilisateur, const QColor& couleur, const QString& message, NetMsg::Action msgtype)
 {
     // On repositionne le curseur a la fin du QTexEdit
     zoneAffichage->moveCursor(QTextCursor::End);
@@ -364,15 +314,15 @@ void Tchat::afficherMessage(const QString& utilisateur, const QColor& couleur, c
     zoneAffichage->setTextColor(couleur);
     switch(msgtype)
     {
-    case TCHAT_MESSAGE:
+    case NetMsg::ChatMessageAction:
         zoneAffichage->setFontItalic(false);
         zoneAffichage->append(QString("%1 : ").arg(utilisateur));
         break;
-    case EMOTE_MESSAGE:
+    case NetMsg::EmoteMessageAction:
         zoneAffichage->setFontItalic(true);
         zoneAffichage->append(QString("%1 ").arg(utilisateur));
         break;
-    case DICE_MESSAGE:
+    case NetMsg::DiceMessageAction:
         zoneAffichage->setFontItalic(false);
         zoneAffichage->append(QString("%1 ").arg(utilisateur));
         break;
@@ -391,7 +341,7 @@ void Tchat::afficherMessage(const QString& utilisateur, const QColor& couleur, c
     zoneAffichage->setTextColor(Qt::black);
 
     zoneAffichage->insertPlainText(message);
-    if(msgtype==EMOTE_MESSAGE)
+    if(msgtype==NetMsg::EmoteMessageAction)
         zoneAffichage->setFontItalic(false);
     // On repositionne la barre de defilement, pour pouvoir voir le texte qui vient d'etre affiche
     zoneAffichage->verticalScrollBar()->setSliderPosition(zoneAffichage->verticalScrollBar()->maximum());
@@ -402,14 +352,14 @@ void Tchat::afficherMessage(const QString& utilisateur, const QColor& couleur, c
 /* de la case de l'utilisateur correspondant dans la liste des      */
 /* utilisateurs                                                     */
 /********************************************************************/    
-void Tchat::closeEvent(QCloseEvent *event)
+void ChatWindow::closeEvent(QCloseEvent *event)
 {
-    // Decoche l'action associee dans le sous-menu Tchats
+    // Decoche l'action associee dans le sous-menu ChatWindows
     m_toggleViewAction->setChecked(false);
     QWidget::closeEvent(event);
 }
 
-int Tchat::calculerJetDes(QString &message, QString &tirage, bool &ok)
+int ChatWindow::calculerJetDes(QString &message, QString &tirage, bool &ok)
 {
     //1 by default to add, -1 to substract.
     short signOperator=1;
@@ -583,7 +533,7 @@ int Tchat::calculerJetDes(QString &message, QString &tirage, bool &ok)
 /* neree pour expliquer le tirage, un autre pour le glitch.         */
 /* Les Gremlins et la regle du 6 again (usage de l'edge) sont geres.*/
 /********************************************************************/    
-int Tchat::calculerJetDesSR4(QString &message, QString &tirage, QString &glitch, bool ok)
+int ChatWindow::calculerJetDesSR4(QString &message, QString &tirage, QString &glitch, bool ok)
 {
     //Initialisation du nombre de succes, de glitches, et des parametres du lancer
     int nbDes;
@@ -750,7 +700,7 @@ int Tchat::calculerJetDesSR4(QString &message, QString &tirage, QString &glitch,
 /********************************************************************/    
 /* Affiche le message precedent                                     */
 /********************************************************************/    
-void Tchat::monterHistorique()
+void ChatWindow::monterHistorique()
 {
     // Ne s'applique que si la liste n'est pas vide
     if (historiqueMessages.isEmpty())
@@ -772,7 +722,7 @@ void Tchat::monterHistorique()
 /********************************************************************/    
 /* Affiche le message suivant                                       */
 /********************************************************************/    
-void Tchat::descendreHistorique()
+void ChatWindow::descendreHistorique()
 {
     // Uniquement si on a deja appuye sur fleche haut
     if (numHistorique < historiqueMessages.size() - 1)
@@ -784,20 +734,20 @@ void Tchat::descendreHistorique()
     }
 }
 
-bool Tchat::hasUnseenMessage() const
+bool ChatWindow::hasUnseenMessage() const
 {
     return m_hasUnseenMessage;
 }
 
-void Tchat::setVisible(bool visible)
+void ChatWindow::setVisible(bool visible)
 {
     emit changed(this);
     QWidget::setVisible(visible);
 }
 
-void Tchat::save()
+void ChatWindow::save()
 {
-    QString filename = m_filename.arg(G_initialisation.dossierTchats, m_name);
+    QString filename = m_filename.arg(G_initialisation.dossierTchats, m_chat->name());
     QFile file (filename);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
@@ -815,14 +765,14 @@ void Tchat::save()
 /* Lorsque la fenetre s'ouvre, on positionne le curseur sur la zone */
 /* d'edition                                                        */
 /********************************************************************/
-void Tchat::showEvent(QShowEvent *event)
+void ChatWindow::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event);
     // On place le curseur sur la zone d'edition
     zoneEdition->setFocus(Qt::OtherFocusReason);
 }
 
-bool Tchat::eventFilter(QObject *obj, QEvent *event)
+bool ChatWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == zoneEdition)
         if (event->type() == QEvent::FocusIn)
@@ -835,7 +785,7 @@ bool Tchat::eventFilter(QObject *obj, QEvent *event)
     return false;
 }
 
-bool Tchat::GetNumber(QString &str, int* value)
+bool ChatWindow::GetNumber(QString &str, int* value)
 {
     bool error;
     int i=0;

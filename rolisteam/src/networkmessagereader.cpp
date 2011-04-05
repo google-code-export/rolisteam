@@ -19,33 +19,65 @@
  *************************************************************************/
 
 
-#include "datareader.h"
+#include "networkmessagereader.h"
 
-DataReader::DataReader(quint32 bufferSize, const char * buffer)
+NetworkMessageReader::NetworkMessageReader(const NetworkMessageHeader & header, const char * buffer)
 {
-    m_buffer = new char[bufferSize];
-    memcpy(m_buffer, buffer, bufferSize);
+    size_t headerSize = sizeof(NetworkMessageHeader);
+    m_buffer = new char[header.dataSize + headerSize];
+    memcpy(m_buffer, &header, headerSize);
+    m_header = (NetworkMessageHeader *)m_buffer;
+
+    m_buffer += headerSize;
+    memcpy(m_buffer, buffer, m_header->dataSize);
 
     m_pos = m_buffer;
-    m_end = m_buffer + bufferSize + 1;
+    m_end = m_buffer + m_header->dataSize;
 }
 
-DataReader::~DataReader()
+NetworkMessageReader::NetworkMessageReader(const NetworkMessageReader & other)
 {
-    delete[] m_buffer;
+    size_t size = other.m_end - ((char *)other.m_header);
+    char * copy = new char[size];
+    memcpy(copy, other.m_header, size);
+
+    m_header = (NetworkMessageHeader *)copy;
+    m_buffer = copy + sizeof(NetworkMessageHeader);
+    m_pos = m_buffer;
+    m_end = copy + size;
 }
 
-void DataReader::reset()
+NetworkMessageReader::~NetworkMessageReader()
+{
+    delete[] ((char *)m_header);
+}
+
+NetMsg::Category NetworkMessageReader::category() const
+{
+    return NetMsg::Category(m_header->category);
+}
+
+NetMsg::Action NetworkMessageReader::action() const
+{
+    return NetMsg::Action(m_header->action);
+}
+
+NetworkMessageHeader * NetworkMessageReader::buffer()
+{
+    return m_header;
+}
+
+void NetworkMessageReader::reset()
 {
     m_pos = m_buffer;
 }
 
-size_t DataReader::left() const
+size_t NetworkMessageReader::left() const
 {
     return (m_end - m_pos);
 }
 
-quint8 DataReader::uint8()
+quint8 NetworkMessageReader::uint8()
 {
     size_t size = sizeof(quint8);
     if (left() >= size)
@@ -57,7 +89,7 @@ quint8 DataReader::uint8()
     return 0;
 }
 
-quint16 DataReader::uint16()
+quint16 NetworkMessageReader::uint16()
 {
     size_t size = sizeof(quint16);
     if (left() >= size)
@@ -70,7 +102,7 @@ quint16 DataReader::uint16()
     return 0;
 }
 
-quint32 DataReader::uint32()
+quint32 NetworkMessageReader::uint32()
 {
     size_t size = sizeof(quint32);
     if (left() >= size)
@@ -83,22 +115,22 @@ quint32 DataReader::uint32()
     return 0;
 }
 
-QString DataReader::string8()
+QString NetworkMessageReader::string8()
 {
     return string(uint8());
 }
 
-QString DataReader::string16()
+QString NetworkMessageReader::string16()
 {
     return string(uint16());
 }
 
-QString DataReader::string32()
+QString NetworkMessageReader::string32()
 {
     return string(uint32());
 }
 
-QString DataReader::string(int sizeQChar)
+QString NetworkMessageReader::string(int sizeQChar)
 {
     size_t sizeBytes = sizeQChar * sizeof(QChar);
     if (sizeBytes > 0 && left() >= sizeBytes)
@@ -110,7 +142,7 @@ QString DataReader::string(int sizeQChar)
     return QString();
 }
 
-QRgb DataReader::rgb()
+QRgb NetworkMessageReader::rgb()
 {
     size_t size = sizeof(QRgb);
     if (left() >= size)

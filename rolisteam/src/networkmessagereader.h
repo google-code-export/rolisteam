@@ -25,11 +25,17 @@
 #include <QString>
 #include <QColor>
 
-class DataReader
+#include "networkmessage.h"
+
+class NetworkMessageReader : public NetworkMessage
 {
     public:
-        DataReader(quint32 bufferSize, const char * buffer);
-        ~DataReader();
+        NetworkMessageReader(const NetworkMessageHeader & header, const char * buffer);
+        NetworkMessageReader(const NetworkMessageReader & other);
+        ~NetworkMessageReader();
+
+        NetMsg::Category category() const;
+        NetMsg::Action action() const;
 
         void reset();
 
@@ -47,7 +53,11 @@ class DataReader
 
         QRgb rgb();
 
+    protected:
+        NetworkMessageHeader * buffer();
+
     private:
+        NetworkMessageHeader * m_header;
         char * m_buffer;
         const char * m_pos;
         const char * m_end;

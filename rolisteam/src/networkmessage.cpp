@@ -1,6 +1,7 @@
 /*************************************************************************
- *     Copyright (C) 2010 by Joseph Boudou                               *
- *     http://www.rolisteam.org/                                         *
+ *   Copyright (C) 2011 by Joseph Boudou                                 *
+ *                                                                       *
+ *   http://www.rolisteam.org/                                           *
  *                                                                       *
  *   Rolisteam is free software; you can redistribute it and/or modify   *
  *   it under the terms of the GNU General Public License as published   *
@@ -18,36 +19,27 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.           *
  *************************************************************************/
 
+#include "networkmessage.h"
 
-#ifndef FEATURES_H
-#define FEATURES_H
+#include "ClientServeur.h"
+#include "Liaison.h"
 
-#include <QMapIterator>
-#include <QString>
+extern ClientServeur * G_clientServeur;
 
-#include "networkmessagewriter.h"
-
-class ReceiveEvent;
-class Player;
-
-
-extern void setLocalFeatures(Player & player);
-extern void addFeature(ReceiveEvent & data);
-
-class SendFeaturesIterator : public QMapIterator<QString, quint8>
+void NetworkMessage::sendTo(Liaison * link)
 {
-    public:
-        SendFeaturesIterator();
-        SendFeaturesIterator(const Player & player);
-        ~SendFeaturesIterator();
+    if (link == NULL)
+    {
+        sendAll();
+        return;
+    }
 
-        NetworkMessageWriter & message();
+    NetworkMessageHeader * header = buffer();
+    link->emissionDonnees((char *)header, header->dataSize + sizeof(NetworkMessageHeader));
+}
 
-        SendFeaturesIterator & operator=(const Player * player);
-    
-    private:
-        const Player * m_player;
-        NetworkMessageWriter m_message;
-};
-
-#endif
+void NetworkMessage::sendAll(Liaison * butLink)
+{
+    NetworkMessageHeader * header = buffer();
+    G_clientServeur->emettreDonnees((char *)header, header->dataSize + sizeof(NetworkMessageHeader), butLink);
+}

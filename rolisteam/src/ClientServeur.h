@@ -53,7 +53,6 @@ public :
     void emettreDonnees(char *donnees, quint32 taille, Liaison *sauf);
 
     void ajouterLiaison(Liaison *liaison);
-    void finDeLiaison(Liaison * link);
 
 signals :
     void emissionDonnees(char *donnees, quint32 taille, Liaison *sauf);
@@ -67,6 +66,7 @@ private :
 
 private slots :
     void nouveauClientConnecte();
+    void finDeLiaison(Liaison * link);
 };
 
 #endif

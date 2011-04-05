@@ -20,81 +20,51 @@
  *************************************************************************/
 
 
-#ifndef PLAYERS_LIST_WIDGET_H
-#define PLAYERS_LIST_WIDGET_H
+#ifndef PRIVATE_CHAT_DIALOG_H
+#define PRIVATE_CHAT_DIALOG_H
 
-#include <QAbstractProxyModel>
-#include <QDockWidget>
-#include <QItemSelectionModel>
-#include <QPushButton>
+#include <QDialog>
+#include <QLineEdit>
 #include <QSet>
-#include <QTreeView>
 
 #include "playerslistproxy.h"
 
-class Carte;
-class PersonDialog;
-class Person;
+class Player;
+class PrivateChat;
 
-class PlayersListWidgetModel : public PlayersListProxyModel
+class PrivateChatDialogModel : public PlayersListProxyModel
 {
     Q_OBJECT
 
     public:
-        PlayersListWidgetModel(QObject * parent = 0);
+        PrivateChatDialogModel(const QSet<Player *> & set, QObject * parent = 0);
 
         Qt::ItemFlags flags(const QModelIndex &index) const;
         QVariant data(const QModelIndex &index, int role) const;
         bool setData(const QModelIndex &index, const QVariant &value, int role);
 
+        QSet<Player *> & playersSet();
+        void setPlayersSet(const QSet<Player *> & set);
+
+    private:
+       QSet<Player *> m_set;
+};
+
+class PrivateChatDialog : public QDialog
+{
+    Q_OBJECT
+
+    public:
+        PrivateChatDialog(QWidget * parent = NULL);
+
+        QSize sizeHint() const;
+
     public slots:
-        void changeMap(Carte * map);
+        int edit(PrivateChat * chat = NULL);
 
     private:
-       Carte * m_map;
-
-       bool isCheckable(const QModelIndex &index) const;
-};
-
-/**
- * @brief A QTreeView with editable DecorationRole if it's a QColor.
- * @todo The code is really generic. The class might be put somewhere else to be reused.
- */
-class PlayersListView : public QTreeView
-{
-    Q_OBJECT
-
-    public:
-        PlayersListView(QWidget * parent = NULL);
-        ~PlayersListView();
-
-    protected:
-        void mouseDoubleClickEvent(QMouseEvent * event);
-};
-
-class PlayersListWidget : public QDockWidget
-{
-    Q_OBJECT
-
-    public:
-        PlayersListWidget(QWidget * parent = NULL);
-        ~PlayersListWidget();
-
-        PlayersListWidgetModel * model() const;
-
-    private slots:
-        void editIndex(const QModelIndex & index);
-        void createLocalCharacter();
-        void selectAnotherPerson(const QModelIndex & current);
-        void deleteSelected();
-
-    private:
-        PersonDialog           * m_personDialog;
-        QItemSelectionModel    * m_selectionModel;
-        QPushButton            * m_delButton;
-        PlayersListWidgetModel * m_model;
-
-        void setUI();
+        QLineEdit * m_name_w;
+        PrivateChatDialogModel m_model;
 };
 
 #endif
