@@ -22,7 +22,7 @@
 
 #include <QtGui>
 
-#include "MinutesEditor.h"
+#include "minuteseditor.h"
 
 #include <QFontComboBox>
 MinutesEditor::MinutesEditor()
@@ -224,24 +224,6 @@ void MinutesEditor::changeSize(int index)
     m_minutes->setFocus(Qt::OtherFocusReason);
 }
 
-
-void MinutesEditor::openMinutes(QFile &file)
-{ 
-    QTextStream fichier(&file);
-    QString html = fichier.readAll();
-    m_minutes->setHtml(html);
-}
-
-
-void MinutesEditor::saveMinutes(QFile &file)
-{
-    QTextDocument *document = m_minutes->document();
-    QString html = document->toHtml(QByteArray("UTF-8"));
-    QTextStream fichier(&file);
-    fichier << html;
-}
-
-
 QSize MinutesEditor::sizeHint() const
 {
     return QSize(600, 600);
@@ -263,7 +245,14 @@ void MinutesEditor::saveFile(QString & file)
 {
     if(!file.isEmpty())
     {
-
+        QFile textfile(file);
+        if(textfile.open(QIODevice::WriteOnly))
+        {
+            QTextDocument *document = m_minutes->document();
+            QString html = document->toHtml(QByteArray("UTF-8"));
+            QTextStream filewriter(&textfile);
+            filewriter << html;
+        }
     }
 }
 
@@ -271,7 +260,13 @@ void MinutesEditor::openFile(QString& file)
 {
     if(!file.isEmpty())
     {
-
+        QFile textfile(file);
+        if(textfile.open(QIODevice::ReadOnly))
+        {
+            QTextStream fichier(&textfile);
+            QString html = fichier.readAll();
+            m_minutes->setHtml(html);
+        }
     }
 }
 

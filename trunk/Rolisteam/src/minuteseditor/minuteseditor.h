@@ -55,17 +55,6 @@ public :
 	*/
     MinutesEditor();
 	/**
-	* @brief writes all contents of the instance into a file. 
-	* @param file which must be writen.
-	* @todo perhaps it should be useful to override operator << and >> for QDataStream and QTextStream?
-	*/
-    void saveMinutes(QFile &file);
-	/**
-	* @brief read data from a file and set the appropriate member.
-	* @param file which must be read.
-	*/
-    void openMinutes(QFile &file);
-	/**
 	* @brief allows to determine how the window must be resized.
 	*/
     QSize sizeHint() const;
@@ -75,9 +64,16 @@ public :
 	*/
 
     virtual bool defineMenu(QMenu* menu);
-
+    /**
+    * @brief writes all contents of the instance into a file.
+    * @param file which must be writen.
+    * @todo perhaps it should be useful to override operator << and >> for QDataStream and QTextStream?
+    */
     void saveFile(QString & file);
-
+    /**
+    * @brief read data from a file and set the appropriate member.
+    * @param file which must be read.
+    */
     void openFile(QString& file);
 
 
@@ -110,25 +106,6 @@ private slots :
 	* @param the new size 
 	*/
     void changeSize(int index);
-
-
-
-    /*void drawDoc();
-    void textBold();
-    void textUnderline();
-    void textItalic();
-    void textFamily(const QString &f);
-    void textSize(const QString &p);
-    void textStyle(int styleIndex);
-    void textColor();
-    void textAlign(QAction *a);
-    void onRead( int now ,int tot );
-    void currentCharFormatChanged(const QTextCharFormat &format);
-    void cursorPositionChanged();
-
-    void clipboardDataChanged();
-    void printPreview(QPrinter *);*/
-
 
 
 
