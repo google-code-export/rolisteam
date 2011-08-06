@@ -1,3 +1,137 @@
+rolisteam (1.5.0) maverick; urgency=low
+
+  [Renaud GUEZENNEC]dd Feature database and negociation
+  * Change interface to send game state to new player (race condition removed)
+  * Fix icons ressources   
+  * Add some icon to fix missing ressources issues 
+  * Try some improvement about workspace resize performance issue
+  * Rewrite the scenario load/save mechanism, using QDataStream, for better readability.   
+  * new startup connection dialog
+  * struct initialisation replaced by class Initialisation
+  * MainWindow creation in main.cpp instead of ClientServeur.cpp   
+  * fix few issues on mac OS       
+  * Integration of zoom feature for the image
+  * Fix issue of slot/signal connection
+  * Fix twice creation of userlist widget. 
+  * Tool box can be closed
+  * Minor cleanups 
+  * Fix issue with player audioplayer interface
+  * Adding class to store data from the Connection dialog  
+  * Improve some audio player misbehaviours        
+  * third waves of modification for the audio player, a workaround has been activated to deal with phonon-gstreamer bugs, it may be not necessary for other backend (windows, QuickTime and xine).  
+  * removed useless global G_dossier*
+  * removed unused variables and parameters        
+  * add a preference dialog to change G_initialisation directories.
+  * in MainWindow.cpp changed QObject::connect to connect  
+  * Rewrite of many parts of audio player
+  * bugfix : add local player when server, not when GM     
+  * bug fix : wrong behaviour with uncorrect dice syntax. If user typed "!d6", the number of dices was very random/unrelevant and no warnings was displayed to the user.
+  * replace AudioPlayerunix.cpp with AudioPlayer.cpp    
+  * Audio feature has been greatly improved.
+  * removal of FMOD support
+  * BUGFIX : Removed unused threads.
+  * new incoming network message processing, using events.      
+  * new outgoing network message processing.    
+  * BUGFIX: add missing datawriter.h and datawriter.cpp
+  * Compilation error when have_phonon is defined
+  * charset issues
+  * code refactoring on log messages in Liaison.cpp     
+  * Yet another minor improvement on message reception. 
+  * Tried MeKeyCool's advice to fix bug #35.    
+  * use qassistant for documentation if does not work QDesktop stuff is used.   
+  * add updatechecker   
+  * modification of the header file     
+  * BUGFIX : infinite loop in DataWriter::makeRoom.
+  * Oups, make it compile...    
+  * BUGFIX : random number generation.
+  * players list widget and model completely rewritted.
+  * new chats list widget and model.    
+  * BUGFIX : make src/LecteurAudio.cpp compile.
+  * BUGFIX : use singleton for FeaturesList to be initialised after ReceiveEvent::s_receiverMap.
+  * The player's list is directly editable.
+  * Same size for color icons and color buttons.        
+  * Features are now handled by Player and PlayersList. 
+  * BUGFIX : private messages are now private.
+  * BUGFIX: set encoding when saving chats.
+  * BUGFIX: compilation error for LecteurAudio.cpp.
+  * Write local user name instead of "Vous" when chating. 
+  * Now even the GM knows whose PNJ is talking.
+  * Slightly better socket error handling.      
+  * PrivateChat can be created and used.
+  * Yet another network interface change.
+  * Abstract proxy class for PlayersList.
+  * Delay of network messages to conform to old protocols.
+  * Debug messages cleanup.     
+  * Del chat button works.
+  * Handle DelChatAction network messages.      
+  * Little improvement about restoring DockWidget's geometry
+  * All dockwidgets have now a valid object name.       
+  * Updates chats on player's deletion.
+  * Edit or show every PrivateChat.     
+  * Update ChatWindow title and his toggleViewAction when Chat's name changes.
+  * Add ChatListWidget to "Fenêtre" menu.       
+  * BUGFIX: default port to 6660 instead of 1024 when updating from 1.0.2 or older.
+  * BUGFIX: Map created before connection works as well as others.
+  * BUGFIX: Images loaded before connection don't make clients crash anymore.
+  * Image uses NetworkMessageWriter.    
+  * Little improvements about update notification.      
+  * DEBUGS : Clients don't send back ChatUpdates messages.
+  * Handle PrivateChat's constructor failures.
+  * Added Chat::belongsToLocalPlayer().
+  * You can pass a version to Chat::everyPlayerHasFeature().    
+  * DEBUG : PrivateChat::sendThem() don't send message if the local user is the only one. That fixes a backward compatibility bug.
+  * Load qt translator properly.        
+  * BUGFIX Any local characters can be deleted.
+  * Notifications of players joining and quiting in events dock widget. 
+  * French translation for the few english texts.
+  * Revised and translated "About" dialog.      
+  * Change the maximum size for NPC: 200
+  * Add rolisteam's logo into resources directory
+  * Change of MainWindow logo.  
+  * Add toolbar to ChatWindow.
+  * bugfix: Update chatwindow's title when player's name changes.
+  * Oups... I forgot to "svn add" new files.    
+  * Moved history management from ChatWindow to TextEditAmeliore        
+  * Some bug with the NPC/PC size
+  * Perhaps it should be better to have 2 sliders because the behaviour seems quiet unfriendly  
+  * rework of the changeSize of character.
+  * adding character id to the sizechanged network message.
+  * hide the diameter selector when user is not game master     
+  * Improvement on the update checker with major middle and minor version number.
+  * Change default button for persondialog, now it's the Ok button.
+  * Improve translation.     
+
+ -- Renaud Guezennec <renaud@markIV>  Sat, 06 Aug 2011 22:19:01 +0200
+
+rolisteam (1.0.2) lucid; urgency=low
+
+  [ Renaud GUEZENNEC ]
+  * Adding emote messages feature.
+  * Adding alerts when rolisteam is hidden and an event occurs.
+  * Add Roll and Keep dice system.
+  * Syntax : !3g2 or !3G2 (reroll 10)
+  * Add L5R dice system : count each dice egal or greater than 5
+  * Syntax : !3s
+  * Bugs fixed:
+  * Issue #18  : out of range error about the shadowrun' dices rolling
+  * Issue #20  : mispelling in french world
+  * Issue #23  : save of ini file on Linux (must be more tested )
+  * Issue #15  : compilation errors
+  * Issue #24  : no more crashes when client disconnect.
+  * Refractoring:
+  * Removal of afficherTirage function which was still in the header file.
+  * Change few things about the Tchat.cpp to enable the dice rolling.
+  * About init file. All platforms share the same code.
+  * Removal of debug messages about supported image format
+  * Robustness about the shadowrun syntax
+  * Removal of some platform-specific code
+  * Change text indentation in liaison.cpp
+  * Add some destructors to prevent memory leaks
+  * specific platform code changed to allow BSD and other x11 user.
+  * Hide the audio player when the HAVE_NULL flag is set.
+
+ -- Renaud Guezennec <renaud@markIV>  Sat, 30 Oct 2010 16:42:47 +0200
+
 rolisteam (1.0.0) unstable; urgency=low
 
   [ Renaud GUEZENNEC ]

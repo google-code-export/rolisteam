@@ -40,5 +40,6 @@ install/rolisteam::
 	mkdir -p $(CURDIR)/debian/rolisteam/usr/share/
 	mkdir -p $(CURDIR)/debian/rolisteam/usr/share/applications/
 	cp $(CURDIR)/bin/rolisteam $(CURDIR)/debian/rolisteam/usr/bin/
+	cp $(CURDIR)/resources/logo/symbole.svg $(CURDIR)/debian/rolisteam/usr/share/rolisteam/
 	cp rolisteam.desktop $(CURDIR)/debian/rolisteam/usr/share/applications/
 
