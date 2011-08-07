@@ -1,6 +1,7 @@
 rolisteam (1.5.0) maverick; urgency=low
 
-  [Renaud GUEZENNEC]dd Feature database and negociation
+  [Renaud GUEZENNEC]
+  * add Feature database and negociation
   * Change interface to send game state to new player (race condition removed)
   * Fix icons ressources   
   * Add some icon to fix missing ressources issues 
@@ -101,7 +102,7 @@ rolisteam (1.5.0) maverick; urgency=low
   * Change default button for persondialog, now it's the Ok button.
   * Improve translation.     
 
- -- Renaud Guezennec <renaud@markIV>  Sat, 06 Aug 2011 22:19:01 +0200
+ -- Renaud <renaud@rolisteam.org>  Sun, 07 Aug 2011 16:08:41 +0200
 
 rolisteam (1.0.2) lucid; urgency=low
 
@@ -130,7 +131,7 @@ rolisteam (1.0.2) lucid; urgency=low
   * specific platform code changed to allow BSD and other x11 user.
   * Hide the audio player when the HAVE_NULL flag is set.
 
- -- Renaud Guezennec <renaud@markIV>  Sat, 30 Oct 2010 16:42:47 +0200
+ -- Renaud <renaud@rolisteam.org>  Sat, 30 Oct 2010 16:42:47 +0200
 
 rolisteam (1.0.0) unstable; urgency=low
 
@@ -151,4 +152,4 @@ rolisteam (1.0.0) unstable; urgency=low
   [ Renaud Guezennec ]
   * Documentation has been really improved  
 
- -- Renaud Guezennec <renaud@R4P17>  Mon, 31 Aug 2009 00:22:48 +0200
+ -- Renaud <renaud@rolisteam.org>  Mon, 31 Aug 2009 00:22:48 +0200
