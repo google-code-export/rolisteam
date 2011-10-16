@@ -1,7 +1,7 @@
 Source: rolisteam
 Section: unknown
 Priority: extra
-Maintainer: Renaud G****** <renaud.guezennec@******.fr>
+Maintainer: renaud@rolisteam.org
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.0
 Homepage: http://code.google.com/p/rolisteam/
