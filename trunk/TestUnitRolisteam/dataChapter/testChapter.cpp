@@ -21,43 +21,68 @@
 #include <QtCore/QString>
 #include <QtTest/QtTest>
 #include <data/chapter.h>
-
-class TestData : public QObject
+#define COUNT_TURN 2000
+class TestChapter : public QObject
 {
     Q_OBJECT
 
 public:
-    TestData(QObject *parent=NULL);
+    TestChapter(QObject *parent=NULL);
 
 private Q_SLOTS:
+    /**
+      * @brief initTestCase creates instance of classes to be tested
+      */
     void initTestCase();
+
+    /**
+      * @brief clean data
+      */
     void cleanupTestCase();
+
+    /**
+      * @brief add chapters and remove them.
+      */
     void testAddChapter();
+
+    /**
+      * @brief initTestCase creates instance of classes to be tested
+      */
     void testAddChapterHasChildren();
+
+    /**
+      * @brief test the set and get method for Chapter
+      */
     void testSetGetName();
+
+    /**
+      * @brief Add cleveruri to chapter and subchapter and remove them.
+      */
+    void testAddCleverURIToChapter();
+
+
 private:
     Chapter* m_chapter;
 };
 
 
-TestData::TestData(QObject *parent) :
+TestChapter::TestChapter(QObject *parent) :
     QObject(parent)
 {
 }
 
-void TestData::initTestCase()
+void TestChapter::initTestCase()
 {
     m_chapter = new Chapter();
 }
 
-void TestData::cleanupTestCase()
+void TestChapter::cleanupTestCase()
 {
     delete m_chapter;
-
 }
-void TestData::testAddChapterHasChildren()
+void TestChapter::testAddChapterHasChildren()
 {
-    for(int i = 0; i< 2000; i++)
+    for(int i = 0; i< COUNT_TURN; i++)
     {
         QString temp("Chapiter %1");
         temp=temp.arg(i);
@@ -66,9 +91,9 @@ void TestData::testAddChapterHasChildren()
     QVERIFY2(m_chapter->hasChildren(),"No Children");
 
 }
-void TestData::testSetGetName()
+void TestChapter::testSetGetName()
 {
-    for(int i = 0; i< 2000; i++)
+    for(int i = 0; i< COUNT_TURN; i++)
     {
         QString temp("Chapiter %1");
         temp=temp.arg(i);
@@ -77,10 +102,29 @@ void TestData::testSetGetName()
     }
 
 }
-
-void TestData::testAddChapter()
+void TestChapter::testAddCleverURIToChapter()
 {
-    for(int i = 0; i< 2000; i++)
+    for(int i = 0; i< COUNT_TURN; i++)
+    {
+        CleverURI* temp = new CleverURI("/foo",CleverURI::CHARACTERSHEET);
+        m_chapter->addResource(temp);
+        QVERIFY2(m_chapter->removeRessourcesNode(temp),"Removal of CleverURI fails, the item was not in the list");
+    }
+    for(int i = 0; i< COUNT_TURN; i++)
+    {
+        CleverURI* tempURI = new CleverURI("/foo",CleverURI::CHARACTERSHEET);
+        QString temp("Chapiter %1");
+        temp=temp.arg(i);
+        Chapter* tmpchapter = m_chapter->addChapter(temp);
+
+        tmpchapter->addResource(tempURI);
+        QVERIFY2(m_chapter->removeRessourcesNode(tempURI),"Removal of subchapter fails, the item was not in the list");
+    }
+}
+
+void TestChapter::testAddChapter()
+{
+    for(int i = 0; i< COUNT_TURN; i++)
     {
         QString temp("Chapiter %1");
         temp=temp.arg(i);
@@ -91,6 +135,6 @@ void TestData::testAddChapter()
 
 }
 
-QTEST_MAIN(TestData);
+QTEST_MAIN(TestChapter);
 
-#include "testdata.moc"
+#include "testChapter.moc"

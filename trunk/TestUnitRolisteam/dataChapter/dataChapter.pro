@@ -10,7 +10,7 @@ HEADERS = $$ROLISTEAMSRC/src/data/chapter.h \
 
 
 SOURCES += \
-    testdata.cpp\
+    testChapter.cpp\
     $$ROLISTEAMSRC/src/data/cleveruri.cpp \
     $$ROLISTEAMSRC/src/data/chapter.cpp
 
