@@ -6,7 +6,7 @@ DEFINES += VERSION_MAJOR=2 VERSION_MIDDLE=0 VERSION_MINOR=0
 
 
 
-ROLISTEAMSRC = /home/renaud/applications/rolisteam
+ROLISTEAMSRC = ../../rolisteam #/home/renaud/applications/rolisteam
 
 
 DEFINES+= PHONON
@@ -16,4 +16,4 @@ QT += core \
  network \
  phonon \
  testlib
-CONFIG += phonon console qtestlib
+CONFIG += phonon

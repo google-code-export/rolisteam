@@ -2,8 +2,13 @@ TEMPLATE = subdirs
 
 #include(TestUnitRolisteamV1.pri)
 DEFINES =DSTDIR=$$SRCDIR
-SUBDIRS = data #chat MainWindow  picture   map Dice
+SUBDIRS = dataChapter \ #chat MainWindow  picture   map Dice
+    dataCleverURI \
+    dataplayer
 
 OBJECTS_DIR = obj
-OTHER_FILES = TestUnitRolisteamV2.pri
+OTHER_FILES = TestUnitRolisteam.pri
+
+
+
 
