@@ -69,13 +69,13 @@ private:
     void creerActions();
     void creerOutils();
 
-    QWidget *outils;
+    QWidget* m_centralWidget;
     QLineEdit *ligneDeTexte;
     QLineEdit *nomPnj;
     QLCDNumber *afficheNumeroPnj;
     ColorSelector *couleur;
-    DiameterSelector *diametreTrait;
-    DiameterSelector *diametrePnj;
+    DiameterSelector *m_lineDiameter;
+    DiameterSelector *m_NpcDiameter;
     QActionGroup *m_toolsGroup;
     SelectableTool m_currentTool;
 
