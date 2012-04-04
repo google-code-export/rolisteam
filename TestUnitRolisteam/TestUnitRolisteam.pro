@@ -4,10 +4,14 @@ TEMPLATE = subdirs
 DEFINES =DSTDIR=$$SRCDIR
 SUBDIRS = dataChapter \ #chat MainWindow  picture   map Dice
     dataCleverURI \
-    dataplayer
+    dataplayer \
+    dataCharacter \
+    networkServer \
+    picture \
 
 OBJECTS_DIR = obj
 OTHER_FILES = TestUnitRolisteam.pri
+
 
 
 
