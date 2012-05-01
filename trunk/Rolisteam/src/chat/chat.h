@@ -33,7 +33,7 @@
 
 class Person;
 class QListView;
-class TchatListModel;
+class ChatListModel;
 class DicePlugInManager;
 class QComboBox;
 /**
@@ -122,7 +122,7 @@ private :
     QSplitter* m_HorizonSplitter;
     QList<Person*>* m_clientList;
     QListView* m_listView;
-    TchatListModel* m_listModel;
+    ChatListModel* m_listModel;
     QComboBox* m_combobox;
     DicePlugInManager* m_diceManager;
 

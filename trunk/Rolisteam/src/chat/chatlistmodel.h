@@ -17,41 +17,48 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "tchatlistmodel.h"
-#include "person.h"
+#ifndef TCHATLISTMODEL_H
+#define TCHATLISTMODEL_H
 
-TchatListModel::TchatListModel(QObject *parent) :
-    QAbstractListModel(parent),m_dataList(NULL)
-{
-   // m_dataList = new QList<Person*>();
-}
-int TchatListModel::rowCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    if(!m_dataList)
-        return 0;
-    else
-        return m_dataList->size();
-}
-QVariant TchatListModel::data(const QModelIndex &index, int role) const
-{
+#include <QAbstractListModel>
+#include <QList>
 
-    if((!index.isValid())||(!m_dataList))
-        return QVariant();
+class Person;
 
-    if(index.row()<m_dataList->size())
-    {
-        switch(role)
-        {
-            case Qt::DisplayRole :
-                return m_dataList->at(index.row())->getName();
-            default:
-                return QVariant();
-        }
-    }
-    return QVariant();
-}
-void TchatListModel::setClients(QList<Person*>* tmp)
+/**
+  *  @brief model for listing all opened chat
+  */
+class ChatListModel : public QAbstractListModel
 {
-    m_dataList = tmp;
-}
+    Q_OBJECT
+public:
+    /**
+      *  @brief default constructor
+      */
+    explicit ChatListModel(QObject *parent = 0);
+    /**
+      *  @brief overridden function to define number of row
+      */
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    /**
+      *  @brief overridden function to get data from the model
+      */
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+    /**
+      *  @brief accessor to define data set.
+      */
+    void setClients(QList<Person*>* tmp);
+signals:
+
+
+public slots:
+
+
+
+private:
+    QList<Person*>* m_dataList; /// data list
+
+};
+
+#endif // TCHATLISTMODEL_H
