@@ -17,33 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef TCHATLISTMODEL_H
-#define TCHATLISTMODEL_H
+#include "tchatlistmodel.h"
+#include "person.h"
 
-#include <QAbstractListModel>
-#include <QList>
-
-class Person;
-
-class TchatListModel : public QAbstractListModel
+ChatListModel::ChatListModel(QObject *parent) :
+    QAbstractListModel(parent),m_dataList(NULL)
 {
-    Q_OBJECT
-public:
-    explicit TchatListModel(QObject *parent = 0);
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+   // m_dataList = new QList<Person*>();
+}
+int ChatListModel::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    if(!m_dataList)
+        return 0;
+    else
+        return m_dataList->size();
+}
+QVariant ChatListModel::data(const QModelIndex &index, int role) const
+{
 
-    void setClients(QList<Person*>* tmp);
-signals:
+    if((!index.isValid())||(!m_dataList))
+        return QVariant();
 
-
-public slots:
-
-
-
-private:
-    QList<Person*>* m_dataList;
-
-};
-
-#endif // TCHATLISTMODEL_H
+    if(index.row()<m_dataList->size())
+    {
+        switch(role)
+        {
+            case Qt::DisplayRole :
+                return m_dataList->at(index.row())->getName();
+            default:
+                return QVariant();
+        }
+    }
+    return QVariant();
+}
+void ChatListModel::setClients(QList<Person*>* tmp)
+{
+    m_dataList = tmp;
+}

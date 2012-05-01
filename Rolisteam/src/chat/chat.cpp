@@ -45,7 +45,7 @@ Tchat::Tchat(CleverURI* uri,QWidget *parent)
     setObjectName("Tchat");
     m_clientList = new QList<Person*>;
     m_diceManager=DicePlugInManager::instance();
-    m_listModel=new TchatListModel;
+    m_listModel=new ChatListModel;
 
     setupUi();
 
