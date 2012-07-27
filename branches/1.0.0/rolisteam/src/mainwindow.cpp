@@ -36,7 +36,7 @@
 #include <QUrl>
 #include <QUuid>
 
-#include "MainWindow.h"
+#include "mainwindow.h"
 
 #include "BarreOutils.h"
 #include "CarteFenetre.h"
@@ -61,13 +61,6 @@
 #include "LecteurAudio.h"
 #endif
 
-
-
-
-/********************************************************************/
-/* Variables globales utilisees par tous les elements de                */
-/* l'application                                                        */
-/********************************************************************/
 // Indique si le nom des PJ doit etre affiche ou pas
 bool G_affichageNomPj;
 // Indique si le nom des PNJ doit etre affiche ou pas
@@ -96,10 +89,6 @@ QCursor *G_pointeurEtat;
 static QTextEdit *logUtilisateur;
 
 
-/********************************************************************/
-/* Affiche un message dans la fenetre de log utilisateur. Peut etre */
-/* appelee par n'importe quel element de l'application                  */
-/********************************************************************/
 void ecrireLogUtilisateur(QString message)
 {
         static bool alternance = false;
@@ -127,9 +116,6 @@ void ecrireLogUtilisateur(QString message)
         logUtilisateur->insertPlainText(message);
 }
 
-/********************************************************************/
-/* Constructeur                                                         */
-/********************************************************************/
 MainWindow::MainWindow()
         : QMainWindow()
 {
@@ -207,7 +193,7 @@ MainWindow::MainWindow()
         autoriserOuInterdireActions();
 
         // Creation de l'editeur de notes
-        editeurNotes = new EditeurNotes();
+        editeurNotes = new EditeurNotes(this);
         // Ajout de l'editeur de notes au workspace
         workspace->addWindow(editeurNotes);
         // Mise a jour du titre de l'editeur de notes
@@ -255,10 +241,15 @@ MainWindow::~MainWindow()
 {
     delete m_dockLogUtil;
 }
+void MainWindow::setNetworkManager(ClientServeur* tmp)
+{
+    m_networkManager = tmp;
+    tmp->setParent(this);
+    connect(m_networkManager,SIGNAL(stopConnectionTry()),this,SLOT(stopReconnection()));
+    connect(m_disconnectAct,SIGNAL(triggered()),m_networkManager,SLOT(disconnect()));
+}
 
-/********************************************************************/
-/* Creation du log utilisateur                                          */
-/********************************************************************/
+
 QDockWidget* MainWindow::creerLogUtilisateur()
 {
         // Creation du dockWidget contenant la fenetre de log utilisateur
@@ -279,9 +270,6 @@ QDockWidget* MainWindow::creerLogUtilisateur()
         return m_dockLogUtil;
 }
 
-/********************************************************************/
-/* Creation de la barre de menus, des menus, des actions associees  */
-/********************************************************************/
 void MainWindow::creerMenu()
 {
         // Creation de la barre de menus
@@ -309,44 +297,30 @@ void MainWindow::creerMenu()
         menuFichier->addSeparator();
         actionQuitter                = menuFichier->addAction(tr("Quit"));
 
+        // Network action
+        QMenu *networkMenu = new QMenu (tr("Network"), barreMenus);
+        m_reconnectAct  = networkMenu->addAction(tr("Reconnection"));
+        m_disconnectAct = networkMenu->addAction(tr("Disconnect"));
+
+
         // Creation du menu Affichage
         QMenu *menuAffichage = new QMenu (tr("View"), barreMenus);
         actionAfficherNomsPj         = menuAffichage->addAction(tr("Display PC names"));
         actionAfficherNomsPnj        = menuAffichage->addAction(tr("Display NPC names"));
         actionAfficherNumerosPnj         = menuAffichage->addAction(tr("Display NPC number"));
-        /*
-                // Creation du sous-menu Grille
-                QMenu *sousMenuGrille = new QMenu (tr("Grille"), barreMenus);
-                actionSansGrille                 = sousMenuGrille->addAction(tr("Aucune"));
-                actionCarre                  = sousMenuGrille->addAction(tr("Carrs"));
-                actionHexagones                  = sousMenuGrille->addAction(tr("Hexagones"));
-                // Ajout du sous-menu Grille au menu Affichage
-                menuAffichage->addSeparator();
-                menuAffichage->addMenu(sousMenuGrille);
-                // Creation du groupe d'actions pour le menu Grille
-                QActionGroup *groupeAction = new QActionGroup(barreMenus);
-                groupeAction->addAction(actionSansGrille);
-                groupeAction->addAction(actionCarre);
-                groupeAction->addAction(actionHexagones);
-        */
+
 
         // Actions checkables
         actionAfficherNomsPj        ->setCheckable(true);
         actionAfficherNomsPnj   ->setCheckable(true);
         actionAfficherNumerosPnj->setCheckable(true);
-        /*
-                actionSansGrille        ->setCheckable(true);
-                actionCarre                 ->setCheckable(true);
-                actionHexagones         ->setCheckable(true);
-        */
+
 
         // Choix des actions selectionnees au depart
         actionAfficherNomsPj        ->setChecked(true);
         actionAfficherNomsPnj   ->setChecked(true);
         actionAfficherNumerosPnj->setChecked(true);
-        /*
-                actionSansGrille        ->setChecked(true);
-        */
+
         // Creation du menu Fenetre
         menuFenetre = new QMenu (tr("Sub-Windows"), barreMenus);
 
@@ -388,12 +362,10 @@ void MainWindow::creerMenu()
         barreMenus->addMenu(menuFichier);
         barreMenus->addMenu(menuAffichage);
         barreMenus->addMenu(menuFenetre);
+        barreMenus->addMenu(networkMenu);
         barreMenus->addMenu(menuAide);
 }
 
-/********************************************************************/
-/* Association des actions des menus avec des fonctions                 */
-/********************************************************************/
 void MainWindow::associerActionsMenus()
 {
         // file menu
@@ -412,6 +384,8 @@ void MainWindow::associerActionsMenus()
         // close
         connect(actionQuitter, SIGNAL(triggered(bool)), this, SLOT(quitterApplication()));
 
+
+
         // Windows managing
         connect(actionCascade, SIGNAL(triggered(bool)), workspace, SLOT(cascade()));
         connect(actionTuiles, SIGNAL(triggered(bool)), workspace, SLOT(tile()));
@@ -426,10 +400,6 @@ void MainWindow::associerActionsMenus()
         connect(actionAideLogiciel, SIGNAL(triggered()), this, SLOT(aideEnLigne()));
 }
 
-/********************************************************************/
-/* Autorise ou interdit certains menus selon que l'utilisateur est  */
-/* MJ ou joueur                                                         */
-/********************************************************************/
 void MainWindow::autoriserOuInterdireActions()
 {
         // L'utilisateur est un joueur
@@ -450,9 +420,6 @@ void MainWindow::autoriserOuInterdireActions()
         }
 }
 
-/********************************************************************/
-/* Creation d'une nouvelle carte dans le workspace                  */
-/********************************************************************/
 void MainWindow::ajouterCarte(CarteFenetre *carteFenetre, QString titre,QSize mapsize,QPoint pos )
 {
         // Ajout de la CarteFenetre a la liste (permet par la suite de parcourir l'ensemble des cartes)
@@ -509,9 +476,6 @@ void MainWindow::ajouterCarte(CarteFenetre *carteFenetre, QString titre,QSize ma
         carteFenetre->show();
 }
 
-/********************************************************************/
-/* Ajout de l'Image passee en parametre sans le workspace           */
-/********************************************************************/
 void MainWindow::ajouterImage(Image *imageFenetre, QString titre)
 {
         imageFenetre->setParent(workspace);
@@ -566,20 +530,11 @@ void MainWindow::ajouterImage(Image *imageFenetre, QString titre)
         imageFenetre->show();
 }
 
-/********************************************************************/
-/* Appelle la fonction ouvrirPlan avec le parametre "masquer" egale */
-/* a true                                                           */
-/********************************************************************/
 void MainWindow::ouvrirEtMasquerPlan()
 {
         ouvrirPlan(true);
 }
 
-/********************************************************************/
-/* Demande a l'utilisateur de selectionner un fichier image ou un   */
-/* fichier plan, puis ouvre la carte. Le parametre "masquer" n'est  */
-/* utilise que lorsque l'utilisateur ouvre une image                */
-/********************************************************************/
 void MainWindow::ouvrirPlan(bool masquer)
 {
         // Ouverture du selecteur de fichier
@@ -645,7 +600,7 @@ void MainWindow::ouvrirPlan(bool masquer)
                 Carte *carte = new Carte(idCarte, &image, masquer);
                 carte->setPermissionMode(NouveauPlanVide::GM_ONLY);
                 // Creation de la CarteFenetre
-                CarteFenetre *carteFenetre = new CarteFenetre(carte, workspace);
+                CarteFenetre *carteFenetre = new CarteFenetre(carte,this, workspace);
                 // Ajout de la carte au workspace
                 ajouterCarte(carteFenetre, titre);
 
@@ -778,7 +733,7 @@ void MainWindow::lireCarteEtPnj(QDataStream &in, bool masquer, QString nomFichie
         // Creation de la carte
         Carte *carte = new Carte(idCarte, &fondOriginal, &fond, &alpha);
         // Creation de la CarteFenetre
-        CarteFenetre *carteFenetre = new CarteFenetre(carte,workspace);
+        CarteFenetre *carteFenetre = new CarteFenetre(carte,this,workspace);
 
         // Ajout de la carte au workspace : si aucun nom de fichier n'est passe en parametre, il s'agit d'une lecture de
         // carte dans le cadre de l'ouverture d'un fichier scenario : on prend alors le titre associe a la carte. Sinon
@@ -847,10 +802,7 @@ void MainWindow::lireCarteEtPnj(QDataStream &in, bool masquer, QString nomFichie
         carte->emettreTousLesPersonnages();
 }
 
-/********************************************************************/
-/* Demande a l'utilisateur de selectionner un fichier image puis        */
-/* l'ouvre sous forme d'Image (image non modifiable)                */
-/********************************************************************/
+
 void MainWindow::ouvrirImage()
 {
         // Ouverture du selecteur de fichier
@@ -901,7 +853,7 @@ void MainWindow::ouvrirImage()
         QString idImage = QUuid::createUuid().toString();
 
         // Creation de la fenetre image
-        Image *imageFenetre = new Image(idImage, G_idJoueurLocal, img, action,workspace);
+        Image *imageFenetre = new Image(this,idImage, G_idJoueurLocal, img, action,workspace);
 
         // Ajout de l'image a la liste (permet par la suite de parcourir l'ensemble des images)
         listeImage.append(imageFenetre);
@@ -951,10 +903,7 @@ void MainWindow::ouvrirImage()
         message.sendAll();
 }
 
-/********************************************************************/
-/* Ferme le plan ou l'image actuellement ouvert sur l'ordinateur        */
-/* local et chez les autres utilisateurs                                */
-/********************************************************************/
+
 void MainWindow::fermerPlanOuImage()
 {
         // On recupere la fenetre active (qui est forcement de type CarteFenetre ou Image, sans quoi l'action
@@ -1080,37 +1029,20 @@ void MainWindow::fermerPlanOuImage()
         }
 }
 
-/********************************************************************/
-/* Met a jour la variable globale indiquant s'il faut afficher le   */
-/* nom des nouveaux PJ                                                  */
-/********************************************************************/
 void MainWindow::afficherNomsPj(bool afficher)
 {
         G_affichageNomPj = afficher;
 }
 
-/********************************************************************/
-/* Met a jour la variable globale indiquant s'il faut afficher le   */
-/* nom des nouveaux PNJ                                                 */
-/********************************************************************/
 void MainWindow::afficherNomsPnj(bool afficher)
 {
         G_affichageNomPnj = afficher;
 }
-
-/********************************************************************/
-/* Met a jour la variable globale indiquant s'il faut afficher le   */
-/* numero des nouveaux PNJ                                          */
-/********************************************************************/
 void MainWindow::afficherNumerosPnj(bool afficher)
 {
         G_affichageNumeroPnj = afficher;
 }
 
-/********************************************************************/
-/* M.a.j l'espace de travail en fonction de la fenetre actuellement */
-/* active                                                           */
-/********************************************************************/
 void MainWindow::mettreAJourEspaceTravail()
 {
         // On recupere la fenetre active
@@ -1121,9 +1053,6 @@ void MainWindow::mettreAJourEspaceTravail()
                 changementFenetreActive(active);
 }
 
-/********************************************************************/
-/* Updates some actions on activation of a subwindow                */
-/********************************************************************/
 void MainWindow::changementFenetreActive(QWidget *widget)
 {
     bool localPlayerIsGM = PlayersList::instance().localPlayer()->isGM();
@@ -1144,28 +1073,15 @@ void MainWindow::changementFenetreActive(QWidget *widget)
         actionSauvegarderPlan->setEnabled(false);
     }
 }
-
-/********************************************************************/
-/* Demande une m.a.j des couleurs personnelles de la barre d'outils */
-/********************************************************************/
 void MainWindow::majCouleursPersonnelles()
 {
         barreOutils->majCouleursPersonnelles();
 }
 
-/********************************************************************/
-/* L'utilisateur vient de demander la creation d'un nouveau plan        */
-/* vide                                                                 */
-/********************************************************************/
 void MainWindow::nouveauPlan()
 {
         fenetreNouveauPlan = new NouveauPlanVide(this);
 }
-
-/********************************************************************/
-/* Cree un nouveau plan vide dont les caracteristiques sont passees */
-/* en parametre                                                         */
-/********************************************************************/
 void MainWindow::creerNouveauPlanVide(QString titre, QString idCarte, QColor couleurFond, quint16 largeur, quint16 hauteur,quint8 mode)
 {
         if (fenetreNouveauPlan)
@@ -1181,24 +1097,19 @@ void MainWindow::creerNouveauPlanVide(QString titre, QString idCarte, QColor cou
         Carte *carte = new Carte(idCarte, &image);
         carte->setPermissionMode(getPermission(mode));
         // Creation de la CarteFenetre
-        CarteFenetre *carteFenetre = new CarteFenetre(carte, workspace);
+        CarteFenetre *carteFenetre = new CarteFenetre(carte,this, workspace);
         // Ajout de la carte au workspace
         ajouterCarte(carteFenetre, titre);
 }
 
-/********************************************************************/
-/* Ferme la fenetre de creation d'un nouveau plan vide                  */
-/********************************************************************/
+
 void MainWindow::aucunNouveauPlanVide()
 {
         delete fenetreNouveauPlan;
         fenetreNouveauPlan = 0;
 }
 
-/********************************************************************/
-/* Envoie tous les plans deja ouvert au joueur dont l'identifiant   */
-/* est passe en parametre (serveur uniquement)                          */
-/********************************************************************/
+
 void MainWindow::emettreTousLesPlans(Liaison * link)
 {
         // Taille de la liste des CarteFenetre
@@ -1215,10 +1126,7 @@ void MainWindow::emettreTousLesPlans(Liaison * link)
         }
 }
 
-/********************************************************************/
-/* Envoie toutes les images deja ouvertes au joueur dont                */
-/* l'identifiant est passe en parametre (serveur uniquement)        */
-/********************************************************************/
+
 void MainWindow::emettreToutesLesImages(Liaison * link)
 {
         int tailleListe = listeImage.size();
@@ -1230,10 +1138,6 @@ void MainWindow::emettreToutesLesImages(Liaison * link)
         }
 }
 
-/********************************************************************/
-/* Renvoie le pointeur vers la Carte dont l'identifiant est passe   */
-/* en parametre, ou 0 si la Carte n'est pas trouvee                 */
-/********************************************************************/
 Carte * MainWindow::trouverCarte(QString idCarte)
 {
         // Taille de la liste des CarteFenetre
@@ -1253,11 +1157,6 @@ Carte * MainWindow::trouverCarte(QString idCarte)
                 return 0;
 }
 
-/********************************************************************/
-/* Renvoie le pointeur vers la CarteFenetre dont l'identifiant de   */
-/* la Carte associee est passe en parametre, ou 0 si la Carte n'est */
-/* pas trouvee                                                          */
-/********************************************************************/
 CarteFenetre * MainWindow::trouverCarteFenetre(QString idCarte)
 {
         // Taille de la liste des CarteFenetre
@@ -1277,22 +1176,10 @@ CarteFenetre * MainWindow::trouverCarteFenetre(QString idCarte)
                 return 0;
 }
 
-/********************************************************************/
-/* Renvoie true si la fenetre passee en parametre est la fenetre        */
-/* active (fenetre de 1er plan) et qu'elle est affichee. Sinon          */
-/* renvoie false                                                        */
-/********************************************************************/
 bool MainWindow::estLaFenetreActive(QWidget *widget)
 {
         return widget == workspace->activeWindow() && widget->isVisible();
 }
-
-/********************************************************************/
-/* Demande a l'utilisateur s'il desire reellement quitter           */
-/* l'application, et si oui, ferme le programme. Si le parametre        */
-/* perteConnexion = true alors la fermeture est due a une perte de  */
-/* connexion avec le serveur                                        */
-/********************************************************************/
 void MainWindow::quitterApplication(bool perteConnexion)
 {
         // Creation de la boite d'alerte
@@ -1381,8 +1268,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
         quitterApplication();
 }
-
-
 Image *MainWindow::trouverImage(QString idImage)
 {
         // Taille de la liste des Images
@@ -1401,11 +1286,6 @@ Image *MainWindow::trouverImage(QString idImage)
         else
                 return 0;
 }
-
-/********************************************************************/
-/* Enleve de la liste la carte dont l'ID est passe en parametre.        */
-/* Renvoie true en cas de reussite, false sinon                         */
-/********************************************************************/
 bool MainWindow::enleverCarteDeLaListe(QString idCarte)
 {
         // Taille de la liste des CarteFenetre
@@ -1427,11 +1307,6 @@ bool MainWindow::enleverCarteDeLaListe(QString idCarte)
         else
                 return false;
 }
-
-/********************************************************************/
-/* Enleve de la liste l'image dont l'ID est passe en parametre.         */
-/* Renvoie true en cas de reussite, false sinon                         */
-/********************************************************************/
 bool MainWindow::enleverImageDeLaListe(QString idImage)
 {
         // Taille de la liste des Images
@@ -1459,10 +1334,6 @@ void MainWindow::registerSubWindow(QWidget * subWindow)
     workspace->addWindow(subWindow);
 }
 
-/********************************************************************/
-/* Sauvegarde la plan actuellement ouvert ainsi que la position des */
-/* PNJ et PJ                                                        */
-/********************************************************************/
 void MainWindow::sauvegarderPlan()
 {
         // On recupere la fenetre active
@@ -1506,12 +1377,7 @@ void MainWindow::sauvegarderPlan()
         file.close();
 }
 
-/********************************************************************/
-/* L'utilisateur local a demande a etre MJ lors de la connexion au  */
-/* serveur mais un MJ etait deja connecte : l'utilisateur local         */
-/* devient donc simple joueur. On met l'espace de travail a jour en */
-/* consequence                                                          */
-/********************************************************************/
+
 void MainWindow::changementNatureUtilisateur()
 {
         // M.a.j des menus du mainWindow
@@ -1528,12 +1394,7 @@ void MainWindow::changementNatureUtilisateur()
 #endif
 }
 
-/********************************************************************/
-/* Affiche ou masque l'editeur de notes. Le 2eme parametre doit         */
-/* etre a true si la fonction est appelee a partir de l'objet           */
-/* listeUtilisateurs ou de l'editeur de notes lui-meme : cela           */
-/* permet de cocher/decocher l'action d'affichage/masquage          */
-/********************************************************************/
+
 void MainWindow::afficherEditeurNotes(bool afficher, bool cocherAction)
 {
         // Affichage de l'editeur de notes
@@ -1541,19 +1402,14 @@ void MainWindow::afficherEditeurNotes(bool afficher, bool cocherAction)
 
         // Si la fonction a pas ete appelee par la listeUtilisateurs ou par l'editeur lui-meme, on coche/decoche l'action associee
         if (cocherAction)
-                actionEditeurNotes->setChecked(afficher);
-
-        // Sinon on coche/decoche la case de l'editeur de notes dans la listeUtilisateurs
-        else
         {
-            // TODO
+                actionEditeurNotes->setChecked(afficher);
+        }
+        else
+        {// Sinon on coche/decoche la case de l'editeur de notes dans la listeUtilisateurs
+            /// @todo
         }
 }
-
-/********************************************************************/
-/* Demande a l'utilisateur de selectionner un fichier de notes a        */
-/* ouvrir                                                           */
-/********************************************************************/
 void MainWindow::ouvrirNotes()
 {
         // Ouverture du selecteur de fichier
@@ -1582,11 +1438,6 @@ void MainWindow::ouvrirNotes()
         file.close();
         afficherEditeurNotes(true, true);
 }
-
-/********************************************************************/
-/* Demande a l'utilisateur d'entrer un nom de fichier dans lequel   */
-/* sauvegarder les notes                                                */
-/********************************************************************/
 bool MainWindow::sauvegarderNotes()
 {
         // Ouverture du selecteur de fichiers
@@ -1622,10 +1473,6 @@ bool MainWindow::sauvegarderNotes()
 
         return true;
 }
-
-/********************************************************************/
-/* Demande a l'utilisateur de selectionner un scenario a ouvrir         */
-/********************************************************************/
 void MainWindow::ouvrirScenario()
 {
         // Ouverture du selecteur de fichier
@@ -1672,13 +1519,6 @@ void MainWindow::ouvrirScenario()
         // Fermeture du fichier
         file.close();
 }
-
-/********************************************************************/
-/* Demande a l'utilisateur de choisir un nom de fichier pour        */
-/* sauvegarder le scenario en cours. Un scenario comprend toutes        */
-/* les cartes, les images (qui deviennent proprietes du MJ), et les */
-/* notes                                                                */
-/********************************************************************/
 bool MainWindow::sauvegarderScenario()
 {
         // Ouverture du selecteur de fichiers
@@ -1780,7 +1620,7 @@ void MainWindow::lireImage(QDataStream &file)
         QString idImage = QUuid::createUuid().toString();
 
         // Creation de la fenetre image
-        Image *imageFenetre = new Image(idImage, G_idJoueurLocal, &img, action,workspace);
+        Image *imageFenetre = new Image(this,idImage, G_idJoueurLocal, &img, action,workspace);
 
         // Ajout de l'image a la liste (permet par la suite de parcourir l'ensemble des images)
         listeImage.append(imageFenetre);
@@ -1862,10 +1702,6 @@ void MainWindow::lireImage(QDataStream &file)
         // Liberation du buffer d'emission
         delete[] donnees;
 }
-
-/********************************************************************/
-/* Sauvegarde le fichier d'initialisation                           */
-/********************************************************************/
 void MainWindow::sauvegarderFichierInitialisation()
 {
     // Don't really write anything to the filesystem, but store new values in G_initialisation.
@@ -2020,4 +1856,9 @@ NouveauPlanVide::PermissionMode MainWindow::getPermission(int id)
         return NouveauPlanVide::GM_ONLY;
     }
 
+}
+void MainWindow::stopReconnection()
+{
+    m_reconnectAct->setEnabled(true);
+    m_disconnectAct->setEnabled(false);
 }

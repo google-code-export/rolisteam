@@ -53,7 +53,7 @@ class PreferencesDialog;
 class Player;
 class PlayersListWidget;
 class WorkspaceAmeliore;
-
+class ClientServeur;
 
 /**
  * @brief Fenêtre principale, contenant la palette d'outils, les tableaux de
@@ -90,6 +90,7 @@ public slots :
     void afficherEditeurNotes(bool afficher, bool cocherAction = false);
     void quitterApplication(bool perteConnexion = false);
     void checkUpdate();
+    void setNetworkManager(ClientServeur*);
 
 protected :
     void closeEvent(QCloseEvent *event);
@@ -159,6 +160,9 @@ private :
     QAction *actionPreferences;
     QAction *actionQuitter;
 
+    QAction* m_reconnectAct;
+    QAction* m_disconnectAct;
+
     QAction *actionAfficherNomsPj;
     QAction *actionAfficherNomsPnj;
     QAction *actionAfficherNumerosPnj;
@@ -177,6 +181,8 @@ private :
     QString m_version;
     QDockWidget* m_dockLogUtil;
     Initialisation* m_init;
+
+    ClientServeur* m_networkManager;
 private slots :
     void changementNatureUtilisateur();
     void afficherNomsPj(bool afficher);
@@ -194,6 +200,8 @@ private slots :
     void updateMayBeNeeded();
     void emettreTousLesPlans(Liaison * link);
     void emettreToutesLesImages(Liaison * link);
+
+    void stopReconnection();
 
     /**
     * \brief Show the about dialog
