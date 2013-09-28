@@ -630,108 +630,135 @@
 <context>
     <name>Image</name>
     <message>
-        <location filename="../src/Image.cpp" line="318"/>
+        <location filename="../src/Image.cpp" line="336"/>
         <source>Zoom In</source>
         <translation>Agrandir</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="129"/>
+        <location filename="../src/Image.cpp" line="132"/>
         <source>Image Compression fails (emettreImage - Image.cpp)</source>
         <translation>Compression de l&apos;image a échoué (emettreImage - Image.cpp) </translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="151"/>
+        <location filename="../src/Image.cpp" line="154"/>
         <source>Image Compression fails (sauvegarderImage - Image.cpp)</source>
         <translation>Compression de l&apos;image a échoué (sauvegarderImage - Image.cpp)</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="320"/>
+        <location filename="../src/Image.cpp" line="337"/>
         <source>increase zoom level</source>
         <translation>Augmenter le zoom</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="324"/>
+        <location filename="../src/Image.cpp" line="341"/>
         <source>Ctrl++</source>
         <comment>Zoom In</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="328"/>
+        <location filename="../src/Image.cpp" line="346"/>
         <source>Zoom out</source>
         <translation>Réduire</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="376"/>
-        <source>Ctrl+2</source>
-        <comment>Zoom Out</comment>
-        <translation></translation>
+        <location filename="../src/Image.cpp" line="363"/>
+        <source>Ctrl+m</source>
+        <comment>Fit the workspace</comment>
+        <translatorcomment>S&apos;adapte à l&apos;espace de travail</translatorcomment>
+        <translation>Ctrl+m</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="331"/>
+        <location filename="../src/Image.cpp" line="369"/>
+        <source>Fit Window</source>
+        <translation>S&apos;adapter à la fenêtre</translation>
+    </message>
+    <message>
+        <location filename="../src/Image.cpp" line="372"/>
+        <source>Image will take the best dimension to fit the window.</source>
+        <translation>L&apos;image prendra la dimension la plus adaptée.</translation>
+    </message>
+    <message>
+        <source>Ctrl+p</source>
+        <comment>Fit the window</comment>
+        <translatorcomment>S&apos;adapte à la fenêtre</translatorcomment>
+        <translation type="obsolete">Ctrl+p</translation>
+    </message>
+    <message>
+        <location filename="../src/Image.cpp" line="386"/>
+        <source>Ctrl+l</source>
+        <comment>Set the zoom level at 20%</comment>
+        <translatorcomment>Definit le zoom à 20%</translatorcomment>
+        <translation>Ctrl+l</translation>
+    </message>
+    <message>
+        <location filename="../src/Image.cpp" line="395"/>
+        <source>Ctrl+n</source>
+        <comment>Normal</comment>
+        <translatorcomment>Normal</translatorcomment>
+        <translation>Ctrl+n</translation>
+    </message>
+    <message>
+        <location filename="../src/Image.cpp" line="405"/>
+        <source>Ctrl+b</source>
+        <comment>Zoom Out</comment>
+        <translatorcomment>Zoom Arrière</translatorcomment>
+        <translation>Ctrl+G</translation>
+    </message>
+    <message>
+        <location filename="../src/Image.cpp" line="348"/>
         <source>Reduce zoom level</source>
         <translation>Réduire le zoom</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="334"/>
+        <location filename="../src/Image.cpp" line="351"/>
         <source>Ctrl+-</source>
         <comment>Zoom Out</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="339"/>
+        <location filename="../src/Image.cpp" line="358"/>
         <source>Fit the workspace</source>
         <translation>Ajuster à l&apos;espace de travail</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="342"/>
+        <location filename="../src/Image.cpp" line="360"/>
         <source>The window and the image fit the workspace</source>
         <translation>La fenêtre et l&apos;image rentre dans l&apos;espace de travail</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="345"/>
-        <source>Ctrl+5</source>
-        <comment>Fit the workspace</comment>
-        <translation></translation>
+        <location filename="../src/Image.cpp" line="375"/>
+        <source>Ctrl+f</source>
+        <comment>Fit the window</comment>
+        <translatorcomment>S&apos;adapte à la fenêtre</translatorcomment>
+        <translation>Ctrl+f</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="352"/>
+        <location filename="../src/Image.cpp" line="382"/>
         <source>Little</source>
         <translation>Petit</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="354"/>
+        <location filename="../src/Image.cpp" line="383"/>
         <source>Set the zoom level at 20% </source>
         <translation>Zoomer à 20% </translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="356"/>
-        <source>Ctrl+1</source>
-        <comment>Set the zoom level at 20%</comment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/Image.cpp" line="363"/>
+        <location filename="../src/Image.cpp" line="391"/>
         <source>Normal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="365"/>
+        <location filename="../src/Image.cpp" line="392"/>
         <source>No Zoom</source>
         <translation>Aucun zoom</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="367"/>
-        <source>Ctrl+0</source>
-        <comment>Normal</comment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/Image.cpp" line="372"/>
+        <location filename="../src/Image.cpp" line="401"/>
         <source>Big</source>
         <translation>Grand</translation>
     </message>
     <message>
-        <location filename="../src/Image.cpp" line="374"/>
+        <location filename="../src/Image.cpp" line="402"/>
         <source>Set the zoom level at 400%</source>
         <translation>Zoomer à 400%</translation>
     </message>
@@ -921,7 +948,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="242"/>
         <location filename="../src/mainwindow.cpp" line="409"/>
         <source>Minutes Editor</source>
         <translation>Editeur de notes</translation>
@@ -930,6 +956,11 @@
         <location filename="../src/mainwindow.cpp" line="255"/>
         <source>healthy</source>
         <translation>Sain</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="242"/>
+        <source>Minutes Editor[*]</source>
+        <translation>Editeur de Notes[*]</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="256"/>
@@ -1103,7 +1134,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="419"/>
-        <location filename="../src/mainwindow.cpp" line="1770"/>
+        <location filename="../src/mainwindow.cpp" line="1778"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
@@ -1159,12 +1190,16 @@ It will be closed for everybody</source>
 Elle sera fermée pour tout le monde</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1729"/>
-        <source>&lt;p&gt;&lt;h3&gt;Web Sites :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Official Rolisteam Site&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bug Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Current developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.renaudguezennec.eu/accueil,3.html&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Retired developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)  &lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;h3&gt;Site Web :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Site Official de Rolisteam&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bu. Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.renaudguezennec.eu/accueil,3.html&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Anciens developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</translation>
+        <location filename="../src/mainwindow.cpp" line="1737"/>
+        <source>&lt;p&gt;&lt;h3&gt;Web Sites :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Official Rolisteam Site&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bug Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Current developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/contact&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Retired developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)  &lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;h3&gt;Site Web :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Site Official de Rolisteam&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bu. Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/contact&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Anciens developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1771"/>
+        <source>&lt;p&gt;&lt;h3&gt;Web Sites :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Official Rolisteam Site&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bug Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Current developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.renaudguezennec.eu/accueil,3.html&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Retired developers :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)  &lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;p&gt;&lt;h3&gt;Site Web :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Site Official de Rolisteam&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bu. Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.renaudguezennec.eu/accueil,3.html&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Anciens developpeurs :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="1779"/>
         <source>Documentation of %1 can be found online at :&lt;br&gt; &lt;a href=&quot;http://wiki.rolisteam.org&quot;&gt;http://wiki.rolisteam.org/&lt;/a&gt;</source>
         <translation>La documentation de %1 est accessible sur le web :&lt;br&gt; &lt;a href=&quot;http://wiki.rolisteam.org&quot;&gt;http://wiki.rolisteam.org/&lt;/a&gt;</translation>
     </message>
@@ -1229,27 +1264,27 @@ It will be closed for everybody</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="1489"/>
-        <location filename="../src/mainwindow.cpp" line="1536"/>
+        <location filename="../src/mainwindow.cpp" line="1541"/>
         <source>Scenarios (*.sce)</source>
         <translation>Scénarios (*.sce)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1536"/>
+        <location filename="../src/mainwindow.cpp" line="1541"/>
         <source>Save Scenarios</source>
         <translation>Sauvegarder Scénarios</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1725"/>
+        <location filename="../src/mainwindow.cpp" line="1733"/>
         <source>About Rolisteam</source>
         <translation>À propose de Rolisteam</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1726"/>
+        <location filename="../src/mainwindow.cpp" line="1734"/>
         <source>&lt;h1&gt;Rolisteam v%1&lt;/h1&gt;&lt;p&gt;Rolisteam makes easy the management of any role playing games. It allows players to communicate to each others and to share maps and pictures. Rolisteam also provides many features for : permission management, background music and dice roll. Rolisteam is written in Qt4. Its dependencies are : Qt4 and Phonon.&lt;/p&gt;</source>
         <translation>&lt;h1&gt;Rolisteam v%1&lt;/h1&gt;&lt;p&gt;Rolisteam facilite la maîtrise de n&apos;importe quel jeu de rôle. Il permet aux joueurs de communiquer entre eux et de partager des images et des cartes. Il gère aussi différents niveau de persmission, la musique de fond et les lancers de dés. Rolisteam est écrit en Qt4. Ses dépendances sont : Qt4 et Phonon.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1728"/>
+        <location filename="../src/mainwindow.cpp" line="1736"/>
         <source>&lt;p&gt;You may modify and redistribute the program under the terms of the GPL (version 2 or later).  A copy of the GPL is contained in the &apos;COPYING&apos; file distributed with Rolisteam.  Rolisteam is copyrighted by its contributors.  See the &apos;COPYRIGHT&apos; file for the complete list of contributors.  We provide no warranty for this program.&lt;/p&gt;</source>
         <translation></translation>
     </message>
@@ -1258,22 +1293,22 @@ It will be closed for everybody</translation>
         <translation type="obsolete">&lt;p&gt;&lt;h3&gt;Sites Web :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.rolisteam.org/&quot;&gt;Site Officiel de Rolisteam&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/rolisteam/issues/list&quot;&gt;Bug Tracker&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;Developeurs actuels :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://renaudguezennec.homelinux.org/accueil,3.html&quot;&gt;Renaud Guezennec&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:joseph.boudou@matabio.net&quot;&gt;Joseph Boudou&lt;a/&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;h3&gt;Ancien developeur :&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto:rolistik@free.fr&quot;&gt;Romain Campioni&lt;a/&gt; (rolistik)  &lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1829"/>
+        <location filename="../src/mainwindow.cpp" line="1837"/>
         <source>Update Monitor</source>
         <translation>Mises à jour</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1829"/>
+        <location filename="../src/mainwindow.cpp" line="1837"/>
         <source>The %1 version has been released. Please take a look at &lt;a href=&quot;http://www.rolisteam.org/download&quot;&gt;Download page&lt;/a&gt; for more information</source>
         <translation>La version %1 est disponible. Pour plus d&apos;informations veuillez consulter &lt;a href=&quot;http://www.rolisteam.org/download&quot;&gt;la page de téléchargement&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1881"/>
+        <location filename="../src/mainwindow.cpp" line="1889"/>
         <source>%1 just joins the game.</source>
         <translation>%1 vient de rejoindre la partie.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1886"/>
+        <location filename="../src/mainwindow.cpp" line="1894"/>
         <source>%1 just leaves the game.</source>
         <translation>%1 vient de quitter la partie.</translation>
     </message>
@@ -1652,7 +1687,7 @@ It will be closed for everybody</translation>
     </message>
     <message>
         <location filename="../src/odt/src/textedit.cpp" line="108"/>
-        <location filename="../src/odt/src/textedit.cpp" line="735"/>
+        <location filename="../src/odt/src/textedit.cpp" line="753"/>
         <source>About</source>
         <translation>A propos</translation>
     </message>
@@ -1815,27 +1850,27 @@ Voulez-vous sauvegarder vos changements ?</translation>
         <translation>Ouvrir Fichier...</translation>
     </message>
     <message>
-        <location filename="../src/odt/src/textedit.cpp" line="536"/>
+        <location filename="../src/odt/src/textedit.cpp" line="554"/>
         <source>ODF files (*.odt);;HTML-Files (*.htm *.html);;All Files (*)</source>
         <translation>Fichiers ODF (*.odt);;HTML-Files (*.htm *.html);;Tous les fichiers (*)</translation>
     </message>
     <message>
-        <location filename="../src/odt/src/textedit.cpp" line="538"/>
+        <location filename="../src/odt/src/textedit.cpp" line="556"/>
         <source>HTML-Files (*.htm *.html);;All Files (*)</source>
         <translation>Fichiers - HTML (*.htm *.html);;Tous les fichiers (*)</translation>
     </message>
     <message>
-        <location filename="../src/odt/src/textedit.cpp" line="540"/>
+        <location filename="../src/odt/src/textedit.cpp" line="558"/>
         <source>Save as...</source>
         <translation>Sauvegarder sous...</translation>
     </message>
     <message>
-        <location filename="../src/odt/src/textedit.cpp" line="558"/>
+        <location filename="../src/odt/src/textedit.cpp" line="576"/>
         <source>Print Document</source>
         <translation>Imprimer le document</translation>
     </message>
     <message>
-        <location filename="../src/odt/src/textedit.cpp" line="735"/>
+        <location filename="../src/odt/src/textedit.cpp" line="753"/>
         <source>This example demonstrates Qt&apos;s rich text editing facilities in action, providing an example document for you to experiment with.</source>
         <translation>Cet exemple démontre l&apos;édition de textes riches par Qt, il fournit un  document type pour vous aider.</translation>
     </message>
