@@ -43,7 +43,7 @@
 
 #include "WorkspaceAmeliore.h"
 #include "mainwindow.h"
-
+#include "BarreOutils.h"
 
 class Liaison;
 class NetworkMessageWriter;
@@ -66,10 +66,12 @@ public :
     QString identifiantImage();
     void setParent(WorkspaceAmeliore *parent);
 
+
+
 public slots :
     void pointeurMain();
     void pointeurNormal();
-
+    void setCurrentTool(BarreOutils::Tool tool);
 
 protected:
     /**
@@ -181,6 +183,7 @@ private :
     double m_ratioImage;
     double m_ratioImageBis;
 
+    BarreOutils::Tool m_currentTool;
 
 };
 
