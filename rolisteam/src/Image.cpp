@@ -63,7 +63,9 @@ Image::Image(MainWindow* mainWindow,QString identImage, QString identJoueur, QIm
     m_ratioImageBis = (double)m_pixMap.size().height()/m_pixMap.size().width();
     //labelImage->installEventFilter(this);
     if(NULL!=m_parent)
+    {
         fitWorkSpace();
+    }
     //resize(image->width()+2, image->height()+2);
 }
 
@@ -73,13 +75,6 @@ Image::Image(MainWindow* mainWindow,QString identImage, QString identJoueur, QIm
 /********************************************************************/	
 Image::~Image()
 {
-
-    /*if(NULL!=actionAssociee)
-    {
-        delete actionAssociee;
-        actionAssociee=NULL;
-    }*/
-
     m_mainWindow->enleverImageDeLaListe(idImage);
 }
 
@@ -88,11 +83,11 @@ Image::~Image()
 /********************************************************************/	
 void Image::closeEvent(QCloseEvent *event)
 {
-	// Masquage de la fenetre
+
 	hide();
-	// Deselection de l'action associee
+
 	actionAssociee->setChecked(false);
-	// Arret de la procedure de fermeture		
+
 	event->ignore();
 }
 
@@ -165,7 +160,7 @@ void Image::sauvegarderImage(QDataStream &out, QString titre)
 void Image::mousePressEvent(QMouseEvent *event)
 {
 	// Si l'utilisateur a clique avec la bouton gauche et que l'outil main est selectionne
-	if (event->button() == Qt::LeftButton && G_outilCourant == BarreOutils::main)
+    if (event->button() == Qt::LeftButton && m_currentTool == BarreOutils::main)
 	{
 		// Le deplacement est autorise
 		deplacementAutorise = true;
@@ -478,4 +473,20 @@ void Image::setParent(WorkspaceAmeliore *parent)
     QScrollArea::setParent(parent);
     if(m_parent)
         fitWorkSpace();
+}
+
+void Image::setCurrentTool(BarreOutils::Tool tool)
+{
+    m_currentTool = tool;
+
+    /// @todo code inline to remove useless functions.
+    switch(m_currentTool)
+    {
+    case BarreOutils::main :
+            pointeurMain();
+            break;
+    default :
+            pointeurNormal();
+            break;
+    }
 }
