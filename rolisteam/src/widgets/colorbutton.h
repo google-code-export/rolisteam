@@ -29,7 +29,8 @@
  * @brief A button to choose a color.
  */
 class ColorButton
-    : public QPushButton {
+    : public QPushButton
+{
     Q_OBJECT
 
     public:
