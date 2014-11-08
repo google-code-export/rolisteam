@@ -213,7 +213,7 @@ FORMS += \
     src/mapwizzard.ui \
     src/newemptymapdialog.ui \
     src/chatwindow.ui \
-    preferencesdialogbox.ui
+    src/preferencesdialogbox.ui
 
 OTHER_FILES += \
     src/widgets/widgets.pro
