@@ -42,11 +42,6 @@
        </item>
        <item>
         <property name="text">
-         <string>Map</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
          <string>Diagnotic</string>
         </property>
        </item>
@@ -66,24 +61,6 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <widget class="QLabel" name="label">
-                <property name="text">
-                 <string>Transparancy Color:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ColorButton" name="m_transColor">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
                <widget class="QLabel" name="label_10">
@@ -100,6 +77,60 @@
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Opacity Value:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="m_opacitySlider">
+                <property name="minimum">
+                 <number>5</number>
+                </property>
+                <property name="maximum">
+                 <number>250</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="m_opacitySpin">
+                <property name="minimum">
+                 <number>5</number>
+                </property>
+                <property name="maximum">
+                 <number>250</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>Only apply on future maps.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -227,7 +258,6 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="Map"/>
        <widget class="QWidget" name="Diag">
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
@@ -301,8 +331,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>470</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -317,8 +347,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>470</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -339,6 +369,38 @@
     <hint type="destinationlabel">
      <x>306</x>
      <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_opacitySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_opacitySpin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>411</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>593</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_opacitySpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_opacitySlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>574</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
